@@ -9,6 +9,7 @@ export default function App() {
       <Routes>
         {/* <Route path="/" element={<Login />} /> */}
         <Route path='/' element={<Hub/>}/>
+        <Route path='/login' element={<Login/>}/>
       </Routes>
     </Router>
   );

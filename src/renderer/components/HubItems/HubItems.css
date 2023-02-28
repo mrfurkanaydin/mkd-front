@@ -1,13 +1,23 @@
-.hubitem-container{
-    background-color: transparent;
-    overflow: hidden;
-    margin: 10px;
-    border-radius: 10px;
-    padding: 10px;
-    height: 100px;
-    width: 100px;
+.hubitem-container {
+  background-color: transparent;
+  overflow: hidden;
+  margin: 10px;
+  border-radius: 10px;
+  padding: 10px;
+  height: 125px;
+  width: 125px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: black;
 }
-.hubitem-image{
-    width: 75%;
-    height: 75%;
+.hubitem-image {
+  object-fit: contain;
+  height: 90%;
+  width: 90%;
+}
+.hubitem-text{
+text-align: center;
 }
