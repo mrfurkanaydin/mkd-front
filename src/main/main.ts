@@ -74,8 +74,8 @@ let width = display.bounds.width;
     show: false,
     width: 500,
     height: 900,
-    x:10000,
-    y:0,
+    //x:10000,
+    //y:0,
     // fullscreen: true,
     icon: getAssetPath('icon.png'),
     webPreferences: {

@@ -18,6 +18,9 @@
   height: 90%;
   width: 90%;
 }
+
 .hubitem-text{
 text-align: center;
+margin-top: 5px;
+font-family: 'Poppins';font-size: 20px;
 }
