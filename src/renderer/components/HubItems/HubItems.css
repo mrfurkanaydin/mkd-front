@@ -12,6 +12,8 @@
   align-items: center;
   text-decoration: none;
   color: black;
+  border: 0;
+  z-index: 50;
 }
 .hubitem-image {
   object-fit: contain;

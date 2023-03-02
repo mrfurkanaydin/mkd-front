@@ -1,0 +1,30 @@
+.taskbar-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  margin-left: 10px;
+  background-color: transparent;
+  border: 0;
+  height: 100%;
+}
+.taskbar-item:hover {
+  background-color: rgb(81, 80, 80);
+}
+.taskbar-item-active {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  margin-left: 10px;
+  background-color: rgb(81, 80, 80);
+  border: 0;
+  height: 100%;
+}
+.taskbar-item-img {
+  width: 45px;
+  height: 45px;
+  object-fit: cover;
+}

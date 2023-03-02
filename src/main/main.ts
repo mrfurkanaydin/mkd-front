@@ -9,11 +9,12 @@
  * `./src/main.js` using webpack. This gives us some performance wins.
  */
 import path from 'path';
-import { app, BrowserWindow, shell, ipcMain,screen } from 'electron';
+import { app, BrowserWindow, shell, ipcMain } from 'electron';
 import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
 import MenuBuilder from './menu';
 import { resolveHtmlPath } from './util';
+
 
 class AppUpdater {
   constructor() {
@@ -40,7 +41,7 @@ const isDebug =
   process.env.NODE_ENV === 'development' || process.env.DEBUG_PROD === 'true';
 
 if (isDebug) {
-  require('electron-debug')();
+  // require('electron-debug')();
 }
 
 const installExtensions = async () => {
@@ -68,21 +69,20 @@ const createWindow = async () => {
   const getAssetPath = (...paths: string[]): string => {
     return path.join(RESOURCES_PATH, ...paths);
   };
-  let display = screen.getPrimaryDisplay();
-let width = display.bounds.width;
+
   mainWindow = new BrowserWindow({
     show: false,
     width: 500,
     height: 900,
-    //x:10000,
-    //y:0,
+    x:10000,
+    y:0,
     // fullscreen: true,
     icon: getAssetPath('icon.png'),
     webPreferences: {
       preload: app.isPackaged
         ? path.join(__dirname, 'preload.js')
         : path.join(__dirname, '../../.erb/dll/preload.js'),
-        devTools:false,
+        // devTools:false,
     },
   });
 

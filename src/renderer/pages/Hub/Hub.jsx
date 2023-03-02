@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import Draggable, { DraggableCore } from "react-draggable";
 import HubItems from "renderer/components/HubItems/HubItems";
 import TaskBar from "../../components/TaskBar/TaskBar";
 import "./Hub.css";
@@ -8,8 +9,12 @@ import izleme from "../../../assets/izleme.png";
 import dinleme from "../../../assets/dinleme.png";
 import oyun from "../../../assets/oyun.png";
 import yonetim from "../../../assets/yönetim.png";
+import Read from "renderer/programs/Read/Read";
+import { useSelector } from "react-redux";
 
 function Hub() {
+
+
   return (
     <div className="hub-container">
       <div className="hub-hubitems">
@@ -20,6 +25,10 @@ function Hub() {
         <HubItems icon={oyun} name="Oyun" />
         <HubItems icon={yonetim} name="Yönetim" />
       </div>
+      <>
+        <Read />
+      </>
+
       <TaskBar />
     </div>
   );
