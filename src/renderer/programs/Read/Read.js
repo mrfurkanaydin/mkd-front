@@ -13,11 +13,9 @@ function Read() {
   const read = useSelector((state) => state.read);
   const dispatch = useDispatch();
   const handleStop = () => {
-    console.log("stop");
     dispatch({ type: "STOP_PROGRAM", payload: "Okuma" });
   };
   const handleMinimize = () => {
-    console.log("minimize");
     dispatch({ type: "MINIMIZE_PROGRAM", payload: "Okuma" });
   };
   return (

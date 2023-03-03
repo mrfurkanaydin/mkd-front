@@ -10,9 +10,13 @@ import dinleme from "../../../assets/dinleme.png";
 import oyun from "../../../assets/oyun.png";
 import yonetim from "../../../assets/yönetim.png";
 import Read from "renderer/programs/Read/Read";
-import Draw from "renderer/programs/Write/Write";
 import { useSelector } from "react-redux";
 import Options from "renderer/programs/Options/Options";
+import Write from "renderer/programs/Write/Write";
+import Watch from "renderer/programs/Watch/Watch";
+import Listen from "renderer/programs/Listen/Listen";
+import Game from "renderer/programs/Game/Game";
+import Manage from "renderer/programs/Manage/Manage";
 
 function Hub() {
 
@@ -29,7 +33,11 @@ function Hub() {
       </div>
       <>
         <Read />
-        <Draw />
+        <Write />
+        <Watch/>
+        <Listen/>
+        <Game/>
+        <Manage/>
         <Options />
       </>
 

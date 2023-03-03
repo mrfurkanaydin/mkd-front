@@ -43,7 +43,7 @@ function TaskBar() {
   const write = useSelector((state) => state.write);
   const listen = useSelector((state) => state.listen);
   const watch = useSelector((state) => state.watch);
-  const play = useSelector((state) => state.play);
+  const game = useSelector((state) => state.game);
   const manage = useSelector((state) => state.manage);
   const options = useSelector((state) => state.options);
 
@@ -116,8 +116,8 @@ function TaskBar() {
           {(listen == 1 || listen == 2) && (
             <TaskBarItem name={"Dinleme"} icon={dinleme} status={listen} />
           )}
-          {(play == 1 || play == 2) && (
-            <TaskBarItem name={"Oyun"} icon={oyun} status={play} />
+          {(game == 1 || game == 2) && (
+            <TaskBarItem name={"Oyun"} icon={oyun} status={game} />
           )}
           {(manage == 1 || manage == 2) && (
             <TaskBarItem name={"Yönetim"} icon={yonetim} status={manage} />

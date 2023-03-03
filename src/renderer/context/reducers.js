@@ -1,6 +1,6 @@
 const INITIAL_STATE = {
   read: 0,
-  draw: 0,
+  write: 0,
   watch: 0,
   listen: 0,
   game: 0,
@@ -15,7 +15,7 @@ export default (state = INITIAL_STATE, { type, payload }) => {
         case "Okuma":
           return { ...state, read: 1 };
         case "Yazma":
-          return { ...state, draw: 1 };
+          return { ...state, write: 1 };
         case "İzleme":
           return { ...state, watch: 1 };
         case "Dinleme":
@@ -32,7 +32,7 @@ export default (state = INITIAL_STATE, { type, payload }) => {
         case "Okuma":
           return { ...state, read: 0 };
         case "Yazma":
-          return { ...state, draw: 0 };
+          return { ...state, write: 0 };
         case "İzleme":
           return { ...state, watch: 0 };
         case "Dinleme":
@@ -49,7 +49,7 @@ export default (state = INITIAL_STATE, { type, payload }) => {
         case "Okuma":
           return { ...state, read: 2 };
         case "Yazma":
-          return { ...state, draw: 2 };
+          return { ...state, write: 2 };
         case "İzleme":
           return { ...state, watch: 2 };
         case "Dinleme":

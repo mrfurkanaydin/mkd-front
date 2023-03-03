@@ -9,20 +9,18 @@ import { useDispatch, useSelector } from "react-redux";
 import "./Write.css";
 import "../Programs.css";
 
-function Draw() {
-  const draw = useSelector((state) => state.draw);
+function Write() {
+  const write = useSelector((state) => state.write);
   const dispatch = useDispatch();
   const handleStop = () => {
-    console.log("stop");
     dispatch({ type: "STOP_PROGRAM", payload: "Yazma" });
   };
   const handleMinimize = () => {
-    console.log("minimize");
     dispatch({ type: "MINIMIZE_PROGRAM", payload: "Yazma" });
   };
   return (
     <>
-      {draw == 1 && (
+      {write == 1 && (
         <div handle=".program-header">
           <div className="program-container">
             <div className="program-header">
@@ -45,7 +43,7 @@ function Draw() {
               </div>
             </div>
             <div className="read-container">
-              <div className="read-text">Draw</div>
+              <div className="read-text">Write</div>
             </div>
           </div>
         </div>
@@ -54,4 +52,4 @@ function Draw() {
   );
 }
 
-export default Draw
+export default Write
