@@ -26,10 +26,10 @@ function Read() {
         <div handle=".program-header">
           <div className="program-container">
             <div className="program-header">
-              <div style={{"flex":1, "paddingLeft":10}}>
+              <div className="program-title">
               Okuma Programı
               </div>
-              <div style={{"display":"flex", "flexDirection":"row","paddingRight":10}}>
+              <div className="program-header-buttons">
                 <button
                   className="program-header-button"
                   onClick={handleMinimize}
