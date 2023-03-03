@@ -23,28 +23,32 @@ function Read() {
   return (
     <>
       {read == 1 && (
-        <Draggable handle=".program-header">
+        <div handle=".program-header">
           <div className="program-container">
             <div className="program-header">
+              <div style={{"flex":1, "paddingLeft":10}}>
               Okuma Programı
-              <button
-                className="program-header-button"
-                onClick={handleMinimize}
-              >
-                <FaRegWindowMinimize />
-              </button>
-              <button className="program-header-button">
-                <IoIosQrScanner />
-              </button>
-              <button className="program-header-button" onClick={handleStop}>
-                <TfiClose />
-              </button>
+              </div>
+              <div style={{"display":"flex", "flexDirection":"row","paddingRight":10}}>
+                <button
+                  className="program-header-button"
+                  onClick={handleMinimize}
+                >
+                  <FaRegWindowMinimize />
+                </button>
+                <button className="program-header-button">
+                  <IoIosQrScanner />
+                </button>
+                <button className="program-header-button" onClick={handleStop}>
+                  <TfiClose />
+                </button>
+              </div>
             </div>
             <div className="read-container">
               <div className="read-text">Read</div>
             </div>
           </div>
-        </Draggable>
+        </div>
       )}
     </>
   );

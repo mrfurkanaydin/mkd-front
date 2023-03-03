@@ -11,6 +11,7 @@ import oyun from "../../../assets/oyun.png";
 import yonetim from "../../../assets/yönetim.png";
 import Read from "renderer/programs/Read/Read";
 import { useSelector } from "react-redux";
+import Options from "renderer/programs/Options/Options";
 
 function Hub() {
 
@@ -27,6 +28,7 @@ function Hub() {
       </div>
       <>
         <Read />
+        <Options />
       </>
 
       <TaskBar />

@@ -4,7 +4,8 @@ const INITIAL_STATE = {
   watch: 0,
   listen: 0,
   game: 0,
-  manage: 0
+  manage: 0,
+  options: 0
 };
 
 export default (state = INITIAL_STATE, { type, payload }) => {
@@ -23,6 +24,8 @@ export default (state = INITIAL_STATE, { type, payload }) => {
           return { ...state, game: 1 };
         case "Yönetim":
           return { ...state, manage: 1 };
+        case "Ayarlar":
+          return { ...state, options: 1 };
       }
     case "STOP_PROGRAM":
       switch (payload) {
@@ -38,6 +41,8 @@ export default (state = INITIAL_STATE, { type, payload }) => {
           return { ...state, game: 0 };
         case "Yönetim":
           return { ...state, manage: 0 };
+        case "Ayarlar":
+          return { ...state, options: 0 };
       }
     case "MINIMIZE_PROGRAM":
       switch (payload) {
@@ -53,6 +58,8 @@ export default (state = INITIAL_STATE, { type, payload }) => {
           return { ...state, game: 2 };
         case "Yönetim":
           return { ...state, manage: 2 };
+        case "Ayarlar":
+          return { ...state, options: 2 };
       }
     default:
       return state;
