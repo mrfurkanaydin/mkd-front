@@ -10,6 +10,7 @@ import dinleme from "../../../assets/dinleme.png";
 import oyun from "../../../assets/oyun.png";
 import yonetim from "../../../assets/yönetim.png";
 import Read from "renderer/programs/Read/Read";
+import Draw from "renderer/programs/Write/Write";
 import { useSelector } from "react-redux";
 import Options from "renderer/programs/Options/Options";
 
@@ -28,6 +29,7 @@ function Hub() {
       </div>
       <>
         <Read />
+        <Draw />
         <Options />
       </>
 

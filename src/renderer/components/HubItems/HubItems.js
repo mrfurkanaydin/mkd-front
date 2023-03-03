@@ -3,6 +3,7 @@ import Draggable, { DraggableCore } from "react-draggable";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import Read from "renderer/programs/Read/Read";
+import Draw from "renderer/programs/Write/Write";
 import "./HubItems.css";
 {
   /* <link
