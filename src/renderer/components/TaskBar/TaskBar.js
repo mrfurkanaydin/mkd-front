@@ -8,11 +8,16 @@ import izleme from "../../../assets/izleme.png";
 import dinleme from "../../../assets/dinleme.png";
 import oyun from "../../../assets/oyun.png";
 import yonetim from "../../../assets/yönetim.png";
+import option from "../../../assets/secenekler.png";
+import control from "../../../assets/kontrol.png";
+import equipment from "../../../assets/donatılar.png";
 import Read from "renderer/programs/Read/Read";
 import { useSelector } from "react-redux";
 
 function TaskBar() {
   const [showMenu, setShowMenu] = useState(false);
+  const [options, setOptions] = useState(false);
+  const [equip, setEquip] = useState(false);
   const handleOpen = () => {
     setShowMenu(!showMenu);
   };
@@ -26,9 +31,31 @@ function TaskBar() {
   return (
     <>
       {showMenu && (
-        <div className="taskbar-open">
-          <div>taskbar open</div>
-        </div>
+        <>
+          <div className="taskbar-open">
+            <div className="taskbar-open-item">
+              <img className="taskbar-open-img" src={option} />
+              Seçenekler
+            </div>
+            <button onClick={()=>setEquip(!equip)} className={equip ? "taskbar-open-item-active" : "taskbar-open-item"}>
+              <img className="taskbar-open-img" src={equipment} />
+              Donatılar
+            </button>
+            <div className="taskbar-open-item">
+              <img className="taskbar-open-img" src={control} />
+              Kontrol
+            </div>
+          </div>
+          {equip && (
+          <div className="taskbar-open-equipment">
+            <div className="taskbar-open-item">Görev Yöneticisi</div>
+            <div className="taskbar-open-item">Terminal</div>
+            <div className="taskbar-open-item">Hesap Makinesi</div>
+            <div className="taskbar-open-item">Çizim</div>
+            <div className="taskbar-open-item">Notlarım</div>
+          </div>)}
+          
+        </>
       )}
 
       <div className="taskbar-band">
