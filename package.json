@@ -1,8 +1,8 @@
 {
-  "description": "A foundation for scalable desktop apps",
+  "description": "MasterKid is a desktop application for kids to learn and play with their parents.",
   "keywords": [
+    "MasterKid",
     "electron",
-    "boilerplate",
     "react",
     "typescript",
     "ts",
@@ -11,27 +11,20 @@
     "hot",
     "reload"
   ],
-  "homepage": "https://github.com/electron-react-boilerplate/electron-react-boilerplate#readme",
+  "homepage": "https://github.com/mrfurkanaydin/mkd-front.git#readme",
   "bugs": {
-    "url": "https://github.com/electron-react-boilerplate/electron-react-boilerplate/issues"
+    "url": "https://github.com/mrfurkanaydin/mkd-front.git/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/electron-react-boilerplate/electron-react-boilerplate.git"
+    "url": "git+https://github.com/mrfurkanaydin/mkd-front.git"
   },
   "license": "MIT",
   "author": {
-    "name": "Electron React Boilerplate Maintainers",
-    "email": "electronreactboilerplate@gmail.com",
-    "url": "https://electron-react-boilerplate.js.org"
+    "name": "Furkan Aydın Oğuzhan Sakaoğlu Bahadır Harman Mustafa Bacacı Duygu Asena Kaya",
+    "email": "",
+    "url": ""
   },
-  "contributors": [
-    {
-      "name": "Amila Welihinda",
-      "email": "amilajack@gmail.com",
-      "url": "https://github.com/amilajack"
-    }
-  ],
   "main": "./src/main/main.ts",
   "scripts": {
     "build": "concurrently \"npm run build:main\" \"npm run build:renderer\"",
@@ -162,7 +155,7 @@
   },
   "build": {
     "productName": "MasterKid",
-    "appId": "org.erb.ElectronReact",
+    "appId": "org.erb.MasterKid",
     "asar": true,
     "asarUnpack": "**\\*.{node,dll}",
     "files": [
@@ -220,12 +213,9 @@
     ],
     "publish": {
       "provider": "github",
-      "owner": "electron-react-boilerplate",
-      "repo": "electron-react-boilerplate"
+      "owner": "mrfurkanaydin",
+      "repo": "mkd-front"
     }
-  },
-  "collective": {
-    "url": "https://opencollective.com/electron-react-boilerplate-594"
   },
   "devEngines": {
     "node": ">=14.x",
