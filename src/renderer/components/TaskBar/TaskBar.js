@@ -11,8 +11,9 @@ import yonetim from "../../../assets/yönetim.png";
 import option from "../../../assets/secenekler.png";
 import control from "../../../assets/kontrol.png";
 import equipment from "../../../assets/donatılar.png";
-import Read from "renderer/programs/Read/Read";
 import { useDispatch, useSelector } from "react-redux";
+import { format } from "date-fns";
+import { tr } from "date-fns/locale";
 
 function TaskBar() {
   const [showMenu, setShowMenu] = useState(false);
@@ -127,6 +128,10 @@ function TaskBar() {
           {options !== 0 && (
             <TaskBarItem name={"Options"} icon={option} status={options} />
           )}
+          <div className="date">
+            <div>{format(new Date(), "HH:mm")}</div>
+            <div>{format(new Date(), "P", { locale: tr })}</div>
+          </div>
         </div>
       </div>
     </>

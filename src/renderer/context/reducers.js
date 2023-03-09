@@ -12,7 +12,9 @@ const INITIAL_STATE = {
   lastListen: 0,
   lastGame: 0,
   lastManage: 0,
-  lastOptions: 0
+  lastOptions: 0,
+  animatedIcons: 0,
+  mousePointer: 0,
 };
 
 export default (state = INITIAL_STATE, { type, payload }) => {
@@ -85,6 +87,10 @@ export default (state = INITIAL_STATE, { type, payload }) => {
         case "Options":
           return { ...state, options: 3 };
       }
+    case "SET_ANIMATED_ICONS":
+      return { ...state, animatedIcons: state.animatedIcons ? 0 : 1 };
+    case "SET_MOUSE_POINTER":
+      return { ...state, mousePointer: state.mousePointer ? 0 : 1 };
     default:
       return state;
   }
