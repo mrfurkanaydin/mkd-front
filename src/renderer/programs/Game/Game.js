@@ -18,6 +18,7 @@ function Game() {
   const handleMinimize = () => {
     dispatch({ type: "MINIMIZE_PROGRAM", payload: "Oyun" });
   };
+  
   return (
     <>
       {game == 1 && (

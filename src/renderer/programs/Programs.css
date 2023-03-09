@@ -19,6 +19,16 @@
   background-color: rgba(0, 0, 0, 0.8);
   z-index: 100;
 }
+.program-container-resize{
+  position: absolute;
+  left: 15%;
+  top: 15%;
+  width: 70%;
+  height: 70%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 100;
+}
+
 .program-header {
   width: 100%;
   height: fit-content;

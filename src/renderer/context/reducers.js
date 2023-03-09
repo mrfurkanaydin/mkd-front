@@ -5,7 +5,14 @@ const INITIAL_STATE = {
   listen: 0,
   game: 0,
   manage: 0,
-  options: 0
+  options: 0,
+  lastRead: 0,
+  lastWrite: 0,
+  lastWatch: 0,
+  lastListen: 0,
+  lastGame: 0,
+  lastManage: 0,
+  lastOptions: 0
 };
 
 export default (state = INITIAL_STATE, { type, payload }) => {
@@ -47,19 +54,36 @@ export default (state = INITIAL_STATE, { type, payload }) => {
     case "MINIMIZE_PROGRAM":
       switch (payload) {
         case "Okuma":
-          return { ...state, read: 2 };
+          return { ...state, read: 2, lastRead: state.read };
         case "Yazma":
-          return { ...state, write: 2 };
+          return { ...state, write: 2, lastWrite: state.write };
         case "İzleme":
-          return { ...state, watch: 2 };
+          return { ...state, watch: 2, lastWatch: state.watch };
         case "Dinleme":
-          return { ...state, listen: 2 };
+          return { ...state, listen: 2, lastListen: state.listen };
         case "Oyun":
-          return { ...state, game: 2 };
+          return { ...state, game: 2, lastGame: state.game };
         case "Yönetim":
-          return { ...state, manage: 2 };
+          return { ...state, manage: 2, lastManage: state.manage };
         case "Ayarlar":
-          return { ...state, options: 2 };
+          return { ...state, options: 2, lastOptions: state.options };
+      }
+    case "RESIZE_PROGRAM":
+      switch (payload) {
+        case "Okuma":
+          return { ...state, read: 3 };
+        case "Yazma":
+          return { ...state, write: 3 };
+        case "İzleme":
+          return { ...state, watch: 3 };
+        case "Dinleme":
+          return { ...state, listen: 3 };
+        case "Oyun":
+          return { ...state, game: 3 };
+        case "Yönetim":
+          return { ...state, manage: 3 };
+        case "Ayarlar":
+          return { ...state, options: 3 };
       }
     default:
       return state;

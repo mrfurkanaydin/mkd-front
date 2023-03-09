@@ -34,8 +34,8 @@ function TaskBar() {
   };
   const startOption = () => {
     dispatch({ type: "START_PROGRAM", payload: "Ayarlar" });
-    handleToggle()
-  }
+    handleToggle();
+  };
   const handleQuit = () => {
     window.electron.ipcRenderer.sendMessage("send-shutdown");
   };
@@ -86,7 +86,9 @@ function TaskBar() {
           )}
           {controls && (
             <div className="taskbar-open-controls">
-              <button onClick={handleQuit} className="taskbar-open-item">Kapat</button>
+              <button onClick={handleQuit} className="taskbar-open-item">
+                Kapat
+              </button>
               <div className="taskbar-open-item">Kullanıcı Değiştir</div>
               <div className="taskbar-open-item">Şifre Değiştir</div>
             </div>
@@ -104,25 +106,25 @@ function TaskBar() {
           >
             <img src={masterMenu} className="mastermenu-style" />
           </button>
-          {(read == 1 || read == 2) && (
+          {(read == 1 || read == 2 || read == 3) && (
             <TaskBarItem name={"Okuma"} icon={okuma} status={read} />
           )}
-          {(write == 1 || write == 2) && (
+          {(write == 1 || write == 2 || write == 3) && (
             <TaskBarItem name={"Yazma"} icon={yazma} status={write} />
           )}
-          {(watch == 1 || watch == 2) && (
+          {(watch == 1 || watch == 2 || watch == 3) && (
             <TaskBarItem name={"İzleme"} icon={izleme} status={watch} />
           )}
-          {(listen == 1 || listen == 2) && (
+          {(listen == 1 || listen == 2 || listen == 3) && (
             <TaskBarItem name={"Dinleme"} icon={dinleme} status={listen} />
           )}
-          {(game == 1 || game == 2) && (
+          {(game == 1 || game == 2 || game == 3) && (
             <TaskBarItem name={"Oyun"} icon={oyun} status={game} />
           )}
-          {(manage == 1 || manage == 2) && (
+          {(manage == 1 || manage == 2 || manage == 3) && (
             <TaskBarItem name={"Yönetim"} icon={yonetim} status={manage} />
           )}
-          {(options == 1 || options == 2) && (
+          {options !== 0&& (
             <TaskBarItem name={"Ayarlar"} icon={option} status={options} />
           )}
         </div>
