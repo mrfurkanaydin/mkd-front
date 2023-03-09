@@ -8,47 +8,33 @@ import { TfiClose } from "react-icons/tfi";
 import { useDispatch, useSelector } from "react-redux";
 import "./Game.css";
 import "../Programs.css";
+import ProgramContainer from "renderer/components/ProgramContainer/ProgramContainer";
 
 function Game() {
   const game = useSelector((state) => state.game);
   const dispatch = useDispatch();
   const handleStop = () => {
-    dispatch({ type: "STOP_PROGRAM", payload: "Oyun" });
+    dispatch({ type: "STOP_PROGRAM", payload: "Game" });
   };
   const handleMinimize = () => {
-    dispatch({ type: "MINIMIZE_PROGRAM", payload: "Oyun" });
+    dispatch({ type: "MINIMIZE_PROGRAM", payload: "Game" });
   };
-  
+  const handleResize = () => {
+    game == 3
+      ? dispatch({ type: "START_PROGRAM", payload: "Game" })
+      : dispatch({ type: "RESIZE_PROGRAM", payload: "Game" });
+  };
   return (
     <>
-      {game == 1 && (
-        <div handle=".program-header">
-          <div className="program-container">
-            <div className="program-header">
-              <div className="program-title">
-              Oyun
-              </div>
-              <div className="program-header-buttons">
-                <button
-                  className="program-header-button"
-                  onClick={handleMinimize}
-                >
-                  <FaRegWindowMinimize />
-                </button>
-                <button className="program-header-button">
-                  <IoIosQrScanner />
-                </button>
-                <button className="program-header-button" onClick={handleStop}>
-                  <TfiClose />
-                </button>
-              </div>
-            </div>
-            <div className="read-container">
-              <div className="read-text">Read</div>
-            </div>
-          </div>
-        </div>
-      )}
+      <ProgramContainer 
+        title="Game"
+        handleStop={handleStop}
+        handleMinimize={handleMinimize}
+        handleResize={handleResize}
+        status={game}
+      >
+        <div>Game</div>
+      </ProgramContainer>
     </>
   );
 }

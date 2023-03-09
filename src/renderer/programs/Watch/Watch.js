@@ -1,51 +1,33 @@
-import React from "react";
-import Draggable from "react-draggable";
-import { GrClose } from "react-icons/gr";
-import { FaRegWindowMinimize } from "react-icons/fa";
-import { IoIosQrScanner } from "react-icons/io";
-import { TfiClose } from "react-icons/tfi";
-
 import { useDispatch, useSelector } from "react-redux";
 import "./Watch.css";
 import "../Programs.css";
+import ProgramContainer from "renderer/components/ProgramContainer/ProgramContainer";
 
 function Watch() {
   const watch = useSelector((state) => state.watch);
   const dispatch = useDispatch();
   const handleStop = () => {
-    dispatch({ type: "STOP_PROGRAM", payload: "İzleme" });
+    dispatch({ type: "STOP_PROGRAM", payload: "Watch" });
   };
   const handleMinimize = () => {
-    dispatch({ type: "MINIMIZE_PROGRAM", payload: "İzleme" });
+    dispatch({ type: "MINIMIZE_PROGRAM", payload: "Watch" });
+  };
+  const handleResize = () => {
+    watch == 3
+      ? dispatch({ type: "START_PROGRAM", payload: "Watch" })
+      : dispatch({ type: "RESIZE_PROGRAM", payload: "Watch" });
   };
   return (
     <>
-      {watch == 1 && (
-        <div handle=".program-header">
-          <div className="program-container">
-            <div className="program-header">
-              <div className="program-title">İzleme Programı</div>
-              <div className="program-header-buttons">
-                <button
-                  className="program-header-button"
-                  onClick={handleMinimize}
-                >
-                  <FaRegWindowMinimize />
-                </button>
-                <button className="program-header-button">
-                  <IoIosQrScanner />
-                </button>
-                <button className="program-header-button" onClick={handleStop}>
-                  <TfiClose />
-                </button>
-              </div>
-            </div>
-            <div className="read-container">
-              <div className="read-text">Read</div>
-            </div>
-          </div>
-        </div>
-      )}
+      <ProgramContainer 
+        title="Watch"
+        handleStop={handleStop}
+        handleMinimize={handleMinimize}
+        handleResize={handleResize}
+        status={watch}
+      >
+        <div>Watch</div>
+      </ProgramContainer>
     </>
   );
 }

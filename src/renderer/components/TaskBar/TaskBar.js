@@ -33,7 +33,7 @@ function TaskBar() {
     setControls(false);
   };
   const startOption = () => {
-    dispatch({ type: "START_PROGRAM", payload: "Ayarlar" });
+    dispatch({ type: "START_PROGRAM", payload: "Options" });
     handleToggle();
   };
   const handleQuit = () => {
@@ -106,26 +106,26 @@ function TaskBar() {
           >
             <img src={masterMenu} className="mastermenu-style" />
           </button>
-          {(read == 1 || read == 2 || read == 3) && (
-            <TaskBarItem name={"Okuma"} icon={okuma} status={read} />
+          {read !== 0 && (
+            <TaskBarItem name={"Read"} icon={okuma} status={read} />
           )}
-          {(write == 1 || write == 2 || write == 3) && (
-            <TaskBarItem name={"Yazma"} icon={yazma} status={write} />
+          {write !== 0 && (
+            <TaskBarItem name={"Write"} icon={yazma} status={write} />
           )}
-          {(watch == 1 || watch == 2 || watch == 3) && (
-            <TaskBarItem name={"İzleme"} icon={izleme} status={watch} />
+          {watch !== 0 && (
+            <TaskBarItem name={"Watch"} icon={izleme} status={watch} />
           )}
-          {(listen == 1 || listen == 2 || listen == 3) && (
-            <TaskBarItem name={"Dinleme"} icon={dinleme} status={listen} />
+          {listen !== 0 && (
+            <TaskBarItem name={"Listen"} icon={dinleme} status={listen} />
           )}
-          {(game == 1 || game == 2 || game == 3) && (
-            <TaskBarItem name={"Oyun"} icon={oyun} status={game} />
+          {game !== 0 && (
+            <TaskBarItem name={"Game"} icon={oyun} status={game} />
           )}
-          {(manage == 1 || manage == 2 || manage == 3) && (
-            <TaskBarItem name={"Yönetim"} icon={yonetim} status={manage} />
+          {manage !== 0 && (
+            <TaskBarItem name={"Manage"} icon={yonetim} status={manage} />
           )}
-          {options !== 0&& (
-            <TaskBarItem name={"Ayarlar"} icon={option} status={options} />
+          {options !== 0 && (
+            <TaskBarItem name={"Options"} icon={option} status={options} />
           )}
         </div>
       </div>

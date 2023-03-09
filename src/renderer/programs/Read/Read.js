@@ -9,20 +9,20 @@ function Read() {
   const read = useSelector((state) => state.read);
   const dispatch = useDispatch();
   const handleStop = () => {
-    dispatch({ type: "STOP_PROGRAM", payload: "Okuma" });
+    dispatch({ type: "STOP_PROGRAM", payload: "Read" });
   };
   const handleMinimize = () => {
-    dispatch({ type: "MINIMIZE_PROGRAM", payload: "Okuma" });
+    dispatch({ type: "MINIMIZE_PROGRAM", payload: "Read" });
   };
   const handleResize = () => {
     read == 3
-      ? dispatch({ type: "START_PROGRAM", payload: "Okuma" })
-      : dispatch({ type: "RESIZE_PROGRAM", payload: "Okuma" });
+      ? dispatch({ type: "START_PROGRAM", payload: "Read" })
+      : dispatch({ type: "RESIZE_PROGRAM", payload: "Read" });
   };
   return (
     <>
       <ProgramContainer 
-        title="Okuma"
+        title="Read"
         handleStop={handleStop}
         handleMinimize={handleMinimize}
         handleResize={handleResize}

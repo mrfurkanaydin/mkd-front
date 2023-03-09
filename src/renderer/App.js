@@ -1,8 +1,8 @@
 import Provider from "renderer/context/Provider";
 import { MemoryRouter as Router, Routes, Route } from "react-router-dom";
-import "./App.css";
 import Hub from "./pages/Hub/Hub";
 import Login from "./pages/Login/Login";
+import "./App.css";
 
 export default function App() {
   return (
