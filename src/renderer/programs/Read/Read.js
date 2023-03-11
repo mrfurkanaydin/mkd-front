@@ -6,6 +6,7 @@ import "../Programs.css";
 import ProgramContainer from "renderer/components/ProgramContainer/ProgramContainer";
 
 function Read() {
+  const [msg, setMsg] = React.useState();
   const read = useSelector((state) => state.read);
   const dispatch = useDispatch();
   const handleStop = () => {
@@ -19,16 +20,28 @@ function Read() {
       ? dispatch({ type: "START_PROGRAM", payload: "Read" })
       : dispatch({ type: "RESIZE_PROGRAM", payload: "Read" });
   };
+  const handleClick = () => {
+    window.electron.ipcRenderer.sendMessage("ipc", ["ping"]);
+    window.electron.ipcRenderer.once("ipc", (arg) => {
+      // eslint-disable-next-line no-console
+      setMsg(arg);
+      // console.log(arg);
+    });
+  };
+
   return (
     <>
-      <ProgramContainer 
+      <ProgramContainer
         title="Read"
         handleStop={handleStop}
         handleMinimize={handleMinimize}
         handleResize={handleResize}
         status={read}
       >
-        <div>Read</div>
+        <div style={{"color": "white"}}>
+          <button onClick={handleClick}>merhaba</button>
+          {msg}
+        </div>
       </ProgramContainer>
     </>
   );

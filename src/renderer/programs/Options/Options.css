@@ -57,11 +57,9 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
-.options-item-title {
-  /* font-size: 1.2em;
-  font-weight: bold;
-  margin-bottom: 0.5em; */
+.options-item-desc {
   display: flex;
+  flex-direction: column;
   color: white;
 }
 .options-item {

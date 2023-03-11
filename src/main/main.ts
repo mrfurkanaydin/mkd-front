@@ -31,6 +31,12 @@ ipcMain.on("ipc-example", async (event, arg) => {
   event.reply("ipc-example", msgTemplate("pong"));
 });
 
+ipcMain.on("ipc", async (event, arg) => {
+  const msgTemplate = (pingPong: string) => `IPC test: ${app.getVersion()}`;
+  console.log(msgTemplate(arg));
+  event.reply("ipc", msgTemplate(app.getVersion()));
+});
+
 ipcMain.on("send-shutdown", () => {
   app.quit();
 });

@@ -4,6 +4,8 @@ import "../Programs.css";
 import ProgramContainer from "renderer/components/ProgramContainer/ProgramContainer";
 import { Form, Formik } from "formik";
 import { Switch } from "@mui/material";
+import { styled } from '@mui/material/styles';
+
 
 function Options() {
   const options = useSelector((state) => state.options);
@@ -19,6 +21,56 @@ function Options() {
       ? dispatch({ type: "START_PROGRAM", payload: "Options" })
       : dispatch({ type: "RESIZE_PROGRAM", payload: "Options" });
   };
+  const IOSSwitch = styled((props) => (
+    <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
+  ))(({ theme }) => ({
+    width: 42,
+    height: 26,
+    padding: 0,
+    '& .MuiSwitch-switchBase': {
+      padding: 0,
+      margin: 2,
+      transitionDuration: '300ms',
+      '&.Mui-checked': {
+        transform: 'translateX(16px)',
+        color: '#fff',
+        '& + .MuiSwitch-track': {
+          backgroundColor: theme.palette.mode === 'dark' ? '#2ECA45' : '#65C466',
+          opacity: 1,
+          border: 0,
+        },
+        '&.Mui-disabled + .MuiSwitch-track': {
+          opacity: 0.5,
+        },
+      },
+      '&.Mui-focusVisible .MuiSwitch-thumb': {
+        color: '#33cf4d',
+        border: '6px solid #fff',
+      },
+      '&.Mui-disabled .MuiSwitch-thumb': {
+        color:
+          theme.palette.mode === 'light'
+            ? theme.palette.grey[100]
+            : theme.palette.grey[600],
+      },
+      '&.Mui-disabled + .MuiSwitch-track': {
+        opacity: theme.palette.mode === 'light' ? 0.7 : 0.3,
+      },
+    },
+    '& .MuiSwitch-thumb': {
+      boxSizing: 'border-box',
+      width: 22,
+      height: 22,
+    },
+    '& .MuiSwitch-track': {
+      borderRadius: 26 / 2,
+      backgroundColor: theme.palette.mode === 'light' ? '#E9E9EA' : '#39393D',
+      opacity: 1,
+      transition: theme.transitions.create(['background-color'], {
+        duration: 500,
+      }),
+    },
+  }));
   return (
     <>
       <ProgramContainer
@@ -44,9 +96,8 @@ function Options() {
               <Form>
                 <div className="options-container">
                   <div className="options-item">
-                    <div className="options-item-title">Tam Ekran</div>
                     <div>
-                      <Switch
+                      <IOSSwitch
                         name="fullScreen"
                         value={0}
                         checked={values.fullScreen === 1}
@@ -58,12 +109,15 @@ function Options() {
                         }}
                       />
                     </div>
+                    <div className="options-item-desc">
+                      <div>Tam Ekran</div>
+                      <div>Uygulamayı Tam Ekran Yapar.</div>
+                    </div>
                   </div>
 
                   <div className="options-item">
-                    <div className="options-item-title">Tema Değiştir</div>
                     <div>
-                      <Switch
+                      <IOSSwitch
                         name="theme"
                         value={0}
                         checked={values.theme === "white"}
@@ -75,11 +129,11 @@ function Options() {
                         }}
                       />
                     </div>
+                    <div className="options-item-desc">Tema Değiştir</div>
                   </div>
 
                   <div className="options-item">
-                    <div className="options-item-title">Hareketli İkonlar</div>
-                    <Switch
+                    <IOSSwitch
                       name="animatedIcons"
                       value={0}
                       checked={values.animatedIcons === 1}
@@ -88,19 +142,19 @@ function Options() {
                         dispatch({ type: "SET_ANIMATED_ICONS" });
                       }}
                     />
+                    <div className="options-item-desc">Hareketli İkonlar</div>
                   </div>
                   <div className="options-item">
-                    <div className="options-item-title">Fare İmleci</div>
-                    <Switch
+                    <IOSSwitch
                       name="mousePointer"
                       value={0}
                       checked={values.mousePointer === 1}
                       onChange={(event, checked) => {
                         setFieldValue("mousePointer", checked ? 1 : 0);
                         dispatch({ type: "SET_MOUSE_POINTER" });
-
                       }}
                     />
+                    <div className="options-item-desc">Fare İmleci</div>
                   </div>
                 </div>
                 <button type="submit" disabled={isSubmitting}>
