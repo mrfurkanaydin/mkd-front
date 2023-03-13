@@ -14,7 +14,7 @@ import "./HubItems.css";
 function HubItems({ icon, name }) {
   const dispatch = useDispatch();
   const handleStart = () => {
-    dispatch({ type: "START_PROGRAM", payload: name});
+    dispatch({ type: "RESIZE_PROGRAM", payload: name});
   };
   return (
       <button className="hubitem-container" onClick={handleStart}>
