@@ -4,8 +4,7 @@ import "../Programs.css";
 import ProgramContainer from "renderer/components/ProgramContainer/ProgramContainer";
 import { Form, Formik } from "formik";
 import { Switch } from "@mui/material";
-import { styled } from '@mui/material/styles';
-
+import { styled } from "@mui/material/styles";
 
 function Options() {
   const options = useSelector((state) => state.options);
@@ -22,54 +21,59 @@ function Options() {
       : dispatch({ type: "RESIZE_PROGRAM", payload: "Options" });
   };
   const IOSSwitch = styled((props) => (
-    <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
+    <Switch
+      focusVisibleClassName=".Mui-focusVisible"
+      disableRipple
+      {...props}
+    />
   ))(({ theme }) => ({
     width: 42,
     height: 26,
     padding: 0,
-    '& .MuiSwitch-switchBase': {
+    "& .MuiSwitch-switchBase": {
       padding: 0,
       margin: 2,
-      transitionDuration: '300ms',
-      '&.Mui-checked': {
-        transform: 'translateX(16px)',
-        color: '#fff',
-        '& + .MuiSwitch-track': {
-          backgroundColor: theme.palette.mode === 'dark' ? '#2ECA45' : '#65C466',
+      transitionDuration: "300ms",
+      "&.Mui-checked": {
+        transform: "translateX(16px)",
+        color: "#fff",
+        "& + .MuiSwitch-track": {
+          backgroundColor:
+            theme.palette.mode === "dark" ? "#2ECA45" : "#65C466",
           opacity: 1,
-          border: 0,
+          border: 0
         },
-        '&.Mui-disabled + .MuiSwitch-track': {
-          opacity: 0.5,
-        },
+        "&.Mui-disabled + .MuiSwitch-track": {
+          opacity: 0.5
+        }
       },
-      '&.Mui-focusVisible .MuiSwitch-thumb': {
-        color: '#33cf4d',
-        border: '6px solid #fff',
+      "&.Mui-focusVisible .MuiSwitch-thumb": {
+        color: "#33cf4d",
+        border: "6px solid #fff"
       },
-      '&.Mui-disabled .MuiSwitch-thumb': {
+      "&.Mui-disabled .MuiSwitch-thumb": {
         color:
-          theme.palette.mode === 'light'
+          theme.palette.mode === "light"
             ? theme.palette.grey[100]
-            : theme.palette.grey[600],
+            : theme.palette.grey[600]
       },
-      '&.Mui-disabled + .MuiSwitch-track': {
-        opacity: theme.palette.mode === 'light' ? 0.7 : 0.3,
-      },
+      "&.Mui-disabled + .MuiSwitch-track": {
+        opacity: theme.palette.mode === "light" ? 0.7 : 0.3
+      }
     },
-    '& .MuiSwitch-thumb': {
-      boxSizing: 'border-box',
+    "& .MuiSwitch-thumb": {
+      boxSizing: "border-box",
       width: 22,
-      height: 22,
+      height: 22
     },
-    '& .MuiSwitch-track': {
+    "& .MuiSwitch-track": {
       borderRadius: 26 / 2,
-      backgroundColor: theme.palette.mode === 'light' ? '#E9E9EA' : '#39393D',
+      backgroundColor: theme.palette.mode === "light" ? "#E9E9EA" : "#39393D",
       opacity: 1,
-      transition: theme.transitions.create(['background-color'], {
-        duration: 500,
-      }),
-    },
+      transition: theme.transitions.create(["background-color"], {
+        duration: 500
+      })
+    }
   }));
   return (
     <>
@@ -85,7 +89,7 @@ function Options() {
             initialValues={{
               fullScreen: 0,
               theme: "dark",
-              animatedIcons: 0,
+              animatedIcons: window.electron.store.get("animated-icons"),
               mousePointer: 0
             }}
             onSubmit={async (values) => {
@@ -135,10 +139,10 @@ function Options() {
                   <div className="options-item">
                     <IOSSwitch
                       name="animatedIcons"
-                      value={0}
-                      checked={values.animatedIcons === 1}
+                      value={window.electron.store.get("animated-icons")}
+                      checked={values.animatedIcons === true}
                       onChange={(event, checked) => {
-                        setFieldValue("animatedIcons", checked ? 1 : 0);
+                        setFieldValue("animatedIcons", checked ? true : false);
                         dispatch({ type: "SET_ANIMATED_ICONS" });
                       }}
                     />

@@ -3,11 +3,17 @@ import "./TaskBar.css";
 import masterMenu from "../../../assets/mastermenu.png";
 import TaskBarItem from "../TaskBarItem/TaskBarItem";
 import okuma from "../../../assets/okuma.png";
+import okumagif from "../../../assets/okuma.gif";
 import yazma from "../../../assets/yazma.png";
+import yazmagif from "../../../assets/yazma.gif";
 import izleme from "../../../assets/izleme.png";
+import izlemegif from "../../../assets/izleme.gif";
 import dinleme from "../../../assets/dinleme.png";
+import dinlemegif from "../../../assets/dinleme.gif";
 import oyun from "../../../assets/oyun.png";
+import oyungif from "../../../assets/oyun.gif";
 import yonetim from "../../../assets/yönetim.png";
+import yonetimgif from "../../../assets/yönetim.gif";
 import option from "../../../assets/secenekler.png";
 import control from "../../../assets/kontrol.png";
 import equipment from "../../../assets/donatılar.png";
@@ -47,7 +53,7 @@ function TaskBar() {
   const game = useSelector((state) => state.game);
   const manage = useSelector((state) => state.manage);
   const options = useSelector((state) => state.options);
-
+  const animatedIcons = useSelector((state) => state.animatedIcons);
   return (
     <>
       {showMenu && (
@@ -108,22 +114,22 @@ function TaskBar() {
             <img src={masterMenu} className="mastermenu-style" />
           </button>
           {read !== 0 && (
-            <TaskBarItem name={"Read"} icon={okuma} status={read} />
+            <TaskBarItem name={"Read"} icon={animatedIcons == 0 ? okuma : okumagif} status={read} />
           )}
           {write !== 0 && (
-            <TaskBarItem name={"Write"} icon={yazma} status={write} />
+            <TaskBarItem name={"Write"} icon={animatedIcons == 0 ? yazma : yazmagif} status={write} />
           )}
           {watch !== 0 && (
-            <TaskBarItem name={"Watch"} icon={izleme} status={watch} />
+            <TaskBarItem name={"Watch"} icon={animatedIcons == 0 ? izleme : izlemegif} status={watch} />
           )}
           {listen !== 0 && (
-            <TaskBarItem name={"Listen"} icon={dinleme} status={listen} />
+            <TaskBarItem name={"Listen"} icon={animatedIcons == 0 ? dinleme : dinlemegif} status={listen} />
           )}
           {game !== 0 && (
-            <TaskBarItem name={"Game"} icon={oyun} status={game} />
+            <TaskBarItem name={"Game"} icon={animatedIcons == 0 ? oyun : oyungif} status={game} />
           )}
           {manage !== 0 && (
-            <TaskBarItem name={"Manage"} icon={yonetim} status={manage} />
+            <TaskBarItem name={"Manage"} icon={animatedIcons == 0 ? yonetim : yonetimgif} status={manage} />
           )}
           {options !== 0 && (
             <TaskBarItem name={"Options"} icon={option} status={options} />

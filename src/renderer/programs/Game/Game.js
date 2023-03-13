@@ -26,14 +26,27 @@ function Game() {
   };
   return (
     <>
-      <ProgramContainer 
+      <ProgramContainer
         title="Game"
         handleStop={handleStop}
         handleMinimize={handleMinimize}
         handleResize={handleResize}
         status={game}
       >
-        <div>Game</div>
+        <div>
+          <button
+            onClick={() => {
+              // window.electron.store.set("foo", {
+              //   bar: "baz"
+              // });
+              // window.electron.store.set("animated-icons", false);
+              // or
+              console.log(window.electron.store.get("animated-icons"));
+            }}
+          >
+            Click Me!
+          </button>
+        </div>
       </ProgramContainer>
     </>
   );

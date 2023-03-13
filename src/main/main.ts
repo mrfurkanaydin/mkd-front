@@ -14,6 +14,7 @@ import { autoUpdater } from "electron-updater";
 import log from "electron-log";
 import MenuBuilder from "./menu";
 import { resolveHtmlPath } from "./util";
+import Store from 'electron-store';
 
 class AppUpdater {
   constructor() {
@@ -24,6 +25,7 @@ class AppUpdater {
 }
 
 let mainWindow: BrowserWindow | null = null;
+const store = new Store();
 
 ipcMain.on("ipc-example", async (event, arg) => {
   const msgTemplate = (pingPong: string) => `IPC test: ${pingPong}`;
@@ -153,4 +155,11 @@ app
 
 ipcMain.on("send-fullScreen", () => {
   mainWindow?.setFullScreen(!mainWindow?.fullScreen);
+});
+
+ipcMain.on('electron-store-get', async (event, val) => {
+  event.returnValue = store.get(val);
+});
+ipcMain.on('electron-store-set', async (event, key, val) => {
+  store.set(key, val);
 });

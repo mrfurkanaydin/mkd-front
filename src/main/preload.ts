@@ -1,8 +1,8 @@
 // Disable no-unused-vars, broken for spread args
 /* eslint no-unused-vars: off */
-import { contextBridge, ipcRenderer, IpcRendererEvent } from 'electron';
+import { contextBridge, ipcRenderer, IpcRendererEvent } from "electron";
 
-export type Channels = 'ipc-example';
+export type Channels = "ipc-example";
 
 const electronHandler = {
   ipcRenderer: {
@@ -20,10 +20,19 @@ const electronHandler = {
     },
     once(channel: Channels, func: (...args: unknown[]) => void) {
       ipcRenderer.once(channel, (_event, ...args) => func(...args));
-    },
+    }
   },
+  store: {
+    get(key: any) {
+      return ipcRenderer.sendSync("electron-store-get", key);
+    },
+    set(property: any, val: any) {
+      ipcRenderer.send("electron-store-set", property, val);
+    }
+    // Other method you want to add like has(), reset(), etc.
+  }
 };
 
-contextBridge.exposeInMainWorld('electron', electronHandler);
+contextBridge.exposeInMainWorld("electron", electronHandler);
 
 export type ElectronHandler = typeof electronHandler;

@@ -13,7 +13,7 @@ const INITIAL_STATE = {
   lastGame: 0,
   lastManage: 0,
   lastOptions: 0,
-  animatedIcons: 0,
+  animatedIcons: window.electron.store.get("animated-icons"),
   mousePointer: 0,
 };
 
@@ -88,7 +88,8 @@ export default (state = INITIAL_STATE, { type, payload }) => {
           return { ...state, options: 3 };
       }
     case "SET_ANIMATED_ICONS":
-      return { ...state, animatedIcons: state.animatedIcons ? 0 : 1 };
+      window.electron.store.set("animated-icons", state.animatedIcons ? false : true);
+      return { ...state, animatedIcons: state.animatedIcons ? false : true };
     case "SET_MOUSE_POINTER":
       return { ...state, mousePointer: state.mousePointer ? 0 : 1 };
     default:
