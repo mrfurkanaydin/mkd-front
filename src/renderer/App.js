@@ -9,7 +9,6 @@ export default function App() {
     <Provider>
       <Router>
         <Routes>
-          {/* <Route path="/" element={<Login />} /> */}
           <Route path="/" element={<Hub />} />
           <Route path="/login" element={<Login />} />
         </Routes>

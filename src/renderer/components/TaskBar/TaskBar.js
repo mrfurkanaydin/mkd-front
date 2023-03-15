@@ -1,5 +1,3 @@
-import React, { useState } from "react";
-import "./TaskBar.css";
 import masterMenu from "../../../assets/mastermenu.png";
 import TaskBarItem from "../TaskBarItem/TaskBarItem";
 import okuma from "../../../assets/okuma.png";
@@ -17,6 +15,8 @@ import yonetimgif from "../../../assets/yönetim.gif";
 import option from "../../../assets/secenekler.png";
 import control from "../../../assets/kontrol.png";
 import equipment from "../../../assets/donatılar.png";
+import React, { useState } from "react";
+import "./TaskBar.css";
 import { useDispatch, useSelector } from "react-redux";
 import { format } from "date-fns";
 import { tr } from "date-fns/locale";
@@ -40,7 +40,7 @@ function TaskBar() {
     setControls(false);
   };
   const startOption = () => {
-    dispatch({ type: "START_PROGRAM", payload: "Options" });
+    dispatch({ type: "RESIZE_PROGRAM", payload: "Options" });
     handleToggle();
   };
   const handleQuit = () => {

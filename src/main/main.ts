@@ -153,8 +153,10 @@ app
   })
   .catch(console.log);
 
-ipcMain.on("send-fullScreen", () => {
-  mainWindow?.setFullScreen(!mainWindow?.fullScreen);
+ipcMain.on("send-fullScreen", (arg) => {
+  console.log(arg);
+  
+  // mainWindow?.setFullScreen(!mainWindow?.fullScreen);
 });
 
 ipcMain.on('electron-store-get', async (event, val) => {

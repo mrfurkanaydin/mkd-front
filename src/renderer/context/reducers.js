@@ -15,6 +15,7 @@ const INITIAL_STATE = {
   lastOptions: 0,
   animatedIcons: window.electron.store.get("animated-icons"),
   mousePointer: 0,
+  fullscreen: window.electron.store.get("fullscreen"),
 };
 
 export default (state = INITIAL_STATE, { type, payload }) => {
@@ -90,8 +91,15 @@ export default (state = INITIAL_STATE, { type, payload }) => {
     case "SET_ANIMATED_ICONS":
       window.electron.store.set("animated-icons", state.animatedIcons ? false : true);
       return { ...state, animatedIcons: state.animatedIcons ? false : true };
-    case "SET_MOUSE_POINTER":
-      return { ...state, mousePointer: state.mousePointer ? 0 : 1 };
+    // case "SET_MOUSE_POINTER":
+    //   return { ...state, mousePointer: state.mousePointer ? 0 : 1 };
+    case "SET_FULLSCREEN":
+      window.electron.ipcRenderer.sendMessage(
+        "send-fullScreen",state.fullscreen
+      );
+      console.log(state.fullscreen); 
+      window.electron.store.set("fullscreen", state.fullscreen ? false : true);
+      return { ...state, fullscreen: state.fullscreen ? false : true };
     default:
       return state;
   }

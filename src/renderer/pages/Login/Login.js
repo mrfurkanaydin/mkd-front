@@ -18,9 +18,7 @@ function Login() {
         {({
           values,
           handleChange,
-          handleBlur,
           handleSubmit
-          /* and other goodies */
         }) => (
           <form onSubmit={handleSubmit}>
             <div className="group">
@@ -51,7 +49,6 @@ function Login() {
               <button
                 className="login-button"
                 onClick={handleClick}
-                //  disabled={isSubmitting}
               >
                 Devam Et
               </button>
@@ -61,7 +58,6 @@ function Login() {
                   <button
                     type="submit"
                     className="login-button"
-                    //  disabled={isSubmitting}
                   >
                     Giriş Yap
                   </button>

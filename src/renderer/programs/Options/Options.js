@@ -107,9 +107,7 @@ function Options() {
                         checked={values.fullScreen === 1}
                         onChange={(event, checked) => {
                           setFieldValue("fullScreen", checked ? 1 : 0);
-                          window.electron.ipcRenderer.sendMessage(
-                            "send-fullScreen"
-                          );
+                          dispatch({ type: "SET_FULLSCREEN" });
                         }}
                       />
                     </div>
