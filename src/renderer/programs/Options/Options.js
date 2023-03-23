@@ -10,7 +10,9 @@ import { useState } from "react";
 function Options() {
   const options = useSelector((state) => state.options);
   const dispatch = useDispatch();
-  const [fullScreen, setFullScreen] = useState( window.electron.store.get("fullscreen"))
+  const [fullScreen, setFullScreen] = useState(
+    window.electron.store.get("fullscreen")
+  );
   const handleStop = () => {
     dispatch({ type: "STOP_PROGRAM", payload: "Options" });
   };
@@ -27,6 +29,10 @@ function Options() {
       focusVisibleClassName=".Mui-focusVisible"
       disableRipple
       {...props}
+      style={{
+        cursor:
+          useSelector((state) => state.mousePointer) == 1 ? "none" : "pointer"
+      }}
     />
   ))(({ theme }) => ({
     width: 42,
@@ -77,6 +83,7 @@ function Options() {
       })
     }
   }));
+  const mouse = useSelector((state) => state.mousePointer);
   return (
     <>
       <ProgramContainer
@@ -108,15 +115,16 @@ function Options() {
                         value={fullScreen}
                         checked={fullScreen === true}
                         onChange={(event, checked) => {
-                          // setFieldValue("fullScreen", checked ? true : false);
-                          setFullScreen(!window.electron.store.get("fullscreen"))
+                          setFullScreen(
+                            !window.electron.store.get("fullscreen")
+                          );
                           dispatch({ type: "SET_FULLSCREEN" });
                         }}
                       />
                     </div>
                     <div className="options-item-desc">
                       <div>Tam Ekran</div>
-                      <div>Uygulamayı Tam Ekran Yapar.</div>
+                      <div className="options-item-subtitle">Uygulamayı Tam Ekran Yapar.</div>
                     </div>
                   </div>
 
@@ -128,13 +136,13 @@ function Options() {
                         checked={values.theme === "white"}
                         onChange={(event, checked) => {
                           setFieldValue("theme", checked ? "white" : "dark");
-                          // window.electron.ipcRenderer.sendMessage(
-                          //   "send-fullScreen"
-                          // );
                         }}
                       />
                     </div>
-                    <div className="options-item-desc">Tema Değiştir</div>
+                    <div className="options-item-desc">
+                      <div>Tema Değiştir</div>
+                      <div className="options-item-subtitle">Uygulamanın Temasını Değiştirir.</div>
+                    </div>
                   </div>
 
                   <div className="options-item">
@@ -147,24 +155,27 @@ function Options() {
                         dispatch({ type: "SET_ANIMATED_ICONS" });
                       }}
                     />
-                    <div className="options-item-desc">Hareketli İkonlar</div>
+                    <div className="options-item-desc">
+                      <div>Hareketli İkonlar</div>
+                      <div className="options-item-subtitle">Uygulamanın İkonlarını Değiştirir.</div>
+                    </div>
                   </div>
                   <div className="options-item">
                     <IOSSwitch
                       name="mousePointer"
                       value={0}
-                      checked={values.mousePointer === 1}
+                      checked={mouse === 1}
                       onChange={(event, checked) => {
                         setFieldValue("mousePointer", checked ? 1 : 0);
                         dispatch({ type: "SET_MOUSE_POINTER" });
                       }}
                     />
-                    <div className="options-item-desc">Fare İmleci</div>
+                    <div className="options-item-desc">
+                      <div>Fare İmleci</div>
+                      <div className="options-item-subtitle">Uygulamanın Fare İmlecini Değiştirir.</div>
+                    </div>
                   </div>
                 </div>
-                {/* <button type="submit" disabled={isSubmitting}>
-                  Submit
-                </button> */}
               </Form>
             )}
           </Formik>
