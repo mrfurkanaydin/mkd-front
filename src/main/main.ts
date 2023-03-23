@@ -83,11 +83,11 @@ const createWindow = async () => {
 
   mainWindow = new BrowserWindow({
     show: false,
-    width: 500,
+    width: 600,
     height: 900,
-    x: 10000,
+    x: 0,
     y: 0,
-
+    frame: false,
     // fullscreen: true,
     icon: getAssetPath("icon.png"),
     webPreferences: {
@@ -99,6 +99,7 @@ const createWindow = async () => {
   });
 
   mainWindow.loadURL(resolveHtmlPath("index.html"));
+
 
   mainWindow.on("ready-to-show", () => {
     if (!mainWindow) {
@@ -119,7 +120,7 @@ const createWindow = async () => {
   menuBuilder.buildMenu();
 
   // Open urls in the user's browser
-  mainWindow.webContents.setWindowOpenHandler((edata) => {
+  mainWindow.webContents.setWindowOpenHandler((edata: { url: string; }) => {
     shell.openExternal(edata.url);
     return { action: "deny" };
   });
@@ -153,11 +154,22 @@ app
   })
   .catch(console.log);
 
-ipcMain.on("send-fullScreen", (arg) => {
+ipcMain.on("send-fullScreen", (event, arg) => {
+  // const msgTemplate = (fullScreen: string) => `fullscreen: ${typeof fullScreen}`;
+  // console.log(msgTemplate(arg));
   console.log(arg);
   
-  // mainWindow?.setFullScreen(!mainWindow?.fullScreen);
+  if (arg === true) {
+    mainWindow?.setFullScreen(false);
+  }
+  if (arg === false) {
+    mainWindow?.setFullScreen(true);
+  }
+  
+  // event.reply("send-fullScreen", arg)
 });
+
+
 
 ipcMain.on('electron-store-get', async (event, val) => {
   event.returnValue = store.get(val);

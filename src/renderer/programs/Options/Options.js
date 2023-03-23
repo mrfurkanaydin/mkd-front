@@ -5,10 +5,12 @@ import ProgramContainer from "renderer/components/ProgramContainer/ProgramContai
 import { Form, Formik } from "formik";
 import { Switch } from "@mui/material";
 import { styled } from "@mui/material/styles";
+import { useState } from "react";
 
 function Options() {
   const options = useSelector((state) => state.options);
   const dispatch = useDispatch();
+  const [fullScreen, setFullScreen] = useState( window.electron.store.get("fullscreen"))
   const handleStop = () => {
     dispatch({ type: "STOP_PROGRAM", payload: "Options" });
   };
@@ -87,7 +89,7 @@ function Options() {
         <div>
           <Formik
             initialValues={{
-              fullScreen: 0,
+              fullScreen: window.electron.store.get("fullscreen"),
               theme: "dark",
               animatedIcons: window.electron.store.get("animated-icons"),
               mousePointer: 0
@@ -96,17 +98,18 @@ function Options() {
               alert(JSON.stringify(values, null, 2));
             }}
           >
-            {({ values, setFieldValue, isSubmitting }) => (
+            {({ values, setFieldValue }) => (
               <Form>
                 <div className="options-container">
                   <div className="options-item">
                     <div>
                       <IOSSwitch
                         name="fullScreen"
-                        value={0}
-                        checked={values.fullScreen === 1}
+                        value={fullScreen}
+                        checked={fullScreen === true}
                         onChange={(event, checked) => {
-                          setFieldValue("fullScreen", checked ? 1 : 0);
+                          // setFieldValue("fullScreen", checked ? true : false);
+                          setFullScreen(!window.electron.store.get("fullscreen"))
                           dispatch({ type: "SET_FULLSCREEN" });
                         }}
                       />
@@ -159,9 +162,9 @@ function Options() {
                     <div className="options-item-desc">Fare İmleci</div>
                   </div>
                 </div>
-                <button type="submit" disabled={isSubmitting}>
+                {/* <button type="submit" disabled={isSubmitting}>
                   Submit
-                </button>
+                </button> */}
               </Form>
             )}
           </Formik>
