@@ -8,7 +8,8 @@ const selectors = {
   Watch: "lastWatch",
   Game: "lastGame",
   Manage: "lastManage",
-  Options: "lastOptions"
+  Options: "lastOptions",
+  TaskManager: "lastTaskManager"
 };
 
 function TaskBarItem({ name, icon, status }) {

@@ -6,6 +6,7 @@ const INITIAL_STATE = {
   game: 0,
   manage: 0,
   options: 0,
+  taskManager: 0,
   lastRead: 0,
   lastWrite: 0,
   lastWatch: 0,
@@ -13,6 +14,7 @@ const INITIAL_STATE = {
   lastGame: 0,
   lastManage: 0,
   lastOptions: 0,
+  lastTaskManager: 0,
   animatedIcons: window.electron.store.get("animated-icons"),
   mousePointer: 0,
   fullscreen: window.electron.store.get("fullscreen")
@@ -36,6 +38,8 @@ export default (state = INITIAL_STATE, { type, payload }) => {
           return { ...state, manage: 1 };
         case "Options":
           return { ...state, options: 1 };
+        case "TaskManager":
+          return { ...state, taskManager: 1 };
       }
     case "STOP_PROGRAM":
       switch (payload) {
@@ -53,6 +57,8 @@ export default (state = INITIAL_STATE, { type, payload }) => {
           return { ...state, manage: 0 };
         case "Options":
           return { ...state, options: 0 };
+        case "TaskManager":
+          return { ...state, taskManager: 0 };
       }
     case "MINIMIZE_PROGRAM":
       switch (payload) {
@@ -70,6 +76,8 @@ export default (state = INITIAL_STATE, { type, payload }) => {
           return { ...state, manage: 2, lastManage: state.manage };
         case "Options":
           return { ...state, options: 2, lastOptions: state.options };
+        case "TaskManager":
+          return { ...state, taskManager: 2, lastTaskManager: state.taskManager };
       }
     case "RESIZE_PROGRAM":
       switch (payload) {
@@ -87,6 +95,8 @@ export default (state = INITIAL_STATE, { type, payload }) => {
           return { ...state, manage: 3 };
         case "Options":
           return { ...state, options: 3 };
+        case "TaskManager":
+          return { ...state, taskManager: 3 };
       }
     case "SET_ANIMATED_ICONS":
       window.electron.store.set(

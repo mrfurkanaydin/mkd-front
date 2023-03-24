@@ -10,6 +10,10 @@
   background-color: transparent;
   color: white;
 }
+
+.program-header-button:disabled {
+  background-color: red !important;
+}
 .program-container {
   position: absolute;
   left: 0;

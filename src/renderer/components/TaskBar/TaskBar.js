@@ -15,6 +15,11 @@ import yonetimgif from "../../../assets/yönetim.gif";
 import option from "../../../assets/secenekler.png";
 import control from "../../../assets/kontrol.png";
 import equipment from "../../../assets/donatılar.png";
+import taskmanager from "../../../assets/taskmanager.png";
+import terminal from "../../../assets/terminal.png";
+import calculator from "../../../assets/hesapmakinesi.png";
+import draw from "../../../assets/cizim.png";
+import notes from "../../../assets/notlar.png";
 import React, { useState } from "react";
 import "./TaskBar.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -43,6 +48,10 @@ function TaskBar() {
     dispatch({ type: "RESIZE_PROGRAM", payload: "Options" });
     handleToggle();
   };
+  const startTaskManager = () => {
+    dispatch({ type: "RESIZE_PROGRAM", payload: "TaskManager" });
+    handleToggle();
+  };
   const handleQuit = () => {
     window.electron.ipcRenderer.sendMessage("send-shutdown");
   };
@@ -53,6 +62,7 @@ function TaskBar() {
   const game = useSelector((state) => state.game);
   const manage = useSelector((state) => state.manage);
   const options = useSelector((state) => state.options);
+  const taskManager = useSelector((state) => state.taskManager);
   const animatedIcons = useSelector((state) => state.animatedIcons);
   return (
     <>
@@ -84,11 +94,26 @@ function TaskBar() {
           </div>
           {equip && (
             <div className="taskbar-open-equipment">
-              <div className="taskbar-open-item">Görev Yöneticisi</div>
-              <div className="taskbar-open-item">Terminal</div>
-              <div className="taskbar-open-item">Hesap Makinesi</div>
-              <div className="taskbar-open-item">Çizim</div>
-              <div className="taskbar-open-item">Notlarım</div>
+              <div className="taskbar-open-item" onClick={startTaskManager}>
+                <img className="taskbar-open-img" src={taskmanager} />
+                Görev Yöneticisi
+              </div>
+              <div className="taskbar-open-item">
+                <img className="taskbar-open-img" src={terminal} />
+                Terminal
+              </div>
+              <div className="taskbar-open-item">
+                <img className="taskbar-open-img" src={calculator} />
+                Hesap Makinesi
+              </div>
+              <div className="taskbar-open-item">
+                <img className="taskbar-open-img" src={draw} />
+                Çizim
+              </div>
+              <div className="taskbar-open-item">
+                <img className="taskbar-open-img" src={notes} />
+                Notlarım
+              </div>
             </div>
           )}
           {controls && (
@@ -114,25 +139,56 @@ function TaskBar() {
             <img src={masterMenu} className="mastermenu-style" />
           </button>
           {read !== 0 && (
-            <TaskBarItem name={"Read"} icon={animatedIcons == 0 ? okuma : okumagif} status={read} />
+            <TaskBarItem
+              name={"Read"}
+              icon={animatedIcons == 0 ? okuma : okumagif}
+              status={read}
+            />
           )}
           {write !== 0 && (
-            <TaskBarItem name={"Write"} icon={animatedIcons == 0 ? yazma : yazmagif} status={write} />
+            <TaskBarItem
+              name={"Write"}
+              icon={animatedIcons == 0 ? yazma : yazmagif}
+              status={write}
+            />
           )}
           {watch !== 0 && (
-            <TaskBarItem name={"Watch"} icon={animatedIcons == 0 ? izleme : izlemegif} status={watch} />
+            <TaskBarItem
+              name={"Watch"}
+              icon={animatedIcons == 0 ? izleme : izlemegif}
+              status={watch}
+            />
           )}
           {listen !== 0 && (
-            <TaskBarItem name={"Listen"} icon={animatedIcons == 0 ? dinleme : dinlemegif} status={listen} />
+            <TaskBarItem
+              name={"Listen"}
+              icon={animatedIcons == 0 ? dinleme : dinlemegif}
+              status={listen}
+            />
           )}
           {game !== 0 && (
-            <TaskBarItem name={"Game"} icon={animatedIcons == 0 ? oyun : oyungif} status={game} />
+            <TaskBarItem
+              name={"Game"}
+              icon={animatedIcons == 0 ? oyun : oyungif}
+              status={game}
+            />
           )}
           {manage !== 0 && (
-            <TaskBarItem name={"Manage"} icon={animatedIcons == 0 ? yonetim : yonetimgif} status={manage} />
+            <TaskBarItem
+              name={"Manage"}
+              icon={animatedIcons == 0 ? yonetim : yonetimgif}
+              status={manage}
+            />
           )}
           {options !== 0 && (
             <TaskBarItem name={"Options"} icon={option} status={options} />
+          )}
+          {taskManager !== 0 && (
+            <TaskBarItem
+              name={"TaskManager"}
+              icon={taskmanager}
+              status={taskManager}
+            />
           )}
           <div className="date">
             <div>{format(new Date(), "HH:mm")}</div>
