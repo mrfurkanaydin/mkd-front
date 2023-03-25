@@ -33,9 +33,9 @@ function Game() {
         handleResize={handleResize}
         status={game}
       >
-        {/* <div style={{"height":"100%"}}> */}
-          {/* {score} */}
-          {/* <Snake
+        <div style={{"height":"100%"}}>
+          {score}
+          <Snake
           width="100%"
           height="95%"
           onScoreChange={onScoreChange}
@@ -68,9 +68,9 @@ function Game() {
               backgroundColor: "#4f4d4d"
             }}
             noWall={true}
-          /> */}
-          <Tetris />
-        {/* </div> */}
+          />
+          {/* <Tetris /> */}
+        </div>
       </ProgramContainer>
     </>
   );
