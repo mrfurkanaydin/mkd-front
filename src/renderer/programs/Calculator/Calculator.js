@@ -1,6 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import "../Programs.css";
 import ProgramContainer from "renderer/components/ProgramContainer/ProgramContainer";
+import Calculate from "awesome-react-calculator";
+
 
 function Calculator() {
   const calculator = useSelector((state) => state.calculator);
@@ -19,13 +21,16 @@ function Calculator() {
   return (
     <>
       <ProgramContainer 
-        title="Calculator"
+        title="Hesap Makinesi"
         handleStop={handleStop}
         handleMinimize={handleMinimize}
         handleResize={handleResize}
         status={calculator}
+        width={450}
       >
-        <div>Calculator</div>
+        <>
+          <Calculate/>
+        </>
       </ProgramContainer>
     </>
   );

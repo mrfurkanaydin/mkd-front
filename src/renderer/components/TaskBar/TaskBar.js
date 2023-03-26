@@ -195,6 +195,13 @@ function TaskBar() {
               status={taskManager}
             />
           )}
+          {calculator !== 0 && (
+            <TaskBarItem
+              name={"Calculator"}
+              icon={calculators}
+              status={calculator}
+            />
+          )}
           <div className="date">
             <div>{format(new Date(), "HH:mm")}</div>
             <div>{format(new Date(), "P", { locale: tr })}</div>

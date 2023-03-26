@@ -12,6 +12,7 @@ function TaskManager() {
   const manage = useSelector((state) => state.manage);
   const options = useSelector((state) => state.options);
   const taskManager = useSelector((state) => state.taskManager);
+  const calculator = useSelector((state) => state.calculator);
   const dispatch = useDispatch();
   const handleStop = () => {
     dispatch({ type: "STOP_PROGRAM", payload: "TaskManager" });
@@ -33,6 +34,7 @@ function TaskManager() {
         handleMinimize={handleMinimize}
         handleResize={handleResize}
         status={taskManager}
+        width={500}
       >
         <>
           {taskManager !== 0 && (
@@ -45,6 +47,7 @@ function TaskManager() {
           {game !== 0 && <TaskManagerItem name="Oyun" type="Game" />}
           {manage !== 0 && <TaskManagerItem name="Yönetim" type="Manage" />}
           {options !== 0 && <TaskManagerItem name="Ayarlar" type="Options" />}
+          {calculator !== 0 && (<TaskManagerItem name="Hesap Makinesi" type="Calculator" />)}
         </>
       </ProgramContainer>
     </>

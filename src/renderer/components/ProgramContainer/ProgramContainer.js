@@ -10,13 +10,14 @@ function ProgramContainer({
   handleMinimize,
   handleResize,
   handleStop,
-  status
+  status,
+  width
 }) {
   return (
     <div>
       {status == 1 && (
         <div handle=".program-header">
-          <div className="program-container">
+          <div className="program-container" >
             <div className="program-header">
               <div className="program-title">{title}</div>
               <div className="program-header-buttons">
@@ -49,7 +50,7 @@ function ProgramContainer({
       )}
       {status == 3 && (
         <Draggable handle=".program-header-resize">
-          <div className="program-container-resize">
+          <div className="program-container-resize" style={{width:width}}>
             <div className="program-header-resize">
               <div className="program-title">{title}</div>
               <div className="program-header-buttons">

@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import "./Listen.css";
 import "../Programs.css";
 import ProgramContainer from "renderer/components/ProgramContainer/ProgramContainer";
+import CanvasDraw from "react-canvas-draw";
 
 function Listen() {
   const listen = useSelector((state) => state.listen);
@@ -19,14 +20,16 @@ function Listen() {
   };
   return (
     <>
-      <ProgramContainer 
+      <ProgramContainer
         title="Listen"
         handleStop={handleStop}
         handleMinimize={handleMinimize}
         handleResize={handleResize}
         status={listen}
       >
-        <div>Listen</div>
+        <>
+          <CanvasDraw hideGridX hideGridY />
+        </>
       </ProgramContainer>
     </>
   );
