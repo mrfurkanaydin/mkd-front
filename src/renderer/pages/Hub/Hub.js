@@ -23,6 +23,7 @@ import Manage from "renderer/programs/Manage/Manage";
 import { useSelector } from "react-redux";
 import Cursor from "renderer/components/Cursor/Cursor";
 import TaskManager from "renderer/programs/TaskManager/TaskManager";
+import Calculator from "renderer/programs/Calculator/Calculator";
 
 function Hub() {
   const animatedIcons = useSelector((state) => state.animatedIcons);
@@ -51,6 +52,7 @@ function Hub() {
         <Manage />
         <Options />
         <TaskManager/>
+        <Calculator />
       </>
 
       <TaskBar />

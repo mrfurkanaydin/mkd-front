@@ -7,6 +7,7 @@ const INITIAL_STATE = {
   manage: 0,
   options: 0,
   taskManager: 0,
+  calculator: 0,
   lastRead: 0,
   lastWrite: 0,
   lastWatch: 0,
@@ -15,6 +16,7 @@ const INITIAL_STATE = {
   lastManage: 0,
   lastOptions: 0,
   lastTaskManager: 0,
+  lastCalculator: 0,
   animatedIcons: window.electron.store.get("animated-icons"),
   mousePointer: 0,
   fullscreen: window.electron.store.get("fullscreen")
@@ -40,6 +42,8 @@ export default (state = INITIAL_STATE, { type, payload }) => {
           return { ...state, options: 1 };
         case "TaskManager":
           return { ...state, taskManager: 1 };
+        case "Calculator":
+          return { ...state, calculator: 1 };
       }
     case "STOP_PROGRAM":
       switch (payload) {
@@ -59,6 +63,8 @@ export default (state = INITIAL_STATE, { type, payload }) => {
           return { ...state, options: 0 };
         case "TaskManager":
           return { ...state, taskManager: 0 };
+        case "Calculator":
+          return { ...state, calculator: 0 };
       }
     case "MINIMIZE_PROGRAM":
       switch (payload) {
@@ -78,6 +84,8 @@ export default (state = INITIAL_STATE, { type, payload }) => {
           return { ...state, options: 2, lastOptions: state.options };
         case "TaskManager":
           return { ...state, taskManager: 2, lastTaskManager: state.taskManager };
+        case "Calculator":
+          return { ...state, calculator: 2, lastCalculator: state.calculator };
       }
     case "RESIZE_PROGRAM":
       switch (payload) {
@@ -97,6 +105,8 @@ export default (state = INITIAL_STATE, { type, payload }) => {
           return { ...state, options: 3 };
         case "TaskManager":
           return { ...state, taskManager: 3 };
+        case "Calculator":
+          return { ...state, calculator: 3 };
       }
     case "SET_ANIMATED_ICONS":
       window.electron.store.set(

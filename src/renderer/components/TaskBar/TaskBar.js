@@ -17,7 +17,7 @@ import control from "../../../assets/kontrol.png";
 import equipment from "../../../assets/donatılar.png";
 import taskmanager from "../../../assets/taskmanager.png";
 import terminal from "../../../assets/terminal.png";
-import calculator from "../../../assets/hesapmakinesi.png";
+import calculators from "../../../assets/hesapmakinesi.png";
 import draw from "../../../assets/cizim.png";
 import notes from "../../../assets/notlar.png";
 import React, { useState } from "react";
@@ -52,6 +52,10 @@ function TaskBar() {
     dispatch({ type: "RESIZE_PROGRAM", payload: "TaskManager" });
     handleToggle();
   };
+  const startCalculator = () => {
+    dispatch({ type: "RESIZE_PROGRAM", payload: "Calculator" });
+    handleToggle();
+  };
   const handleQuit = () => {
     window.electron.ipcRenderer.sendMessage("send-shutdown");
   };
@@ -63,6 +67,7 @@ function TaskBar() {
   const manage = useSelector((state) => state.manage);
   const options = useSelector((state) => state.options);
   const taskManager = useSelector((state) => state.taskManager);
+  const calculator = useSelector((state) => state.calculator);
   const animatedIcons = useSelector((state) => state.animatedIcons);
   return (
     <>
@@ -102,8 +107,8 @@ function TaskBar() {
                 <img className="taskbar-open-img" src={terminal} />
                 Terminal
               </div>
-              <div className="taskbar-open-item">
-                <img className="taskbar-open-img" src={calculator} />
+              <div className="taskbar-open-item" onClick={startCalculator}>
+                <img className="taskbar-open-img" src={calculators} />
                 Hesap Makinesi
               </div>
               <div className="taskbar-open-item">
