@@ -11,13 +11,15 @@ function ProgramContainer({
   handleResize,
   handleStop,
   status,
-  width
+  width,
+  height,
+  disable
 }) {
   return (
     <div>
       {status == 1 && (
         <div handle=".program-header">
-          <div className="program-container" >
+          <div className="program-container">
             <div className="program-header">
               <div className="program-title">{title}</div>
               <div className="program-header-buttons">
@@ -50,7 +52,10 @@ function ProgramContainer({
       )}
       {status == 3 && (
         <Draggable handle=".program-header-resize">
-          <div className="program-container-resize" style={{width:width}}>
+          <div
+            className="program-container-resize"
+            style={{ width: width, height: height }}
+          >
             <div className="program-header-resize">
               <div className="program-title">{title}</div>
               <div className="program-header-buttons">
@@ -64,6 +69,7 @@ function ProgramContainer({
                 <button
                   className="program-header-button"
                   onClick={handleResize}
+                  disabled={disable}
                   style={{ backgroundColor: "#689f38", marginRight: "5px" }}
                 >
                   <IoIosQrScanner />

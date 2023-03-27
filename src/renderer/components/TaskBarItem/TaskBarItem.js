@@ -9,7 +9,11 @@ const selectors = {
   Game: "lastGame",
   Manage: "lastManage",
   Options: "lastOptions",
-  TaskManager: "lastTaskManager"
+  TaskManager: "lastTaskManager",
+  Calculator: "lastCalculator",
+  Draw: "lastDraw",
+  Notes: "lastNotes",
+  Terminal: "lastTerminal"
 };
 
 function TaskBarItem({ name, icon, status }) {

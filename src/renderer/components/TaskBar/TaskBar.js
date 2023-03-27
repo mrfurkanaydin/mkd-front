@@ -16,10 +16,10 @@ import option from "../../../assets/secenekler.png";
 import control from "../../../assets/kontrol.png";
 import equipment from "../../../assets/donatılar.png";
 import taskmanager from "../../../assets/taskmanager.png";
-import terminal from "../../../assets/terminal.png";
+import terminals from "../../../assets/terminal.png";
 import calculators from "../../../assets/hesapmakinesi.png";
-import draw from "../../../assets/cizim.png";
-import notes from "../../../assets/notlar.png";
+import draws from "../../../assets/cizim.png";
+import notess from "../../../assets/notlar.png";
 import React, { useState } from "react";
 import "./TaskBar.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -56,6 +56,18 @@ function TaskBar() {
     dispatch({ type: "RESIZE_PROGRAM", payload: "Calculator" });
     handleToggle();
   };
+  const startDraw = () => {
+    dispatch({ type: "RESIZE_PROGRAM", payload: "Draw" });
+    handleToggle();
+  };
+  const startNotes = ()=>{
+    dispatch({type: "RESIZE_PROGRAM", payload: "Notes"})
+    handleToggle()
+  }
+  const startTerminal = ()=>{
+    dispatch({type: "RESIZE_PROGRAM",payload:"Terminal"})
+    handleToggle()
+  }
   const handleQuit = () => {
     window.electron.ipcRenderer.sendMessage("send-shutdown");
   };
@@ -68,7 +80,11 @@ function TaskBar() {
   const options = useSelector((state) => state.options);
   const taskManager = useSelector((state) => state.taskManager);
   const calculator = useSelector((state) => state.calculator);
+  const draw = useSelector((state) => state.draw);
+  const notes = useSelector((state) => state.notes);
+  const terminal = useSelector((state)=> state.terminal)
   const animatedIcons = useSelector((state) => state.animatedIcons);
+  
   return (
     <>
       {showMenu && (
@@ -99,26 +115,26 @@ function TaskBar() {
           </div>
           {equip && (
             <div className="taskbar-open-equipment">
-              <div className="taskbar-open-item" onClick={startTaskManager}>
+              <button className="taskbar-open-item" onClick={startTaskManager}>
                 <img className="taskbar-open-img" src={taskmanager} />
                 Görev Yöneticisi
-              </div>
-              <div className="taskbar-open-item">
-                <img className="taskbar-open-img" src={terminal} />
+              </button>
+              <button className="taskbar-open-item" onClick={startTerminal}>
+                <img className="taskbar-open-img" src={terminals} />
                 Terminal
-              </div>
-              <div className="taskbar-open-item" onClick={startCalculator}>
+              </button>
+              <button className="taskbar-open-item" onClick={startCalculator}>
                 <img className="taskbar-open-img" src={calculators} />
                 Hesap Makinesi
-              </div>
-              <div className="taskbar-open-item">
-                <img className="taskbar-open-img" src={draw} />
+              </button>
+              <button className="taskbar-open-item" onClick={startDraw}>
+                <img className="taskbar-open-img" src={draws} />
                 Çizim
-              </div>
-              <div className="taskbar-open-item">
-                <img className="taskbar-open-img" src={notes} />
+              </button>
+              <button className="taskbar-open-item" onClick={startNotes}>
+                <img className="taskbar-open-img" src={notess} />
                 Notlarım
-              </div>
+              </button>
             </div>
           )}
           {controls && (
@@ -201,6 +217,15 @@ function TaskBar() {
               icon={calculators}
               status={calculator}
             />
+          )}
+          {draw !== 0 && (
+            <TaskBarItem name={"Draw"} icon={draws} status={draw} />
+          )}
+          {notes !== 0 && (
+            <TaskBarItem name={"Draw"} icon={notess} status={notes} />
+          )}
+          {terminal !== 0 && (
+            <TaskBarItem name={"Terminal"} icon={terminals} status={terminal} />
           )}
           <div className="date">
             <div>{format(new Date(), "HH:mm")}</div>

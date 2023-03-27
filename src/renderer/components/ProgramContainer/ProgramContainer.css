@@ -11,6 +11,10 @@
   color: white;
 }
 
+.program-header-button:disabled{
+  display: none;
+}
+
 .program-container {
   position: absolute;
   left: 0;

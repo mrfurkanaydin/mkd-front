@@ -27,6 +27,7 @@ function Calculator() {
         handleResize={handleResize}
         status={calculator}
         width={450}
+        disable="true"
       >
         <>
           <Calculate/>

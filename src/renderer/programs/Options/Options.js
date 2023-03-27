@@ -92,6 +92,9 @@ function Options() {
         handleMinimize={handleMinimize}
         handleResize={handleResize}
         status={options}
+        disable="true"
+        width={400}
+        height={300}
       >
         <div>
           <Formik

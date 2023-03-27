@@ -24,6 +24,9 @@ import { useSelector } from "react-redux";
 import Cursor from "renderer/components/Cursor/Cursor";
 import TaskManager from "renderer/programs/TaskManager/TaskManager";
 import Calculator from "renderer/programs/Calculator/Calculator";
+import Draw from "renderer/programs/Draw/Draw";
+import Notes from "renderer/programs/Notes/Notes";
+import Terminal from "renderer/programs/Terminal/Terminal";
 
 function Hub() {
   const animatedIcons = useSelector((state) => state.animatedIcons);
@@ -53,6 +56,9 @@ function Hub() {
         <Options />
         <TaskManager/>
         <Calculator />
+        <Draw/>
+        <Notes/>
+        <Terminal/>
       </>
 
       <TaskBar />
