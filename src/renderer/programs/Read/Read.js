@@ -32,7 +32,7 @@ function Read() {
   return (
     <>
       <ProgramContainer
-        title="Read"
+        title="Okuma"
         handleStop={handleStop}
         handleMinimize={handleMinimize}
         handleResize={handleResize}

@@ -20,7 +20,7 @@ function Write() {
   return (
     <>
       <ProgramContainer
-        title="Write"
+        title="Yazma"
         handleStop={handleStop}
         handleMinimize={handleMinimize}
         handleResize={handleResize}

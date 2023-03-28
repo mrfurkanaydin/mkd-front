@@ -4,3 +4,6 @@ body{
     margin: 0;
     overflow: hidden;
 }
+::-webkit-scrollbar {
+    display: none;
+  }

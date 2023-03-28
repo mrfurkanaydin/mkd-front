@@ -20,7 +20,7 @@ function Watch() {
   return (
     <>
       <ProgramContainer 
-        title="Watch"
+        title="İzleme"
         handleStop={handleStop}
         handleMinimize={handleMinimize}
         handleResize={handleResize}

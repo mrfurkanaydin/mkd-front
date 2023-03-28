@@ -20,6 +20,7 @@ import terminals from "../../../assets/terminal.png";
 import calculators from "../../../assets/hesapmakinesi.png";
 import draws from "../../../assets/cizim.png";
 import notess from "../../../assets/notlar.png";
+import dictinary from "../../../assets/sozluk.png";
 import React, { useState } from "react";
 import "./TaskBar.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -135,6 +136,10 @@ function TaskBar() {
                 <img className="taskbar-open-img" src={notess} />
                 Notlarım
               </button>
+              {/* <button className="taskbar-open-item" >
+                <img className="taskbar-open-img" src={dictinary} />
+                Sözlük
+              </button> */}
             </div>
           )}
           {controls && (
@@ -142,8 +147,8 @@ function TaskBar() {
               <button onClick={handleQuit} className="taskbar-open-item">
                 Kapat
               </button>
-              <div className="taskbar-open-item">Kullanıcı Değiştir</div>
-              <div className="taskbar-open-item">Şifre Değiştir</div>
+              <button className="taskbar-open-item">Kullanıcı Değiştir</button>
+              <button className="taskbar-open-item">Şifre Değiştir</button>
             </div>
           )}
         </>

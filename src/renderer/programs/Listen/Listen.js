@@ -20,7 +20,7 @@ function Listen() {
   return (
     <>
       <ProgramContainer
-        title="Listen"
+        title="Dinleme"
         handleStop={handleStop}
         handleMinimize={handleMinimize}
         handleResize={handleResize}

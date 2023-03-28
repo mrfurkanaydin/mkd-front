@@ -38,7 +38,7 @@ function TaskManager() {
         handleResize={handleResize}
         status={taskManager}
         width={500}
-        height={"85%"}
+        height={"70%"}
         disable={true}
       >
         <>

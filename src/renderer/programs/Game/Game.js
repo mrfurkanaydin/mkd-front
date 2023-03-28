@@ -27,7 +27,7 @@ function Game() {
   return (
     <>
       <ProgramContainer
-        title="Game"
+        title="Oyun"
         handleStop={handleStop}
         handleMinimize={handleMinimize}
         handleResize={handleResize}
@@ -69,7 +69,7 @@ function Game() {
             }}
             noWall={true}
           /> */}
-          <Tetris />
+          {/* <Tetris /> */}
         {/* </div> */}
       </ProgramContainer>
     </>

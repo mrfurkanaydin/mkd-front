@@ -14,7 +14,7 @@ import { autoUpdater } from "electron-updater";
 import log from "electron-log";
 import MenuBuilder from "./menu";
 import { resolveHtmlPath } from "./util";
-import Store from 'electron-store';
+import Store from "electron-store";
 
 class AppUpdater {
   constructor() {
@@ -34,9 +34,7 @@ ipcMain.on("ipc-example", async (event, arg) => {
 });
 
 ipcMain.on("ipc", async (event, arg) => {
-  const msgTemplate = (pingPong: string) => `IPC test: ${app.getVersion()}`;
-  console.log(msgTemplate(arg));
-  event.reply("ipc", msgTemplate(app.getVersion()));
+  event.reply("ipc", app.getVersion());
 });
 
 ipcMain.on("send-shutdown", () => {
@@ -85,11 +83,11 @@ const createWindow = async () => {
     show: false,
     width: 600,
     height: 900,
-    x: 0,
+    x: -700,
     y: 0,
     // resizable: false,
     frame: false,
-    // fullscreen: true,
+    fullscreen: true,
     icon: getAssetPath("icon.png"),
     webPreferences: {
       preload: app.isPackaged
@@ -100,7 +98,6 @@ const createWindow = async () => {
   });
 
   mainWindow.loadURL(resolveHtmlPath("index.html"));
-
 
   mainWindow.on("ready-to-show", () => {
     if (!mainWindow) {
@@ -121,7 +118,7 @@ const createWindow = async () => {
   menuBuilder.buildMenu();
 
   // Open urls in the user's browser
-  mainWindow.webContents.setWindowOpenHandler((edata: { url: string; }) => {
+  mainWindow.webContents.setWindowOpenHandler((edata: { url: string }) => {
     shell.openExternal(edata.url);
     return { action: "deny" };
   });
@@ -159,22 +156,20 @@ ipcMain.on("send-fullScreen", (event, arg) => {
   // const msgTemplate = (fullScreen: string) => `fullscreen: ${typeof fullScreen}`;
   // console.log(msgTemplate(arg));
   console.log(arg);
-  
+
   if (arg === true) {
     mainWindow?.setFullScreen(false);
   }
   if (arg === false) {
     mainWindow?.setFullScreen(true);
   }
-  
+
   // event.reply("send-fullScreen", arg)
 });
 
-
-
-ipcMain.on('electron-store-get', async (event, val) => {
+ipcMain.on("electron-store-get", async (event, val) => {
   event.returnValue = store.get(val);
 });
-ipcMain.on('electron-store-set', async (event, key, val) => {
+ipcMain.on("electron-store-set", async (event, key, val) => {
   store.set(key, val);
 });

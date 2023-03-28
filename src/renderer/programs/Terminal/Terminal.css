@@ -1,0 +1,41 @@
+.terminal-container{
+    display: flex;
+    flex-direction: column;
+    background-color: #000;
+    color: #fff;
+    font-family: monospace;
+    padding: 10px 20px;
+    overflow: hidden;
+    gap: 10px;
+}
+.terminal-output{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    /* overflow-y: scroll; */
+    
+}
+
+.terminal-output-text{
+    white-space: pre-wrap;
+}
+.input-container {
+  display: flex;
+  justify-content: center;
+  flex: 1;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+.terminal-input {
+  background-color: #fff;
+  color: black;
+  font-family: monospace;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 5px;
+  width: 90%;
+  border: none;
+  outline: none;
+  resize: none;
+}
