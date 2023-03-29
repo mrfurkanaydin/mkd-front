@@ -39,12 +39,12 @@ function Hub() {
     >
       {mousePointer == 1 && <Cursor />}
       <div className="hub-hubitems">
-        <HubItems icon={animatedIcons == false ? okuma : okumagif} name="Read" />
-        <HubItems icon={animatedIcons == false ? yazma : yazmagif} name="Write" />
-        <HubItems icon={animatedIcons == false ? izleme : izlemegif} name="Watch" />
-        <HubItems icon={animatedIcons == false ? dinleme : dinlemegif} name="Listen" />
-        <HubItems icon={animatedIcons == false ? oyun : oyungif} name="Game" />
-        <HubItems icon={animatedIcons == false ? yonetim : yonetimgif} name="Manage"/>
+        <HubItems icon={animatedIcons == false ? okuma : okumagif} name="Okuma" type="Read" />
+        <HubItems icon={animatedIcons == false ? yazma : yazmagif} name="Yazma" type="Write"/>
+        <HubItems icon={animatedIcons == false ? izleme : izlemegif} name="İzleme" type="Watch" />
+        <HubItems icon={animatedIcons == false ? dinleme : dinlemegif} name="Dinleme" type="Listen" />
+        <HubItems icon={animatedIcons == false ? oyun : oyungif} name="Oyun" type="Game"/>
+        <HubItems icon={animatedIcons == false ? yonetim : yonetimgif} name="Yönetim" type="Manage"/>
       </div>
       <>
         <Read />

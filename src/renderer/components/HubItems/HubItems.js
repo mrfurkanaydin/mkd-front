@@ -1,26 +1,16 @@
-import React, { useState } from "react";
-import Draggable, { DraggableCore } from "react-draggable";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-import Read from "renderer/programs/Read/Read";
-import Draw from "renderer/programs/Write/Write";
 import "./HubItems.css";
-{
-  /* <link
-  href="https://fonts.googleapis.com/css?family=Poppins"
-  rel="stylesheet"
-></link>; */
-}
-function HubItems({ icon, name }) {
+
+function HubItems({ icon, name, type }) {
   const dispatch = useDispatch();
   const handleStart = () => {
-    dispatch({ type: "RESIZE_PROGRAM", payload: name});
+    dispatch({ type: "RESIZE_PROGRAM", payload: type });
   };
   return (
-      <button className="hubitem-container" onClick={handleStart}>
-        <img className="hubitem-image" src={icon} />
-        <div className="hubitem-text">{name}</div>
-      </button>
+    <button className="hubitem-container" onClick={handleStart}>
+      <img className="hubitem-image" src={icon} />
+      <div className="hubitem-text">{name}</div>
+    </button>
   );
 }
 

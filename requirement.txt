@@ -1,0 +1,28 @@
+Furkan~
+Cursor +
+Program Container +
+reducers +
+
+
+Oğuzhan~
+Taskbar +
+Taskbar İtem +
+Terminal - utils +
+
+
+Bacacı~
+Draw +
+Options +
+Hesap makinesi +
+
+
+Baho~
+TaskManager +
+Task Manager İtem +
+Terminal - utils +
+
+
+Duygu~
+Hub +
+Hub İtem +
+Notes +

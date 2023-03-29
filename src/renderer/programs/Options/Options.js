@@ -131,7 +131,7 @@ function Options() {
                     </div>
                   </div>
 
-                  {/* <div className="options-item">
+                  <div className="options-item">
                     <div>
                       <IOSSwitch
                         name="theme"
@@ -144,9 +144,9 @@ function Options() {
                     </div>
                     <div className="options-item-desc">
                       <div>Tema Değiştir</div>
-                      <div className="options-item-subtitle">Uygulamanın Temasını Değiştirir.</div>
+                      <div className="options-item-subtitle">Uygulamanın Temasını Değiştirir. (Henüz Aktif Değil)</div>
                     </div>
-                  </div> */}
+                  </div>
 
                   <div className="options-item">
                     <IOSSwitch

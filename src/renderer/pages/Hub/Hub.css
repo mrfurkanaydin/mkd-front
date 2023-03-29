@@ -1,10 +1,14 @@
 .hub-container {
   height: 100vh;
-  background-image: url("../../../assets/bg.jpg");
+  /* background-image: url("../../../assets/bg.jpg"); */
+  background: linear-gradient(to bottom, #365cb3, #0f192e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 }
 .hub-container-cursor {
   height: 100vh;
-  background-image: url("../../../assets/bg.jpg");
+  /* background-image: url("../../../assets/bg.jpg"); */
+  background: linear-gradient(to bottom, #365cb3, #0f192e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
   cursor: none;
   * {
     cursor: none;
@@ -26,13 +30,13 @@
   .cursor-dot {
     width: 8px;
     height: 8px;
-    background-color: #dc5656;
+    background-color: rgb(37, 36, 36);
   }
   
   .cursor-dot-outline {
     width: 40px;
     height: 40px;
-    background-color: rgba(229, 128, 128, 0.5);
+    background-color: rgba(47, 49, 49, 0.571);
   }
   
   .links-container {
