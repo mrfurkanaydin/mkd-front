@@ -1,9 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
 import "../Programs.css";
 import ProgramContainer from "renderer/components/ProgramContainer/ProgramContainer";
-import { TextField } from "@mui/material";
+import { Form, Formik } from "formik";
+import "./Notes.css";
+import { useState } from "react";
 
 function Notes() {
+  const [note, setNote] = useState([]);
   const notes = useSelector((state) => state.notes);
   const dispatch = useDispatch();
   const handleStop = () => {
@@ -17,6 +20,10 @@ function Notes() {
       ? dispatch({ type: "START_PROGRAM", payload: "Notes" })
       : dispatch({ type: "RESIZE_PROGRAM", payload: "Notes" });
   };
+  const addNote = (value) => {
+    setNote([value.note, ...note]);
+    value.note = "";
+  };
   return (
     <>
       <ProgramContainer
@@ -25,10 +32,39 @@ function Notes() {
         handleMinimize={handleMinimize}
         handleResize={handleResize}
         status={notes}
+        disable={true}
+        height={700}
       >
-        <>
-            <TextField sx={{backgroundColor:"red",width:"100%"}}/>
-        </>
+        <div className="notes-container">
+          <Formik
+            initialValues={{
+              note: ""
+            }}
+            onSubmit={(values) => addNote(values)}
+          >
+            {({ values, handleChange, handleBlur, handleSubmit }) => (
+              <form className="notes-form" onSubmit={handleSubmit}>
+                <input
+                  name="note"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.note}
+                  className="notes-form-input"
+                />
+                <button className="notes-form-button" type="submit">
+                  Ekle
+                </button>
+              </form>
+            )}
+          </Formik>
+          <div className="notes-list">
+            {note?.map((item, index) => (
+              <div className="notes-list-item" key={index}>
+                {item}
+              </div>
+            ))}
+          </div>
+        </div>
       </ProgramContainer>
     </>
   );

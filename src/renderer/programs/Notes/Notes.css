@@ -1,0 +1,50 @@
+.notes-form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f5f5f5;
+    padding: 0 20px;
+}
+.notes-form-input{
+    flex: 1;
+    border: 0;
+    outline: none;
+    resize: none;
+    font-size: 20px;
+    padding: 10px;
+    background-color: #f5f5f5;
+}
+
+.notes-form-button{
+    background-color: #f5f5f5;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+    font-size: 20px;
+    padding: 10px;
+}
+.notes-form-button:hover{
+    background-color: #e5e5e5;
+}
+.notes-list{
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    height: 620px;
+    overflow-y: scroll;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.notes-list-item{
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid #e5e5e5;
+    border-radius: 5px;
+    color: white;
+}
+.notes-list-item:hover{
+    background-color: #e5e5e5;
+    color: black;
+    transition: all 0.2s ease-in-out;
+}
