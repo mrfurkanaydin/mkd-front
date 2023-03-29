@@ -52,7 +52,7 @@ function Terminal() {
       result?.dizin == "oyun" && dispatch({ type: "STOP_PROGRAM", payload: "Game" });
       result?.dizin == "yönetim" && dispatch({ type: "STOP_PROGRAM", payload: "Manage" });
       result?.dizin == "görev yöneticisi" && dispatch({ type: "STOP_PROGRAM", payload: "TaskManager" });
-      result?.dizin == "hesap makinesi" && dispatch({ type: "RESIZE_PROGRAM", payload: "Calculator" });
+      result?.dizin == "hesap makinesi" && dispatch({ type: "STOP_PROGRAM", payload: "Calculator" });
       result?.dizin == "çizim" && dispatch({ type: "STOP_PROGRAM", payload: "Draw" });
       result?.dizin == "notlar" && dispatch({ type: "STOP_PROGRAM", payload: "Notes" });
       result?.dizin == "terminal" && dispatch({ type: "STOP_PROGRAM", payload: "Terminal" });

@@ -79,6 +79,7 @@
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@mui/material": "^5.11.12",
+    "@uiw/react-color-colorful": "^1.1.2",
     "awesome-react-calculator": "^1.1.0",
     "date-fns": "^2.29.3",
     "draft-js": "^0.11.7",

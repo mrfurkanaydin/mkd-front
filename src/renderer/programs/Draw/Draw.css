@@ -1,0 +1,27 @@
+.pick-brush {
+  width: 100%;
+  background-color: whitesmoke;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.pick-brush-button {
+    background-color: black;
+    color: white;
+    border-radius: 12px;
+    padding: 10px;
+    margin: 10px 0;
+    border: 0;
+}
+.pick-brush-button:hover {
+    background-color: #333;
+    cursor: pointer;
+}
+.color-pick-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 24;
+}

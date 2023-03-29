@@ -57,7 +57,7 @@ const hakkinda = () => {
 Hakkında ~~ Bilgiler
 Uygulama Adı: MasterKid
 Uygulama Sürümü: 1.0.0
-Uygulama Geliştiricisi: MasterKid 
+Uygulama Geliştiricisi:  Furkan Aydın, Oğuzhan Sakaoğlu, Mustafa Bacacı, Semih Bahadır Harmancı, Duygu Asena Kaya
 Uygulama Geliştirme Tarihi: 2023
 Uygulama Geliştirme Yeri: Türkiye
 Uygulama Teknolojileri 
