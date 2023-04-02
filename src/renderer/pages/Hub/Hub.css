@@ -2,6 +2,7 @@
   height: 100vh;
   /* background-image: url("../../../assets/bg.jpg"); */
   background: linear-gradient(to bottom, #365cb3, #0f192e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  font-family: 'Lato', sans-serif;
 
 }
 .hub-container-cursor {

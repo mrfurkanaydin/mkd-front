@@ -8,6 +8,7 @@
   background-color: transparent;
   border: 0;
   height: 100%;
+  font-family: 'Lato', sans-serif;
 }
 .taskbar-item:hover {
   background-color: rgb(81, 80, 80);

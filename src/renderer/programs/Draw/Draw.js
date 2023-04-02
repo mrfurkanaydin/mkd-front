@@ -40,8 +40,8 @@ function Draw() {
         handleMinimize={handleMinimize}
         handleResize={handleResize}
         status={draw}
-        width={1500}
-        height={800}
+        width={1250}
+        height={700}
         disable="true"
       >
         <>
@@ -69,8 +69,8 @@ function Draw() {
             ref={saveableCanvasRef}
             hideGridX
             hideGridY
-            canvasWidth={1500}
-            canvasHeight={750}
+            canvasWidth={1250}
+            canvasHeight={650}
             brushColor={color}
           />
         </>
