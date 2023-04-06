@@ -22,7 +22,7 @@ function Manage() {
   return (
     <>
       <ProgramContainer
-        title="Manage"
+        title="Yönetim"
         handleStop={handleStop}
         handleMinimize={handleMinimize}
         handleResize={handleResize}
