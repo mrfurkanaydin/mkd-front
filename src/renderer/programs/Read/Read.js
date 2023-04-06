@@ -2,7 +2,6 @@ import React from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import "./Read.css";
-import "../Programs.css";
 import ProgramContainer from "renderer/components/ProgramContainer/ProgramContainer";
 
 function Read() {
@@ -20,14 +19,14 @@ function Read() {
       ? dispatch({ type: "START_PROGRAM", payload: "Read" })
       : dispatch({ type: "RESIZE_PROGRAM", payload: "Read" });
   };
-  const handleClick = () => {
-    window.electron.ipcRenderer.sendMessage("ipc", ["ping"]);
-    window.electron.ipcRenderer.once("ipc", (arg) => {
-      // eslint-disable-next-line no-console
-      setMsg(arg);
-      // console.log(arg);
-    });
-  };
+  // const handleClick = () => {
+  //   window.electron.ipcRenderer.sendMessage("ipc", ["ping"]);
+  //   window.electron.ipcRenderer.once("ipc", (arg) => {
+  //     // eslint-disable-next-line no-console
+  //     setMsg(arg);
+  //     // console.log(arg);
+  //   });
+  // };
 
   return (
     <>
@@ -38,10 +37,10 @@ function Read() {
         handleResize={handleResize}
         status={read}
       >
-        <div style={{"color": "white"}}>
+        {/* <div style={{"color": "white"}}>
           <button onClick={handleClick}>merhaba</button>
           {msg}
-        </div>
+        </div> */}
       </ProgramContainer>
     </>
   );

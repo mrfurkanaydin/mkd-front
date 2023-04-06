@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
 import "./Manage.css";
-import "../Programs.css";
 import ProgramContainer from "renderer/components/ProgramContainer/ProgramContainer";
 import { Editor } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";

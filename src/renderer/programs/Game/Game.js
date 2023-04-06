@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
 import "./Game.css";
-import "../Programs.css";
 import ProgramContainer from "renderer/components/ProgramContainer/ProgramContainer";
 import { Snake } from "react-snake-lib";
 import Tetris from 'react-tetris-overlay';

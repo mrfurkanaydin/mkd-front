@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
 import "./Watch.css";
-import "../Programs.css";
 import ProgramContainer from "renderer/components/ProgramContainer/ProgramContainer";
 
 function Watch() {

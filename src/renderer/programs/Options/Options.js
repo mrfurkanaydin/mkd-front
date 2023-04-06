@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
 import "./Options.css";
-import "../Programs.css";
 import ProgramContainer from "renderer/components/ProgramContainer/ProgramContainer";
 import { Form, Formik } from "formik";
 import { Switch } from "@mui/material";
@@ -24,6 +23,7 @@ function Options() {
       ? dispatch({ type: "START_PROGRAM", payload: "Options" })
       : dispatch({ type: "RESIZE_PROGRAM", payload: "Options" });
   };
+  
   const IOSSwitch = styled((props) => (
     <Switch
       focusVisibleClassName=".Mui-focusVisible"
@@ -83,6 +83,7 @@ function Options() {
       })
     }
   }));
+
   const mouse = useSelector((state) => state.mousePointer);
   return (
     <>
@@ -103,9 +104,6 @@ function Options() {
               theme: "dark",
               animatedIcons: window.electron.store.get("animated-icons"),
               mousePointer: 0
-            }}
-            onSubmit={async (values) => {
-              alert(JSON.stringify(values, null, 2));
             }}
           >
             {({ values, setFieldValue }) => (

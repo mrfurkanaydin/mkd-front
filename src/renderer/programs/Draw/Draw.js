@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from "react-redux";
-import "../Programs.css";
 import ProgramContainer from "renderer/components/ProgramContainer/ProgramContainer";
 import CanvasDraw from "react-canvas-draw";
 import { useRef, useState } from "react";

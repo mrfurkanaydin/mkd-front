@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from "react-redux";
-import "../Programs.css";
 import ProgramContainer from "renderer/components/ProgramContainer/ProgramContainer";
 import { Form, Formik } from "formik";
 import "./Notes.css";
@@ -50,6 +49,7 @@ function Notes() {
                   onBlur={handleBlur}
                   value={values.note}
                   className="notes-form-input"
+                  placeholder="Notunuzu buraya yazın..."
                 />
                 <button className="notes-form-button" type="submit">
                   Ekle

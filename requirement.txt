@@ -1,28 +1,24 @@
 Furkan~
-Cursor +
 Program Container +
 reducers +
+Cursor +
 
+Duygu~
+Hub +
+Hub İtem +
+Notes +
 
 Oğuzhan~
 Taskbar +
 Taskbar İtem +
 Terminal - utils +
 
-
 Bacacı~
-Draw +
 Options +
+Draw +
 Hesap makinesi +
-
 
 Baho~
 TaskManager +
 Task Manager İtem +
 Terminal - utils +
-
-
-Duygu~
-Hub +
-Hub İtem +
-Notes +

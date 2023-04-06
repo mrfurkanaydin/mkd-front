@@ -1,6 +1,7 @@
 import HubItems from "renderer/components/HubItems/HubItems";
 import TaskBar from "../../components/TaskBar/TaskBar";
 import "./Hub.css";
+import { useSelector } from "react-redux";
 import okuma from "../../../assets/okuma.png";
 import okumagif from "../../../assets/okuma.gif";
 import yazma from "../../../assets/yazma.png";
@@ -20,7 +21,6 @@ import Watch from "renderer/programs/Watch/Watch";
 import Listen from "renderer/programs/Listen/Listen";
 import Game from "renderer/programs/Game/Game";
 import Manage from "renderer/programs/Manage/Manage";
-import { useSelector } from "react-redux";
 import Cursor from "renderer/components/Cursor/Cursor";
 import TaskManager from "renderer/programs/TaskManager/TaskManager";
 import Calculator from "renderer/programs/Calculator/Calculator";
@@ -38,6 +38,7 @@ function Hub() {
       }`}
     >
       {mousePointer == 1 && <Cursor />}
+      
       <div className="hub-hubitems">
         <HubItems icon={animatedIcons == false ? okuma : okumagif} name="Okuma" type="Read" />
         <HubItems icon={animatedIcons == false ? yazma : yazmagif} name="Yazma" type="Write"/>

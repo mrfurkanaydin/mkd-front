@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import ProgramContainer from "renderer/components/ProgramContainer/ProgramContainer";
 import { Formik } from "formik";
-import "../Programs.css";
 import "./Terminal.css";
 import { getCommands } from "renderer/utils/utils";
 import { useState } from "react";

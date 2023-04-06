@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from "react-redux";
-import "../Programs.css";
 import ProgramContainer from "renderer/components/ProgramContainer/ProgramContainer";
 import Calculate from "awesome-react-calculator";
 

@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import ProgramContainer from "renderer/components/ProgramContainer/ProgramContainer";
 import "./Write.css";
-import "../Programs.css";
 
 function Write() {
   const write = useSelector((state) => state.write);

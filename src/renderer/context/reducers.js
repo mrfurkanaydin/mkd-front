@@ -22,7 +22,7 @@ const INITIAL_STATE = {
   ),
   animatedIcons: window.electron.store.get("animated-icons"),
   mousePointer: 0,
-  fullscreen: window.electron.store.get("fullscreen")
+  fullscreen: 1
 };
 
 const updateProgramState = (state, payload, value) => ({
@@ -60,7 +60,6 @@ const setFullScreen = (state) => {
   const fullScreen = !window.electron.store.get("fullscreen");
   window.electron.ipcRenderer.sendMessage("send-fullScreen", !fullScreen);
   window.electron.store.set("fullscreen", fullScreen);
-  console.log("store", window.electron.store.get("fullscreen"));
   return { ...state, fullscreen: fullScreen };
 };
 
