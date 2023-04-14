@@ -88,7 +88,7 @@ const gir = (action) => {
   action == "hesapmakinesi" && (dizin = "hesap makinesi");
   action == "çizim" && (dizin = "çizim");
   action == "notlar" && (dizin = "notlar");
-  action == "kapat" && (dizin = "kapat");
+  
   console.log(dizin);
   return { text: dizin, command: "gir", dizin: dizin };
 };
@@ -115,6 +115,10 @@ const hata = () => {
 Hata: Komut Bulunamadı`;
   return { text: text, command: "hata" };
 };
+const kapat = () =>{
+  dizin = "kapat"
+  return { text: dizin, command: "kapat", dizin: dizin };
+}
 
 export const getCommands = (name, action) => {
   const commands = {
@@ -123,6 +127,7 @@ export const getCommands = (name, action) => {
     dizinler: dizinler(dizin),
     gir: gir(action),
     çık: cik(action),
+    kapat: kapat(),
     hata: hata()
   };
   return typeof commands[name] === "undefined"

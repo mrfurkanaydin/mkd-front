@@ -1,4 +1,3 @@
-import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ProgramContainer from "renderer/components/ProgramContainer/ProgramContainer";
 import TaskManagerItem from "renderer/components/TaskManagerItem/TaskManagerItem";
@@ -57,7 +56,9 @@ function TaskManager() {
           )}
           {draw !== 0 && <TaskManagerItem name="Çizim" type="Draw" />}
           {notes !== 0 && <TaskManagerItem name="Notlar" type="Notes" />}
-          {terminal !== 0 && <TaskManagerItem name="Terminal" type="Terminal" />}
+          {terminal !== 0 && (
+            <TaskManagerItem name="Terminal" type="Terminal" />
+          )}
         </>
       </ProgramContainer>
     </>

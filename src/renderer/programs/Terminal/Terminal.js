@@ -27,39 +27,67 @@ function Terminal() {
       splitted.length > 1
         ? getCommands(splitted[0], splitted[1])
         : getCommands(splitted[0]);
-    if (result?.command == "gir"){
-      result?.dizin == "dinleme" && dispatch({ type: "START_PROGRAM", payload: "Listen" });
-      result?.dizin == "yazma" && dispatch({ type: "START_PROGRAM", payload: "Write" });
-      result?.dizin == "okuma" && dispatch({ type: "START_PROGRAM", payload: "Read" });
-      result?.dizin == "terminal" && dispatch({ type: "START_PROGRAM", payload: "Terminal" });
-      result?.dizin == "izleme" && dispatch({ type: "START_PROGRAM", payload: "Watch" });
-      result?.dizin == "oyun" && dispatch({ type: "START_PROGRAM", payload: "Game" });
-      result?.dizin == "yönetim" && dispatch({ type: "START_PROGRAM", payload: "Manage" });
-      result?.dizin == "görev yöneticisi" && dispatch({ type: "RESIZE_PROGRAM", payload: "TaskManager" });
-      result?.dizin == "hesap makinesi" && dispatch({ type: "RESIZE_PROGRAM", payload: "Calculator" });
-      result?.dizin == "çizim" && dispatch({ type: "RESIZE_PROGRAM", payload: "Draw" });
-      result?.dizin == "notlar" && dispatch({ type: "RESIZE_PROGRAM", payload: "Notes" });
-      result?.dizin == "seçenekler" && dispatch({ type: "RESIZE_PROGRAM", payload: "Options" });
-      result?.dizin == "kapat" && window.electron.ipcRenderer.sendMessage("send-shutdown");
+    if (result?.command == "gir") {
+      result?.dizin == "dinleme" &&
+        dispatch({ type: "START_PROGRAM", payload: "Listen" });
+      result?.dizin == "yazma" &&
+        dispatch({ type: "START_PROGRAM", payload: "Write" });
+      result?.dizin == "okuma" &&
+        dispatch({ type: "START_PROGRAM", payload: "Read" });
+      result?.dizin == "terminal" &&
+        dispatch({ type: "START_PROGRAM", payload: "Terminal" });
+      result?.dizin == "izleme" &&
+        dispatch({ type: "START_PROGRAM", payload: "Watch" });
+      result?.dizin == "oyun" &&
+        dispatch({ type: "START_PROGRAM", payload: "Game" });
+      result?.dizin == "yönetim" &&
+        dispatch({ type: "START_PROGRAM", payload: "Manage" });
+      result?.dizin == "görev yöneticisi" &&
+        dispatch({ type: "RESIZE_PROGRAM", payload: "TaskManager" });
+      result?.dizin == "hesap makinesi" &&
+        dispatch({ type: "RESIZE_PROGRAM", payload: "Calculator" });
+      result?.dizin == "çizim" &&
+        dispatch({ type: "RESIZE_PROGRAM", payload: "Draw" });
+      result?.dizin == "notlar" &&
+        dispatch({ type: "RESIZE_PROGRAM", payload: "Notes" });
+      result?.dizin == "seçenekler" &&
+        dispatch({ type: "RESIZE_PROGRAM", payload: "Options" });
+      result?.dizin == "kapat" &&
+        window.electron.ipcRenderer.sendMessage("send-shutdown");
     }
-    if(result?.command == "çık"){
-      result?.dizin == "dinleme" && dispatch({ type: "STOP_PROGRAM", payload: "Listen" });
-      result?.dizin == "yazma" && dispatch({ type: "STOP_PROGRAM", payload: "Write" });
-      result?.dizin == "okuma" && dispatch({ type: "STOP_PROGRAM", payload: "Read" });
-      result?.dizin == "terminal" && dispatch({ type: "STOP_PROGRAM", payload: "Terminal" });
-      result?.dizin == "izleme" && dispatch({ type: "STOP_PROGRAM", payload: "Watch" });
-      result?.dizin == "oyun" && dispatch({ type: "STOP_PROGRAM", payload: "Game" });
-      result?.dizin == "yönetim" && dispatch({ type: "STOP_PROGRAM", payload: "Manage" });
-      result?.dizin == "görev yöneticisi" && dispatch({ type: "STOP_PROGRAM", payload: "TaskManager" });
-      result?.dizin == "hesap makinesi" && dispatch({ type: "STOP_PROGRAM", payload: "Calculator" });
-      result?.dizin == "çizim" && dispatch({ type: "STOP_PROGRAM", payload: "Draw" });
-      result?.dizin == "notlar" && dispatch({ type: "STOP_PROGRAM", payload: "Notes" });
-      result?.dizin == "terminal" && dispatch({ type: "STOP_PROGRAM", payload: "Terminal" });
-      result?.dizin == "seçenekler" && dispatch({ type: "STOP_PROGRAM", payload: "Options" });
+    if (result?.command == "çık") {
+      result?.dizin == "dinleme" &&
+        dispatch({ type: "STOP_PROGRAM", payload: "Listen" });
+      result?.dizin == "yazma" &&
+        dispatch({ type: "STOP_PROGRAM", payload: "Write" });
+      result?.dizin == "okuma" &&
+        dispatch({ type: "STOP_PROGRAM", payload: "Read" });
+      result?.dizin == "terminal" &&
+        dispatch({ type: "STOP_PROGRAM", payload: "Terminal" });
+      result?.dizin == "izleme" &&
+        dispatch({ type: "STOP_PROGRAM", payload: "Watch" });
+      result?.dizin == "oyun" &&
+        dispatch({ type: "STOP_PROGRAM", payload: "Game" });
+      result?.dizin == "yönetim" &&
+        dispatch({ type: "STOP_PROGRAM", payload: "Manage" });
+      result?.dizin == "görev yöneticisi" &&
+        dispatch({ type: "STOP_PROGRAM", payload: "TaskManager" });
+      result?.dizin == "hesap makinesi" &&
+        dispatch({ type: "STOP_PROGRAM", payload: "Calculator" });
+      result?.dizin == "çizim" &&
+        dispatch({ type: "STOP_PROGRAM", payload: "Draw" });
+      result?.dizin == "notlar" &&
+        dispatch({ type: "STOP_PROGRAM", payload: "Notes" });
+      result?.dizin == "terminal" &&
+        dispatch({ type: "STOP_PROGRAM", payload: "Terminal" });
+      result?.dizin == "seçenekler" &&
+        dispatch({ type: "STOP_PROGRAM", payload: "Options" });
+    }
+    if (result?.command == "kapat") {
+      window.electron.ipcRenderer.sendMessage("send-shutdown");
     }
 
-    
-    values.command = ""
+    values.command = "";
     setOutput([result, ...output]);
   };
 

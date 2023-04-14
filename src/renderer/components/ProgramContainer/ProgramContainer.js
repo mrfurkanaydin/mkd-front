@@ -51,7 +51,9 @@ function ProgramContainer({
         </div>
       )}
       {status == 3 && (
-        <Draggable handle=".program-header-resize">
+        <Draggable
+
+        handle=".program-header-resize">
           <div
             className="program-container-resize"
             style={{ width: width, height: height }}
