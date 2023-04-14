@@ -3,6 +3,7 @@ import Draggable from "react-draggable";
 import { FaRegWindowMinimize } from "react-icons/fa";
 import { IoIosQrScanner } from "react-icons/io";
 import { TfiClose } from "react-icons/tfi";
+import { useSelector } from "react-redux";
 import "./ProgramContainer.css";
 function ProgramContainer({
   children,
@@ -15,6 +16,7 @@ function ProgramContainer({
   height,
   disable
 }) {
+  const mouse = useSelector((state)=> state.mousePointer)
   return (
     <div>
       {status == 1 && (
@@ -24,21 +26,21 @@ function ProgramContainer({
               <div className="program-title">{title}</div>
               <div className="program-header-buttons">
                 <button
-                  className="program-header-button"
+                  className={`program-header-button ${mouse && "mouse-none"}`}
                   onClick={handleMinimize}
                   style={{ backgroundColor: "#ffc400", marginRight: "5px" }}
                 >
                   <FaRegWindowMinimize />
                 </button>
                 <button
-                  className="program-header-button"
+                  className={`program-header-button ${mouse && "mouse-none"}`}
                   onClick={handleResize}
                   style={{ backgroundColor: "#689f38", marginRight: "5px" }}
                 >
                   <IoIosQrScanner />
                 </button>
                 <button
-                  className="program-header-button"
+                  className={`program-header-button ${mouse && "mouse-none"}`}
                   onClick={handleStop}
                   style={{ backgroundColor: "#b71c1c" }}
                 >
@@ -62,14 +64,14 @@ function ProgramContainer({
               <div className="program-title">{title}</div>
               <div className="program-header-buttons">
                 <button
-                  className="program-header-button"
+                  className={`program-header-button ${mouse && "mouse-none"}`}
                   onClick={handleMinimize}
-                  style={{ backgroundColor: "#ffc400", marginRight: "5px" }}
+                  style={{ backgroundColor: "#ffc400", marginRight: "5px"}}
                 >
                   <FaRegWindowMinimize />
                 </button>
                 <button
-                  className="program-header-button"
+                  className={`program-header-button ${mouse && "mouse-none"}`}
                   onClick={handleResize}
                   disabled={disable}
                   style={{ backgroundColor: "#689f38", marginRight: "5px" }}
@@ -77,7 +79,7 @@ function ProgramContainer({
                   <IoIosQrScanner />
                 </button>
                 <button
-                  className="program-header-button"
+                  className={`program-header-button ${mouse && "mouse-none"}`}
                   onClick={handleStop}
                   style={{ backgroundColor: "#b71c1c" }}
                 >
