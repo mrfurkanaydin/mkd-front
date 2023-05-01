@@ -27,6 +27,8 @@ import Calculator from "renderer/programs/Calculator/Calculator";
 import Draw from "renderer/programs/Draw/Draw";
 import Notes from "renderer/programs/Notes/Notes";
 import Terminal from "renderer/programs/Terminal/Terminal";
+import Snake from "renderer/programs/Game/Snake/Snake";
+import Tetris from "renderer/programs/Game/Tetris/Tetris";
 
 function Hub() {
   const animatedIcons = useSelector((state) => state.animatedIcons);
@@ -34,18 +36,18 @@ function Hub() {
   return (
     <div
       className={`${
-        mousePointer == 0 ? "hub-container" : "hub-container-cursor"
+        mousePointer === 0 ? "hub-container" : "hub-container-cursor"
       }`}
     >
-      {mousePointer == 1 && <Cursor />}
+      {mousePointer === 1 && <Cursor />}
       
       <div className="hub-hubitems">
-        <HubItems icon={animatedIcons == false ? okuma : okumagif} name="Okuma" type="Read" />
-        <HubItems icon={animatedIcons == false ? yazma : yazmagif} name="Yazma" type="Write"/>
-        <HubItems icon={animatedIcons == false ? izleme : izlemegif} name="İzleme" type="Watch" />
-        <HubItems icon={animatedIcons == false ? dinleme : dinlemegif} name="Dinleme" type="Listen" />
-        <HubItems icon={animatedIcons == false ? oyun : oyungif} name="Oyun" type="Game"/>
-        <HubItems icon={animatedIcons == false ? yonetim : yonetimgif} name="Yönetim" type="Manage"/>
+        <HubItems icon={animatedIcons === false ? okuma : okumagif} name="Okuma" type="Read" />
+        <HubItems icon={animatedIcons === false ? yazma : yazmagif} name="Yazma" type="Write"/>
+        <HubItems icon={animatedIcons === false ? izleme : izlemegif} name="İzleme" type="Watch" />
+        <HubItems icon={animatedIcons === false ? dinleme : dinlemegif} name="Dinleme" type="Listen" />
+        <HubItems icon={animatedIcons === false ? oyun : oyungif} name="Oyun" type="Game"/>
+        <HubItems icon={animatedIcons === false ? yonetim : yonetimgif} name="Yönetim" type="Manage"/>
       </div>
       <>
         <Read />
@@ -60,6 +62,8 @@ function Hub() {
         <Draw/>
         <Notes/>
         <Terminal/>
+        <Snake/>
+        <Tetris/>
       </>
 
       <TaskBar />

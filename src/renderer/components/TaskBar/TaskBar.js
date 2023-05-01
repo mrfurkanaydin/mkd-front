@@ -61,14 +61,14 @@ function TaskBar() {
     dispatch({ type: "RESIZE_PROGRAM", payload: "Draw" });
     handleToggle();
   };
-  const startNotes = ()=>{
-    dispatch({type: "RESIZE_PROGRAM", payload: "Notes"})
-    handleToggle()
-  }
-  const startTerminal = ()=>{
-    dispatch({type: "RESIZE_PROGRAM",payload:"Terminal"})
-    handleToggle()
-  }
+  const startNotes = () => {
+    dispatch({ type: "RESIZE_PROGRAM", payload: "Notes" });
+    handleToggle();
+  };
+  const startTerminal = () => {
+    dispatch({ type: "RESIZE_PROGRAM", payload: "Terminal" });
+    handleToggle();
+  };
   const handleQuit = () => {
     window.electron.ipcRenderer.sendMessage("send-shutdown");
   };
@@ -83,9 +83,11 @@ function TaskBar() {
   const calculator = useSelector((state) => state.calculator);
   const draw = useSelector((state) => state.draw);
   const notes = useSelector((state) => state.notes);
-  const terminal = useSelector((state)=> state.terminal)
+  const terminal = useSelector((state) => state.terminal);
+  const tetris = useSelector((state) => state.tetris);
+  const snake = useSelector((state) => state.snake);
   const animatedIcons = useSelector((state) => state.animatedIcons);
-  
+
   return (
     <>
       {showMenu && (
@@ -232,6 +234,8 @@ function TaskBar() {
           {terminal !== 0 && (
             <TaskBarItem name={"Terminal"} icon={terminals} status={terminal} />
           )}
+          {tetris !== 0 && <TaskBarItem name={"Tetris"} status={tetris} />}
+          {snake !== 0 && <TaskBarItem name={"Snake"} status={snake} />}
           <div className="date">
             <div>{format(new Date(), "HH:mm")}</div>
             <div>{format(new Date(), "P", { locale: tr })}</div>

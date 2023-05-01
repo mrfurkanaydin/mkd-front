@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import "./Watch.css";
 import ProgramContainer from "renderer/components/ProgramContainer/ProgramContainer";
+import YoutubeEmbed from "renderer/components/YoutubeEmbed/YoutubeEmbed";
 
 function Watch() {
   const watch = useSelector((state) => state.watch);
@@ -18,14 +19,19 @@ function Watch() {
   };
   return (
     <>
-      <ProgramContainer 
+      <ProgramContainer
         title="İzleme"
         handleStop={handleStop}
         handleMinimize={handleMinimize}
         handleResize={handleResize}
         status={watch}
       >
-        <div>Watch</div>
+        <div className="watch-container">
+          <YoutubeEmbed embedId="rokGy0huYEA" />
+          <YoutubeEmbed embedId="rokGy0huYEA" />
+          <YoutubeEmbed embedId="rokGy0huYEA" />
+          <YoutubeEmbed embedId="uc2CYxZnhMs" />
+        </div>
       </ProgramContainer>
     </>
   );

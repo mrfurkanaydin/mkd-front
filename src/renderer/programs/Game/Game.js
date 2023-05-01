@@ -1,12 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import "./Game.css";
 import ProgramContainer from "renderer/components/ProgramContainer/ProgramContainer";
-import { Snake } from "react-snake-lib";
-import Tetris from 'react-tetris-overlay';
 import { useState } from "react";
 
 function Game() {
-  const [score,setScore] = useState()
+  const [score, setScore] = useState();
   const game = useSelector((state) => state.game);
   const dispatch = useDispatch();
   const handleStop = () => {
@@ -20,9 +18,12 @@ function Game() {
       ? dispatch({ type: "START_PROGRAM", payload: "Game" })
       : dispatch({ type: "RESIZE_PROGRAM", payload: "Game" });
   };
-  const onScoreChange = (score)=>{
+  const onScoreChange = (score) => {
     setScore(score);
-  }
+  };
+  const handleOpenGame = (game) => {
+    dispatch({ type: "START_PROGRAM", payload: game });
+  };
   return (
     <>
       <ProgramContainer
@@ -32,44 +33,20 @@ function Game() {
         handleResize={handleResize}
         status={game}
       >
-        {/* <div style={{"height":"100%"}}> */}
-          {/* {score} */}
-          {/* <Snake
-          width="100%"
-          height="95%"
-          onScoreChange={onScoreChange}
-          // onGameOver={onGameOver}
-          // onGameStart={onGameStart}
-            bgColor="silver"
-            innerBorderColor="#b1b0b0"
-            snakeSpeed={150}
-            borderColor="black"
-            snakeColor="#3e3e3e"
-            snakeHeadColor="#1a1a1a"
-            appleColor="tomato"
-            borderRadius={5}
-            snakeHeadRadius={1}
-            borderWidth={0}
-            shakeBoard={true}
-            boxShadow="rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"
-            size={20}
-            startGameText="Oyuna Başla"
-            startButtonStyle={{
-              color: "white",
-              padding: "6px 20px",
-              backgroundColor: "#1a1a1a",
-              borderRadius: "10px",
-              fontSize: "17px",
-              fontWeight: "600",
-              cursor: "pointer"
-            }}
-            startButtonHoverStyle={{
-              backgroundColor: "#4f4d4d"
-            }}
-            noWall={true}
-          /> */}
-          {/* <Tetris /> */}
-        {/* </div> */}
+        <div className="game-container">
+          <button
+            className="game-button"
+            onClick={() => handleOpenGame("Snake")}
+          >
+            Yılan Oyunu
+          </button>
+          <button
+            className="game-button"
+            onClick={() => handleOpenGame("Tetris")}
+          >
+            Tetris
+          </button>
+        </div>
       </ProgramContainer>
     </>
   );

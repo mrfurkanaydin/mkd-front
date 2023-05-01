@@ -13,7 +13,9 @@ const selectors = {
   Calculator: "lastCalculator",
   Draw: "lastDraw",
   Notes: "lastNotes",
-  Terminal: "lastTerminal"
+  Terminal: "lastTerminal",
+  Snake: "lastSnake",
+  Tetris: "lastTetris"
 };
 
 function TaskBarItem({ name, icon, status }) {

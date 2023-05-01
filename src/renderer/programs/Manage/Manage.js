@@ -1,8 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import "./Manage.css";
 import ProgramContainer from "renderer/components/ProgramContainer/ProgramContainer";
-import { Editor } from "react-draft-wysiwyg";
-import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+
 
 function Manage() {
   const manage = useSelector((state) => state.manage);
@@ -27,15 +26,7 @@ function Manage() {
         handleResize={handleResize}
         status={manage}
       >
-        <>
-          {/* <Editor
-            // editorState={editorState}
-            // toolbarClassName="toolbarClassName"
-            // wrapperClassName="wrapperClassName"
-            // editorClassName="editorClassName"
-            // onEditorStateChange={this.onEditorStateChange}
-          /> */}
-        </>
+        
       </ProgramContainer>
     </>
   );

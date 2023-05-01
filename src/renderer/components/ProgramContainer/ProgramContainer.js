@@ -14,14 +14,15 @@ function ProgramContainer({
   status,
   width,
   height,
-  disable
+  disable,
+  bgColor
 }) {
   const mouse = useSelector((state)=> state.mousePointer)
   return (
     <div>
       {status == 1 && (
         <div handle=".program-header">
-          <div className="program-container">
+          <div className="program-container" style={{backgroundColor:bgColor}}>
             <div className="program-header">
               <div className="program-title">{title}</div>
               <div className="program-header-buttons">
@@ -35,6 +36,7 @@ function ProgramContainer({
                 <button
                   className={`program-header-button ${mouse && "mouse-none"}`}
                   onClick={handleResize}
+                  disabled={disable}
                   style={{ backgroundColor: "#689f38", marginRight: "5px" }}
                 >
                   <IoIosQrScanner />
@@ -58,7 +60,7 @@ function ProgramContainer({
         handle=".program-header-resize">
           <div
             className="program-container-resize"
-            style={{ width: width, height: height }}
+            style={{ width: width, height: height, backgroundColor:bgColor }}
           >
             <div className="program-header-resize">
               <div className="program-title">{title}</div>

@@ -1,0 +1,38 @@
+.snake-gameover-content{
+
+    height: 90%;
+    background-color: rgb(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 100;
+}
+.snake-gameover-title{
+    font-size: 50px;
+    color: white;
+    margin-bottom: 20px;
+}
+.snake-gameover-score{
+    font-size: 30px;
+    color: white;
+    margin-bottom: 20px;
+}
+.snake-gameover-button{
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.snake-score{
+    position: absolute;
+    top: 5%;
+    left: 10px;
+    font-size: 25px;
+    color: white;
+    z-index: 100;
+}

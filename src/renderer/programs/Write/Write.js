@@ -1,6 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import ProgramContainer from "renderer/components/ProgramContainer/ProgramContainer";
 import "./Write.css";
+import { Editor } from "react-draft-wysiwyg";
+import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 function Write() {
   const write = useSelector((state) => state.write);
@@ -24,8 +26,17 @@ function Write() {
         handleMinimize={handleMinimize}
         handleResize={handleResize}
         status={write}
+        bgColor="white"
       >
-        <div>Write</div>
+        <>
+          <Editor
+            // editorState={editorState}
+            toolbarClassName="toolbarClassName"
+            wrapperClassName="wrapperClassName"
+            editorClassName="editorClassName"
+            // onEditorStateChange={this.onEditorStateChange}
+          />
+        </>
       </ProgramContainer>
     </>
   );

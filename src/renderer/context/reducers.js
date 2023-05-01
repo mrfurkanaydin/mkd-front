@@ -10,7 +10,9 @@ const PROGRAMS = {
   Calculator: "calculator",
   Draw: "draw",
   Notes: "notes",
-  Terminal: "terminal"
+  Terminal: "terminal",
+  Snake: "snake",
+  Tetris: "tetris"
 };
 
 const INITIAL_STATE = {
