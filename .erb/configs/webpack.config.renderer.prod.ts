@@ -88,6 +88,10 @@ const configuration: webpack.Configuration = {
           'file-loader',
         ],
       },
+      {
+        test: /\.pdf$/, // .pdf uzantısına sahip dosyaları hedef alır
+        use: 'file-loader?name=[path][name].[ext]',// url-loader veya file-loader kullanabilirsiniz
+      },
     ],
   },
 
