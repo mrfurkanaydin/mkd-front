@@ -52,13 +52,13 @@ function Read() {
       >
         <>
           <Document
-          className="read-document"
             file={{
               url: "https://www.btk.gov.tr/uploads/pages/slug/bulut-bilisim.pdf"
             }}
             onLoadSuccess={onDocumentLoadSuccess}
-          >
-            <Page pageNumber={pageNumber} scale="1.1"/>
+            >
+            
+            <Page pageNumber={pageNumber} scale="1.1" className="read-document"/>
           </Document>
           <div>
             <p>
