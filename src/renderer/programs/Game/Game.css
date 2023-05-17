@@ -4,7 +4,7 @@
     flex-wrap: wrap;
 }
 
-.game-button{
+/*.game-button{
     background-color: white;
     border: none;
     border-radius: 5px;
@@ -17,4 +17,19 @@
 }
 .game-button:hover{
     background-color: #e6e6e6;
+}*/
+.game-button{
+    background-color: rgb(97, 146, 219);
+    color:white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    font-size: 20px;
+    height: 150px;
+    width: 150px;
+    cursor: pointer;
+}
+.game-button:hover{
+    background-color: rgb(136, 168, 216);
 }

@@ -1,4 +1,4 @@
-.prev-button {
+/*.prev-button {
   width: 5%;
   height: 5%;
   position: absolute;
@@ -19,6 +19,38 @@
   top: 50%;
   border-radius: 15px;
   background-color: rgb(141, 141, 141);
+  font-size: 20px;
+  border: none;
+}
+.read-document {
+  height: calc(100% - 55px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 0;
+}*/
+.prev-button {
+  width: 5%;
+  height: 5%;
+  position: absolute;
+  left: 25%;
+  top: 50%;
+  border-radius: 15px;
+  background-color: rgb(97, 146, 219);
+  font-size: 20px;
+  border: none;
+}
+.next-button {
+  width: 5%;
+  height: 5%;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  right: 25%;
+  top: 50%;
+  border-radius: 15px;
+  background-color: rgb(97, 146, 219);
   font-size: 20px;
   border: none;
 }
