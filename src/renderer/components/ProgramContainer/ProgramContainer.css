@@ -1,4 +1,4 @@
-/*.program-header-button {
+.program-header-button {
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -15,7 +15,7 @@
   display: none;
 }
 
-.program-container {
+.program-container-dark {
   position: absolute;
   left: 0;
   top: 0;
@@ -24,7 +24,7 @@
   background-color: black;
   z-index: 100;
 }
-.program-container-resize {
+.program-container-resize-dark {
   position: absolute;
   left: 15%;
   top: 15%;
@@ -35,7 +35,7 @@
   z-index: 100;
 }
 
-.program-header {
+.program-header-dark {
   width: 100%;
   height: fit-content;
   display: flex;
@@ -48,7 +48,7 @@
   padding-top: 5px;
   padding-bottom: 5px;
 }
-.program-header-resize {
+.program-header-resize-dark {
   width: 100%;
   height: fit-content;
   display: flex;
@@ -78,23 +78,6 @@
 }
 .mouse-none{
   cursor: none;
-}
-*/
-.program-header-button {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  border: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  background-color: transparent;
-  color: white;
-}
-
-.program-header-button:disabled{
-  display: none;
 }
 
 .program-container {
@@ -144,20 +127,4 @@
   padding-bottom: 5px;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
-}
-.program-title {
-  flex: 1;
-  padding-left: 10px;
-}
-.program-header-buttons {
-  display: flex;
-  flex-direction: row;
-  padding-right: 10px;
-}
-.container {
-  width: 100%;
-  height: 100%;
-}
-.mouse-none{
-  cursor: none;
 }
