@@ -15,7 +15,9 @@ function ProgramContainer({
   width,
   height,
   disable,
-  bgColor
+  bgColor,
+  containerWidth="100%",
+  containerHeight="100%"
 }) {
   const mouse = useSelector((state)=> state.mousePointer)
   return (
@@ -50,7 +52,8 @@ function ProgramContainer({
                 </button>
               </div>
             </div>
-            <div className="container">{children}</div>
+            <div className="container" style={{width:containerWidth,height:containerHeight}}>{children}</div>
+
           </div>
         </div>
       )}
@@ -89,7 +92,7 @@ function ProgramContainer({
                 </button>
               </div>
             </div>
-            <div className="container">{children}</div>
+            <div className="container" style={{width:containerWidth,height:containerHeight}}>{children}</div>
           </div>
         </Draggable>
       )}

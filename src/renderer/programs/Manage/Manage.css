@@ -1,0 +1,27 @@
+.manage-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    margin: 15px;
+    height: 200px;
+    width: 200px;
+    background-color: transparent;
+    border:0;
+}
+.manage-img{
+    width: 90%;
+}
+.manage-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.manage-text{
+    font-size: 20px;
+    text-align: center;
+    margin-top: 5px;
+}

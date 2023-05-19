@@ -35,6 +35,8 @@ function SnakeGame() {
         handleResize={handleResize}
         status={snake}
         disable={true}
+        containerWidth="100%"
+        containerHeight="calc(100% - 40px)"
       >
         {gameOver ? (
           <div className="snake-gameover-content">
@@ -52,7 +54,7 @@ function SnakeGame() {
             <div className="snake-score">Skor: {score}</div>
             <Snake
               width="100%"
-              height="95%"
+              height="100%"
               onScoreChange={onScoreChange}
               onGameOver={onGameOver}
               // onGameStart={onGameStart}

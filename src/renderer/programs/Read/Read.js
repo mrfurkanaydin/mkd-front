@@ -49,40 +49,50 @@ function Read() {
         handleResize={handleResize}
         status={read}
         bgColor="#fff"
+        containerWidth="100%"
+        containerHeight="calc(100% - 40px)"
       >
-        <>
+        <div className="read-container">
           <Document
             file={{
               url: "https://www.btk.gov.tr/uploads/pages/slug/bulut-bilisim.pdf"
             }}
             onLoadSuccess={onDocumentLoadSuccess}
-            >
-            
-            <Page pageNumber={pageNumber} scale="1.1" className="read-document"/>
-          </Document>
-          <div>
-            <p>
-              {/* Page {pageNumber || (numPages ? 1 : "--")} of {numPages || "--"} */}
-            </p>
-            <button
-              type="button"
-              disabled={pageNumber <= 1}
-              onClick={previousPage}
-              className="prev-button"
-            >
-              {"<"}
-            </button>
-            <button
-              type="button"
-              disabled={pageNumber >= numPages}
-              onClick={nextPage}
-              className="next-button"
+          >
 
-            >
-              {">"}
-            </button>
-          </div>
-        </>
+            {read == 3 ? (
+              <Page
+              pageNumber={pageNumber}
+              scale="1.0"
+              // className="read-document"
+            />
+            ) : (
+              <Page
+              pageNumber={pageNumber}
+              scale="1.1"
+              // className="read-document"
+            />
+            )}
+            
+          </Document>
+
+          <button
+            type="button"
+            disabled={pageNumber <= 1}
+            onClick={previousPage}
+            className="prev-button"
+          >
+            {"<"}
+          </button>
+          <button
+            type="button"
+            disabled={pageNumber >= numPages}
+            onClick={nextPage}
+            className="next-button"
+          >
+            {">"}
+          </button>
+        </div>
       </ProgramContainer>
     </>
   );
