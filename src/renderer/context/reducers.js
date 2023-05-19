@@ -12,7 +12,11 @@ const PROGRAMS = {
   Notes: "notes",
   Terminal: "terminal",
   Snake: "snake",
-  Tetris: "tetris"
+  Tetris: "tetris",
+  AddStudent: "addStudent",
+  AddTeacher: "addTeacher",
+  ListStudent: "listStudent",
+  ListTeacher: "listTeacher",
 };
 
 const INITIAL_STATE = {

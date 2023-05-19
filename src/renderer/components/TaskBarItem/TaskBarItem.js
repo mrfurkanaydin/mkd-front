@@ -15,7 +15,11 @@ const selectors = {
   Notes: "lastNotes",
   Terminal: "lastTerminal",
   Snake: "lastSnake",
-  Tetris: "lastTetris"
+  Tetris: "lastTetris",
+  AddStudent: "lastAddStudent",
+  AddTeacher: "lastAddTeacher",
+  ListStudent: "lastListStudent",
+  ListTeacher: "lastListTeacher",
 };
 
 function TaskBarItem({ name, icon, status }) {

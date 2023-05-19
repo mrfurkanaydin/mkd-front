@@ -32,22 +32,26 @@ function Manage() {
         containerHeight="calc(100% - 40px)"
       >
         <div className="manage-container">
-          <button className="manage-box">
-            <img className="manage-img" src={ogrenciEkle} />
-            <div className="manage-text">Öğrenci Ekle</div>
-          </button>
-          <button className="manage-box">
-            <img className="manage-img" src={ogrenciListele} />
-            <div className="manage-text">Öğrenci Ekle</div>
-          </button>
-          <button className="manage-box">
-            <img className="manage-img" src={ogretmenEkle} />
-            <div className="manage-text">Öğrenci Ekle</div>
-          </button>
-          <button className="manage-box">
-            <img className="manage-img" src={ogretmenListele} />
-            <div className="manage-text">Öğrenci Ekle</div>
-          </button>
+          <div>
+            <button onClick={()=>{dispatch({ type: "RESIZE_PROGRAM", payload: "AddStudent" })}} className="manage-box">
+              <img className="manage-img" src={ogrenciEkle} />
+              <div className="manage-text">Öğrenci Ekle</div>
+            </button>
+            <button onClick={()=>{dispatch({ type: "RESIZE_PROGRAM", payload: "AddTeacher" })}} className="manage-box">
+              <img className="manage-img" src={ogretmenEkle} />
+              <div className="manage-text">Öğretmen Ekle</div>
+            </button>
+          </div>
+          <div>
+            <button onClick={()=>{dispatch({ type: "RESIZE_PROGRAM", payload: "ListStudent" })}} className="manage-box">
+              <img className="manage-img" src={ogrenciListele} />
+              <div className="manage-text">Öğrenci Listele</div>
+            </button>
+            <button onClick={()=>{dispatch({ type: "RESIZE_PROGRAM", payload: "ListTeacher" })}} className="manage-box">
+              <img className="manage-img" src={ogretmenListele} />
+              <div className="manage-text">Öğretmen Listele</div>
+            </button>
+          </div>
         </div>
       </ProgramContainer>
     </>

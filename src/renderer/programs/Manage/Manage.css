@@ -24,4 +24,12 @@
     font-size: 20px;
     text-align: center;
     margin-top: 5px;
+    color: black;
+}
+
+.manage-text-dark{
+    font-size: 20px;
+    text-align: center;
+    margin-top: 5px;
+    color: white;
 }

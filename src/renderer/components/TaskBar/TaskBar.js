@@ -10,17 +10,21 @@ import dinleme from "../../../assets/dinleme.png";
 import dinlemegif from "../../../assets/dinleme.gif";
 import oyun from "../../../assets/oyun.png";
 import oyungif from "../../../assets/oyun.gif";
-import yonetim from "../../../assets/yönetim.png";
-import yonetimgif from "../../../assets/yönetim.gif";
+import yonetim from "../../../assets/yonetim.png";
+import yonetimgif from "../../../assets/yonetim.gif";
 import option from "../../../assets/secenekler.png";
 import control from "../../../assets/kontrol.png";
-import equipment from "../../../assets/donatılar.png";
+import equipment from "../../../assets/donatilar.png";
 import taskmanager from "../../../assets/taskmanager.png";
 import terminals from "../../../assets/terminal.png";
 import calculators from "../../../assets/hesapmakinesi.png";
 import draws from "../../../assets/cizim.png";
 import notess from "../../../assets/notlar.png";
 import dictinary from "../../../assets/sozluk.png";
+import addStudents from "../../../assets/ogrenciEkle.png";
+import addTeachers from "../../../assets/ogretmenEkle.png";
+import listStudents from "../../../assets/ogrenciListele.png";
+import listTeachers from "../../../assets/ogretmenListele.png";
 import React, { useState } from "react";
 import "./TaskBar.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -69,6 +73,11 @@ function TaskBar() {
     dispatch({ type: "RESIZE_PROGRAM", payload: "Terminal" });
     handleToggle();
   };
+  const startDictinary = () => {
+    dispatch({ type: "RESIZE_PROGRAM", payload: "Dictinary" });
+    handleToggle();
+  };
+  
   const handleQuit = () => {
     window.electron.ipcRenderer.sendMessage("send-shutdown");
   };
@@ -86,6 +95,10 @@ function TaskBar() {
   const terminal = useSelector((state) => state.terminal);
   const tetris = useSelector((state) => state.tetris);
   const snake = useSelector((state) => state.snake);
+  const addStudent = useSelector((state) => state.addStudent);
+  const addTeacher = useSelector((state) => state.addTeacher);
+  const listStudent = useSelector((state) => state.listStudent);
+  const listTeacher = useSelector((state) => state.listTeacher);
   const animatedIcons = useSelector((state) => state.animatedIcons);
 
   return (
@@ -236,6 +249,10 @@ function TaskBar() {
           )}
           {tetris !== 0 && <TaskBarItem name={"Tetris"} status={tetris} />}
           {snake !== 0 && <TaskBarItem name={"Snake"} status={snake} />}
+          {addStudent !== 0 && <TaskBarItem name={"AddStudent"} icon={addStudents} status={addStudent} />}
+          {addTeacher !== 0 && <TaskBarItem name={"AddTeacher"} icon={addTeachers} status={addTeacher} />}
+          {listStudent !== 0 && <TaskBarItem name={"ListStudent"} icon={listStudents} status={listStudent} />}
+          {listTeacher !== 0 && <TaskBarItem name={"ListTeacher"} icon={listTeachers} status={listTeacher} />}
           <div className="date">
             <div>{format(new Date(), "HH:mm")}</div>
             <div>{format(new Date(), "P", { locale: tr })}</div>

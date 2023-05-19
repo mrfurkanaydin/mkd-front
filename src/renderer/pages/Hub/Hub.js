@@ -12,8 +12,8 @@ import dinleme from "../../../assets/dinleme.png";
 import dinlemegif from "../../../assets/dinleme.gif";
 import oyun from "../../../assets/oyun.png";
 import oyungif from "../../../assets/oyun.gif";
-import yonetim from "../../../assets/yönetim.png";
-import yonetimgif from "../../../assets/yönetim.gif";
+import yonetim from "../../../assets/yonetim.png";
+import yonetimgif from "../../../assets/yonetim.gif";
 import Read from "renderer/programs/Read/Read";
 import Options from "renderer/programs/Options/Options";
 import Write from "renderer/programs/Write/Write";
@@ -29,6 +29,10 @@ import Notes from "renderer/programs/Notes/Notes";
 import Terminal from "renderer/programs/Terminal/Terminal";
 import Snake from "renderer/programs/Game/Snake/Snake";
 import Tetris from "renderer/programs/Game/Tetris/Tetris";
+import AddStudent from "renderer/programs/Manage/AddStudent/AddStudent";
+import AddTeacher from "renderer/programs/Manage/AddTeacher/AddTeacher";
+import ListStudent from "renderer/programs/Manage/ListStudent/ListStudent";
+import ListTeacher from "renderer/programs/Manage/ListTeacher/ListTeacher";
 
 function Hub() {
   const animatedIcons = useSelector((state) => state.animatedIcons);
@@ -64,6 +68,10 @@ function Hub() {
         <Terminal/>
         <Snake/>
         <Tetris/>
+        <AddStudent/>
+        <AddTeacher/>
+        <ListStudent/>
+        <ListTeacher/>
       </>
 
       <TaskBar />
