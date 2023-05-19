@@ -47,3 +47,23 @@
     padding: 20px;
     font-size: 20px;
 }
+.addTeacher-man-label {
+    font-size: 25px;
+    margin-right: 10px;
+    color:black;
+}
+.addTeacher-man-label-dark {
+    font-size: 25px;
+    margin-right: 10px;
+    color:white;
+}
+.addTeacher-woman-label {
+    font-size: 25px;
+    margin-right: 5px;
+    color:black;
+}
+.addTeacher-woman-label-dark {
+    font-size: 25px;
+    margin-right: 5px;
+    color:white;
+}

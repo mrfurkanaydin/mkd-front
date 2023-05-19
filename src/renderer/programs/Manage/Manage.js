@@ -8,6 +8,7 @@ import ogrenciListele from "../../../assets/ogrenciListele.png";
 
 function Manage() {
   const manage = useSelector((state) => state.manage);
+  const theme = useSelector((state) => state.theme);
   const dispatch = useDispatch();
   const handleStop = () => {
     dispatch({ type: "STOP_PROGRAM", payload: "Manage" });
@@ -35,21 +36,22 @@ function Manage() {
           <div>
             <button onClick={()=>{dispatch({ type: "RESIZE_PROGRAM", payload: "AddStudent" })}} className="manage-box">
               <img className="manage-img" src={ogrenciEkle} />
-              <div className="manage-text">Öğrenci Ekle</div>
+              
+              <div className = { theme == 0 ? "manage-text" : "manage-text-dark"}>Öğrenci Ekle</div>
             </button>
             <button onClick={()=>{dispatch({ type: "RESIZE_PROGRAM", payload: "AddTeacher" })}} className="manage-box">
               <img className="manage-img" src={ogretmenEkle} />
-              <div className="manage-text">Öğretmen Ekle</div>
+              <div className = { theme == 0 ? "manage-text" : "manage-text-dark"}>Öğretmen Ekle</div>
             </button>
           </div>
           <div>
             <button onClick={()=>{dispatch({ type: "RESIZE_PROGRAM", payload: "ListStudent" })}} className="manage-box">
               <img className="manage-img" src={ogrenciListele} />
-              <div className="manage-text">Öğrenci Listele</div>
+              <div className = { theme == 0 ? "manage-text" : "manage-text-dark"}>Öğrenci Listele</div>
             </button>
             <button onClick={()=>{dispatch({ type: "RESIZE_PROGRAM", payload: "ListTeacher" })}} className="manage-box">
               <img className="manage-img" src={ogretmenListele} />
-              <div className="manage-text">Öğretmen Listele</div>
+              <div className = { theme == 0 ? "manage-text" : "manage-text-dark"}>Öğretmen Listele</div>
             </button>
           </div>
         </div>

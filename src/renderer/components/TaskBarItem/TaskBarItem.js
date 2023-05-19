@@ -25,12 +25,13 @@ const selectors = {
 function TaskBarItem({ name, icon, status }) {
   const dispatch = useDispatch();
   const lastSelector = useSelector((state) => state);
+  const theme = useSelector((state) => state.theme);
   const handleOpen = () => {
     status == 2 && (
       lastSelector[selectors[name]] == 1
         ? dispatch({ type: "START_PROGRAM", payload: name })
-        : lastSelector[selectors[name]] == 3  &&
-          dispatch({ type: "RESIZE_PROGRAM", payload: name })
+        : lastSelector[selectors[name]] == 3 &&
+        dispatch({ type: "RESIZE_PROGRAM", payload: name })
     )
   };
 
@@ -38,7 +39,7 @@ function TaskBarItem({ name, icon, status }) {
     <div>
       <button
         className={
-          status == 1 || status == 3 ? "taskbar-item-active" : "taskbar-item"
+          status == 1 || status == 3 ? theme == 0 ? "taskbar-item-active" : "taskbar-item-active-dark" : theme == 0 ? "taskbar-item" : "taskbar-item-dark"
         }
         onClick={handleOpen}
       >
@@ -47,5 +48,4 @@ function TaskBarItem({ name, icon, status }) {
     </div>
   );
 }
-
 export default TaskBarItem;

@@ -21,7 +21,6 @@ function ProgramContainer({
 }) {
   const mouse = useSelector((state) => state.mousePointer);
   const theme = useSelector((state) => state.theme);
-  console.log(theme);
   return (
     <div>
       {status != 0 && (

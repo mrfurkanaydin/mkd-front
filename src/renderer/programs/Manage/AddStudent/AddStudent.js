@@ -5,6 +5,7 @@ import { Field, Formik, Form } from "formik";
 
 function AddStudent() {
   const addStudent = useSelector((state) => state.addStudent);
+  const theme = useSelector((state) => state.theme);
   const dispatch = useDispatch();
   const handleStop = () => {
     dispatch({ type: "STOP_PROGRAM", payload: "AddStudent" });
@@ -47,7 +48,7 @@ function AddStudent() {
             {({ values }) => (
               <Form style={{marginTop:50}}>
                 <div className="addStudent-container">
-                  <div className="addStudent-label">Öğrenci Adı</div>
+                  <div className= { theme == 0 ? "addStudent-label" : "addStudent-label-dark" }>Öğrenci Adı</div>
                   <Field
                     className="addStudent-input"
                     id="firstName"
@@ -55,7 +56,7 @@ function AddStudent() {
                   />
                 </div>
                 <div className="addStudent-container">
-                  <div className="addStudent-label">Öğrenci Soyadı</div>
+                  <div className= { theme == 0 ? "addStudent-label" : "addStudent-label-dark" }>Öğrenci Soyadı</div>
 
                   <Field
                     className="addStudent-input"
@@ -64,25 +65,25 @@ function AddStudent() {
                   />
                 </div>
                 <div className="addStudent-container">
-                  <div className="addStudent-label">Cinsiyet</div>
+                  <div className= { theme == 0 ? "addStudent-label" : "addStudent-label-dark" }>Cinsiyet</div>
                   <Field
                     className="addStudent-input"
                     type="radio"
                     name="gender"
                     value="Erkek"
                   />
-                  <div style={{ fontSize: 25, marginRight: 10 }}>Erkek</div>
+                  <div className={theme == 0 ? "addStudent-man-label" : "addStudent-man-label-dark"}>Erkek</div>
                   <Field
                     className="addStudent-input"
                     type="radio"
                     name="gender"
                     value="Kadın"
                   />
-                  <div style={{ fontSize: 25, marginRight: 5 }}>Kadın</div>
+                  <div className={theme == 0 ? "addStudent-woman-label" : "addStudent-woman-label-dark"}>Kadın</div>
                 </div>
                 <div className="addStudent-container">
-                  <div className="addStudent-label">Doğum Tarihi</div>
-
+                  <div className= { theme == 0 ? "addStudent-label" : "addStudent-label-dark" }>Doğum Tarihi</div>
+                  
                   <Field
                     className="addStudent-input"
                     id="birthDate"
@@ -90,7 +91,8 @@ function AddStudent() {
                   />
                 </div>
                 <div className="addStudent-container">
-                  <button className="addStudent-button" type="submit">Kaydet</button>
+                  <button className = { theme == 0 ? "addStudent-button" : "addStudent-button-dark" } type="submit">Kaydet</button>
+                  
                 </div>
               </Form>
             )}

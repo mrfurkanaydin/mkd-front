@@ -8,6 +8,7 @@ import { useState } from "react";
 function Terminal() {
   const terminal = useSelector((state) => state.terminal);
   const dispatch = useDispatch();
+  const theme = useSelector((state) => state.theme);
   const [output, setOutput] = useState([]);
   const handleStop = () => {
     dispatch({ type: "STOP_PROGRAM", payload: "Terminal" });
@@ -106,7 +107,7 @@ function Terminal() {
         <div
           style={{ height: "500px", overflowY: "scroll", scrollbar: "hidden" }}
         >
-          <div className="terminal-container">
+          <div className={theme == 0 ? "terminal-container" : "terminal-container-dark"}>
             <div className="terminal-output">
               {output?.map((item, index) => (
                 <div key={index} className="terminal-output-text">
@@ -134,7 +135,7 @@ function Terminal() {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.command}
-                  className="terminal-input"
+                  className={theme == 0 ? "terminal-input" : "terminal-input-dark"}
                   placeholder="Komutları Görmek İçin 'yardım' Yazınız"
                 />
               </form>

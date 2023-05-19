@@ -7,6 +7,7 @@ import { useState } from "react";
 function Notes() {
   const [note, setNote] = useState([]);
   const notes = useSelector((state) => state.notes);
+  const theme = useSelector((state) => state.theme);
   const dispatch = useDispatch();
   const handleStop = () => {
     dispatch({ type: "STOP_PROGRAM", payload: "Notes" });
@@ -59,7 +60,7 @@ function Notes() {
           </Formik>
           <div className="notes-list">
             {note?.map((item, index) => (
-              <div className="notes-list-item" key={index}>
+              <div className={theme == 0 ? "notes-list-item" : "notes-list-item-dark"} key={index}>
                 {item}
               </div>
             ))}

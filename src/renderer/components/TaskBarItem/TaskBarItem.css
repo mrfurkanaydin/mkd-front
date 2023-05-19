@@ -1,4 +1,4 @@
-.taskbar-item {
+.taskbar-item-dark {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -29,7 +29,18 @@
   height: 45px;
   object-fit: cover;
 }
-
+.taskbar-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  margin-left: 10px;
+  background-color: transparent;
+  border: 0;
+  height: 100%;
+  font-family: 'Lato', sans-serif;
+}
 .taskbar-item:hover {
   background-color: rgb(136, 168, 216);
 }

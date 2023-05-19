@@ -22,6 +22,16 @@
   font-size: 20px;
   border: none;
 }
+.read-container-dark {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  overflow: scroll;
+  background-color: black;
+}
 .read-document {
   height: inherit;
   display: flex;
@@ -62,6 +72,7 @@
   height: 100%;
   width: 100%;
   overflow: scroll;
+  background-color: white;
 }
 .react-pdf__Document {
   display: flex;

@@ -6,6 +6,7 @@ import ProgramContainer from "renderer/components/ProgramContainer/ProgramContai
 
 function AddTeacher() {
   const addTeacher = useSelector((state) => state.addTeacher);
+  const theme = useSelector((state) => state.theme);
   const dispatch = useDispatch();
   const handleStop = () => {
     dispatch({ type: "STOP_PROGRAM", payload: "AddTeacher" });
@@ -49,7 +50,7 @@ function AddTeacher() {
             {({ values }) => (
               <Form style={{marginTop:50}}>
                 <div className="addTeacher-container">
-                  <div className="addTeacher-label">Öğretmen Adı</div>
+                  <div className={ theme == 0 ? "addTeacher-label" : "addTeacher-label-dark" }>Öğretmen Adı</div>
                   <Field
                     className="addTeacher-input"
                     id="firstName"
@@ -57,7 +58,7 @@ function AddTeacher() {
                   />
                 </div>
                 <div className="addTeacher-container">
-                  <div className="addTeacher-label">Öğretmen Soyadı</div>
+                  <div className={ theme == 0 ? "addTeacher-label" : "addTeacher-label-dark" }>Öğretmen Soyadı</div>
 
                   <Field
                     className="addTeacher-input"
@@ -66,24 +67,24 @@ function AddTeacher() {
                   />
                 </div>
                 <div className="addTeacher-container">
-                  <div className="addTeacher-label">Cinsiyet</div>
+                  <div className={ theme == 0 ? "addTeacher-label" : "addTeacher-label-dark" }>Cinsiyet</div>
                   <Field
                     className="addTeacher-input"
                     type="radio"
                     name="gender"
                     value="Erkek"
                   />
-                  <div style={{ fontSize: 25, marginRight: 10 }}>Erkek</div>
+                  <div className={theme == 0 ? "addTeacher-man-label" : "addTeacher-man-label-dark"}>Erkek</div>
                   <Field
                     className="addTeacher-input"
                     type="radio"
                     name="gender"
                     value="Kadın"
                   />
-                  <div style={{ fontSize: 25, marginRight: 5 }}>Kadın</div>
+                  <div className={theme == 0 ? "addTeacher-man-label" : "addTeacher-man-label-dark"}>Kadın</div>
                 </div>
                 <div className="addTeacher-container">
-                  <div className="addTeacher-label">Doğum Tarihi</div>
+                  <div className={ theme == 0 ? "addTeacher-label" : "addTeacher-label-dark" }>Doğum Tarihi</div>
 
                   <Field
                     className="addTeacher-input"
@@ -92,7 +93,7 @@ function AddTeacher() {
                   />
                 </div>
                 <div className="addTeacher-container">
-                  <div className="addTeacher-label">Email</div>
+                  <div className={ theme == 0 ? "addTeacher-label" : "addTeacher-label-dark" }>Email</div>
 
                   <Field
                     className="addTeacher-input"
@@ -102,7 +103,7 @@ function AddTeacher() {
                   />
                 </div>
                 <div className="addTeacher-container">
-                  <button className="addTeacher-button" type="submit">Kaydet</button>
+                  <button className={ theme == 0 ? "addTeacher-button" : "addTeacher-button-dark" } type="submit">Kaydet</button>
                 </div>
               </Form>
             )}

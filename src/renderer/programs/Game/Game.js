@@ -6,7 +6,9 @@ import { useState } from "react";
 function Game() {
   const [score, setScore] = useState();
   const game = useSelector((state) => state.game);
+  const theme = useSelector((state) => state.theme);
   const dispatch = useDispatch();
+
   const handleStop = () => {
     dispatch({ type: "STOP_PROGRAM", payload: "Game" });
   };
@@ -35,13 +37,13 @@ function Game() {
       >
         <div className="game-container">
           <button
-            className="game-button"
+            className={theme == 0 ? "game-button" : "game-button-dark"}
             onClick={() => handleOpenGame("Snake")}
           >
             Yılan Oyunu
           </button>
           <button
-            className="game-button"
+            className={theme == 0 ? "game-button" : "game-button-dark"}
             onClick={() => handleOpenGame("Tetris")}
           >
             Tetris

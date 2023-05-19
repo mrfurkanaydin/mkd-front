@@ -47,3 +47,23 @@
     padding: 20px;
     font-size: 20px;
 }
+.addStudent-man-label {
+    font-size: 25px;
+    margin-right: 10px;
+    color:black;
+}
+.addStudent-man-label-dark {
+    font-size: 25px;
+    margin-right: 10px;
+    color:white;
+}
+.addStudent-woman-label {
+    font-size: 25px;
+    margin-right: 5px;
+    color:black;
+}
+.addStudent-woman-label-dark {
+    font-size: 25px;
+    margin-right: 5px;
+    color:white;
+}

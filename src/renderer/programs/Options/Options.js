@@ -144,7 +144,7 @@ function Options() {
                     </div>
                     <div className={theme == 0 ? "options-item-desc" : "options-item-desc-dark"}>
                       <div>Tema Değiştir</div>
-                      <div className={theme == 0 ? "options-item-subtitle": "options-item-subtitle-dark"}>Uygulamanın Temasını Değiştirir. (Henüz Aktif Değil)</div>
+                      <div className={theme == 0 ? "options-item-subtitle": "options-item-subtitle-dark"}>Uygulamanın Temasını Değiştirir.</div>
                     </div>
                   </div>
 

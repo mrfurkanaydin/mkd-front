@@ -27,7 +27,7 @@ function Read() {
 
   const read = useSelector((state) => state.read);
   const dispatch = useDispatch();
-
+  const theme = useSelector((state) => state.theme);
   const handleStop = () => {
     dispatch({ type: "STOP_PROGRAM", payload: "Read" });
   };
@@ -52,7 +52,7 @@ function Read() {
         containerWidth="100%"
         containerHeight="calc(100% - 40px)"
       >
-        <div className="read-container">
+        <div className={theme == 0 ? "read-container" : "read-container-dark"}>
           <Document
             file={{
               url: "https://www.btk.gov.tr/uploads/pages/slug/bulut-bilisim.pdf"
@@ -80,7 +80,7 @@ function Read() {
             type="button"
             disabled={pageNumber <= 1}
             onClick={previousPage}
-            className="prev-button"
+            className={theme == 0 ? "prev-button" : "prev-button-dark"}
           >
             {"<"}
           </button>
@@ -88,7 +88,7 @@ function Read() {
             type="button"
             disabled={pageNumber >= numPages}
             onClick={nextPage}
-            className="next-button"
+            className={theme == 0 ? "next-button" : "next-button-dark"}
           >
             {">"}
           </button>
