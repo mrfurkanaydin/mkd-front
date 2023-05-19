@@ -16,85 +16,70 @@ function ProgramContainer({
   height,
   disable,
   bgColor,
-  containerWidth="100%",
-  containerHeight="100%"
+  containerWidth = "100%",
+  containerHeight = "100%"
 }) {
-  const mouse = useSelector((state)=> state.mousePointer)
+  const mouse = useSelector((state) => state.mousePointer);
   return (
     <div>
-      {status == 1 && (
+      {status != 0 && (
         <div handle=".program-header">
-          <div className="program-container" style={{backgroundColor:bgColor}}>
-            <div className="program-header">
-              <div className="program-title">{title}</div>
-              <div className="program-header-buttons">
-                <button
-                  className={`program-header-button ${mouse && "mouse-none"}`}
-                  onClick={handleMinimize}
-                  style={{ backgroundColor: "#ffc400", marginRight: "5px" }}
-                >
-                  <FaRegWindowMinimize />
-                </button>
-                <button
-                  className={`program-header-button ${mouse && "mouse-none"}`}
-                  onClick={handleResize}
-                  disabled={disable}
-                  style={{ backgroundColor: "#689f38", marginRight: "5px" }}
-                >
-                  <IoIosQrScanner />
-                </button>
-                <button
-                  className={`program-header-button ${mouse && "mouse-none"}`}
-                  onClick={handleStop}
-                  style={{ backgroundColor: "#b71c1c" }}
-                >
-                  <TfiClose />
-                </button>
-              </div>
-            </div>
-            <div className="container" style={{width:containerWidth,height:containerHeight}}>{children}</div>
+          <Draggable
+            handle=".program-header-resize"
 
-          </div>
-        </div>
-      )}
-      {status == 3 && (
-        <Draggable
-
-        handle=".program-header-resize">
-          <div
-            className="program-container-resize"
-            style={{ width: width, height: height, backgroundColor:bgColor }}
+            position={status == 1 && { x: 0, y: 0 }}
           >
-            <div className="program-header-resize">
-              <div className="program-title">{title}</div>
-              <div className="program-header-buttons">
-                <button
-                  className={`program-header-button ${mouse && "mouse-none"}`}
-                  onClick={handleMinimize}
-                  style={{ backgroundColor: "#ffc400", marginRight: "5px"}}
-                >
-                  <FaRegWindowMinimize />
-                </button>
-                <button
-                  className={`program-header-button ${mouse && "mouse-none"}`}
-                  onClick={handleResize}
-                  disabled={disable}
-                  style={{ backgroundColor: "#689f38", marginRight: "5px" }}
-                >
-                  <IoIosQrScanner />
-                </button>
-                <button
-                  className={`program-header-button ${mouse && "mouse-none"}`}
-                  onClick={handleStop}
-                  style={{ backgroundColor: "#b71c1c" }}
-                >
-                  <TfiClose />
-                </button>
+            {/* <div className="program-container" style={{backgroundColor:bgColor}}> */}
+            <div
+              className={
+                status == 2
+                  ? "program-container-none"
+                  : status == 3
+                  ? "program-container-resize"
+                  : "program-container"
+              }
+              style={{ width: width, height: height, backgroundColor:bgColor }}
+            >
+              <div
+                className={
+                  status == 3 ? "program-header-resize" : "program-header"
+                }
+              >
+                <div className="program-title">{title}</div>
+                <div className="program-header-buttons">
+                  <button
+                    className={`program-header-button ${mouse && "mouse-none"}`}
+                    onClick={handleMinimize}
+                    style={{ backgroundColor: "#ffc400", marginRight: "5px" }}
+                  >
+                    <FaRegWindowMinimize />
+                  </button>
+                  <button
+                    className={`program-header-button ${mouse && "mouse-none"}`}
+                    onClick={handleResize}
+                    disabled={disable}
+                    style={{ backgroundColor: "#689f38", marginRight: "5px" }}
+                  >
+                    <IoIosQrScanner />
+                  </button>
+                  <button
+                    className={`program-header-button ${mouse && "mouse-none"}`}
+                    onClick={handleStop}
+                    style={{ backgroundColor: "#b71c1c" }}
+                  >
+                    <TfiClose />
+                  </button>
+                </div>
+              </div>
+              <div
+                className="container"
+                style={{ width: containerWidth, height: containerHeight }}
+              >
+                {children}
               </div>
             </div>
-            <div className="container" style={{width:containerWidth,height:containerHeight}}>{children}</div>
-          </div>
-        </Draggable>
+          </Draggable>
+        </div>
       )}
     </div>
   );
