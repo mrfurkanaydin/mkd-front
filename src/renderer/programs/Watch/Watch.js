@@ -25,6 +25,8 @@ function Watch() {
         handleMinimize={handleMinimize}
         handleResize={handleResize}
         status={watch}
+        containerWidth="100%"
+        containerHeight="calc(100% - 40px)"
       >
         <div className="watch-container">
           <YoutubeEmbed embedId="rokGy0huYEA" />
