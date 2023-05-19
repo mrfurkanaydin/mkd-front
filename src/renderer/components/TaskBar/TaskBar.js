@@ -242,7 +242,7 @@ function TaskBar() {
             <TaskBarItem name={"Draw"} icon={draws} status={draw} />
           )}
           {notes !== 0 && (
-            <TaskBarItem name={"Draw"} icon={notess} status={notes} />
+            <TaskBarItem name={"Notes"} icon={notess} status={notes} />
           )}
           {terminal !== 0 && (
             <TaskBarItem name={"Terminal"} icon={terminals} status={terminal} />

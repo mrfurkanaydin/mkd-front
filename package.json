@@ -76,12 +76,10 @@
     }
   },
   "dependencies": {
-    "@cyntler/react-doc-viewer": "^1.13.0",
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.13.1",
-    "@react-pdf-viewer/core": "^3.12.0",
     "@uiw/react-color-colorful": "^1.1.2",
     "awesome-react-calculator": "^1.1.0",
     "date-fns": "^2.29.3",
@@ -102,6 +100,7 @@
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.8.1",
     "react-simple-tetris": "^0.3.1",
+    "react-sketch-canvas": "^6.2.0",
     "react-snake-lib": "^1.0.9",
     "react-tetris": "^0.3.0",
     "redux": "^4.2.1",

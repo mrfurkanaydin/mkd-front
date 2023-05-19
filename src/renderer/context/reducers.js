@@ -16,7 +16,7 @@ const PROGRAMS = {
   AddStudent: "addStudent",
   AddTeacher: "addTeacher",
   ListStudent: "listStudent",
-  ListTeacher: "listTeacher",
+  ListTeacher: "listTeacher"
 };
 
 const INITIAL_STATE = {
@@ -28,7 +28,8 @@ const INITIAL_STATE = {
   ),
   animatedIcons: window.electron.store.get("animated-icons"),
   mousePointer: 0,
-  fullscreen: 1
+  fullscreen: 1,
+  theme: 0
 };
 
 const updateProgramState = (state, payload, value) => ({
@@ -42,11 +43,11 @@ const startProgram = (state, payload) =>
 const stopProgram = (state, payload) =>
   updateProgramState(state, PROGRAMS[payload], 0);
 
-  const minimizeProgram = (state, payload) => ({
-    ...state,
-    [PROGRAMS[payload]]: 2,
-    ["last" + payload]: state[PROGRAMS[payload]],
-  });
+const minimizeProgram = (state, payload) => ({
+  ...state,
+  [PROGRAMS[payload]]: 2,
+  ["last" + payload]: state[PROGRAMS[payload]]
+});
 
 const resizeProgram = (state, payload) =>
   updateProgramState(state, PROGRAMS[payload], 3);
@@ -60,6 +61,11 @@ const setAnimatedIcons = (state) => {
 const setMousePointer = (state) => ({
   ...state,
   mousePointer: state.mousePointer ? 0 : 1
+});
+
+const setTheme = (state) => ({
+  ...state,
+  theme: state.theme ? 0 : 1
 });
 
 const setFullScreen = (state) => {
@@ -85,6 +91,8 @@ export default (state = INITIAL_STATE, { type, payload }) => {
       return setMousePointer(state);
     case "SET_FULLSCREEN":
       return setFullScreen(state);
+    case "SET_THEME":
+      return setTheme(state);
     default:
       return state;
   }

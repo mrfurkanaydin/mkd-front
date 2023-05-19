@@ -1,11 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
 import ProgramContainer from "renderer/components/ProgramContainer/ProgramContainer";
-import CanvasDraw from "react-canvas-draw";
 import { useRef, useState } from "react";
 import "./Draw.css";
 import Colorful from "@uiw/react-color-colorful";
 import { Modal } from "@mui/material";
-
+import { ReactSketchCanvas } from "react-sketch-canvas";
+const styles = {
+  border: "0.0625rem solid #9c9c9c",
+  borderRadius: "0.25rem"
+};
 function Draw() {
   const draw = useSelector((state) => state.draw);
   const dispatch = useDispatch();
@@ -45,9 +48,21 @@ function Draw() {
       >
         <>
           <div className="pick-brush">
-            <button onClick={handleOpen} className="pick-brush-button">Renk Seçiniz</button>
-            <button onClick={()=> saveableCanvasRef.current.clear()} className="pick-brush-button">Hepsini Sil</button>
-            <button onClick={()=> saveableCanvasRef.current.undo()} className="pick-brush-button">Geri Al</button>
+            <button onClick={handleOpen} className="pick-brush-button">
+              Renk Seçiniz
+            </button>
+            <button
+              onClick={() => saveableCanvasRef.current.clearCanvas()}
+              className="pick-brush-button"
+            >
+              Hepsini Sil
+            </button>
+            <button
+              onClick={() => saveableCanvasRef.current.undo()}
+              className="pick-brush-button"
+            >
+              Geri Al
+            </button>
             <Modal
               open={open}
               onClose={handleClose}
@@ -64,13 +79,11 @@ function Draw() {
               </div>
             </Modal>
           </div>
-          <CanvasDraw
+          <ReactSketchCanvas
             ref={saveableCanvasRef}
-            hideGridX
-            hideGridY
-            canvasWidth={1250}
-            canvasHeight={650}
-            brushColor={color}
+            style={styles}
+            strokeColor={color}
+            strokeWidth={20}
           />
         </>
       </ProgramContainer>

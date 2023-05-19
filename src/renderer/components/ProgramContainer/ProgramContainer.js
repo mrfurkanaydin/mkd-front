@@ -20,12 +20,14 @@ function ProgramContainer({
   containerHeight = "100%"
 }) {
   const mouse = useSelector((state) => state.mousePointer);
+  const theme = useSelector((state) => state.theme);
+  console.log(theme);
   return (
     <div>
       {status != 0 && (
         <div handle=".program-header">
           <Draggable
-            handle=".program-header-resize"
+            handle={theme == 0 ? ".program-header-resize" : ".program-header-resize-dark"}
 
             position={status == 1 && { x: 0, y: 0 }}
           >
@@ -35,14 +37,24 @@ function ProgramContainer({
                 status == 2
                   ? "program-container-none"
                   : status == 3
-                  ? "program-container-resize"
-                  : "program-container"
+                  ? theme == 0
+                    ? "program-container-resize"
+                    : "program-container-resize-dark"
+                  : theme == 0
+                  ? "program-container"
+                  : "program-container-dark"
               }
-              style={{ width: width, height: height, backgroundColor:bgColor }}
+              style={{ width: width, height: height, backgroundColor: bgColor }}
             >
               <div
                 className={
-                  status == 3 ? "program-header-resize" : "program-header"
+                  status == 3
+                    ? theme == 0
+                      ? "program-header-resize"
+                      : "program-header-resize-dark"
+                    : theme == 0
+                    ? "program-header"
+                    : "program-header-dark"
                 }
               >
                 <div className="program-title">{title}</div>

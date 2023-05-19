@@ -85,6 +85,7 @@ function Options() {
   }));
 
   const mouse = useSelector((state) => state.mousePointer);
+  const theme = useSelector((state) => state.theme);
   return (
     <>
       <ProgramContainer
@@ -101,7 +102,7 @@ function Options() {
           <Formik
             initialValues={{
               fullScreen: window.electron.store.get("fullscreen"),
-              theme: "dark",
+              theme: 1,
               animatedIcons: window.electron.store.get("animated-icons"),
               mousePointer: 0
             }}
@@ -123,9 +124,9 @@ function Options() {
                         }}
                       />
                     </div>
-                    <div className="options-item-desc">
+                    <div className={theme == 0 ? "options-item-desc" : "options-item-desc-dark"}>
                       <div>Tam Ekran</div>
-                      <div className="options-item-subtitle">Uygulamayı Tam Ekran Yapar.</div>
+                      <div className={theme == 0 ? "options-item-subtitle": "options-item-subtitle-dark"}>Uygulamayı Tam Ekran Yapar.</div>
                     </div>
                   </div>
 
@@ -134,15 +135,16 @@ function Options() {
                       <IOSSwitch
                         name="theme"
                         value={0}
-                        checked={values.theme === "white"}
+                        checked={values.theme === 1}
                         onChange={(event, checked) => {
-                          setFieldValue("theme", checked ? "white" : "dark");
+                          setFieldValue("theme", checked ? 1 : 0);
+                          dispatch({ type: "SET_THEME" });
                         }}
                       />
                     </div>
-                    <div className="options-item-desc">
+                    <div className={theme == 0 ? "options-item-desc" : "options-item-desc-dark"}>
                       <div>Tema Değiştir</div>
-                      <div className="options-item-subtitle">Uygulamanın Temasını Değiştirir. (Henüz Aktif Değil)</div>
+                      <div className={theme == 0 ? "options-item-subtitle": "options-item-subtitle-dark"}>Uygulamanın Temasını Değiştirir. (Henüz Aktif Değil)</div>
                     </div>
                   </div>
 
@@ -156,9 +158,9 @@ function Options() {
                         dispatch({ type: "SET_ANIMATED_ICONS" });
                       }}
                     />
-                    <div className="options-item-desc">
+                    <div className={theme == 0 ? "options-item-desc" : "options-item-desc-dark"}>
                       <div>Hareketli İkonlar</div>
-                      <div className="options-item-subtitle">Uygulamanın İkonlarını Değiştirir.</div>
+                      <div className={theme == 0 ? "options-item-subtitle": "options-item-subtitle-dark"}>Uygulamanın İkonlarını Değiştirir.</div>
                     </div>
                   </div>
                   <div className="options-item">
@@ -171,9 +173,9 @@ function Options() {
                         dispatch({ type: "SET_MOUSE_POINTER" });
                       }}
                     />
-                    <div className="options-item-desc">
+                    <div className={theme == 0 ? "options-item-desc" : "options-item-desc-dark"}>
                       <div>Fare İmleci</div>
-                      <div className="options-item-subtitle">Uygulamanın Fare İmlecini Değiştirir.</div>
+                      <div className={theme == 0 ? "options-item-subtitle": "options-item-subtitle-dark"}>Uygulamanın Fare İmlecini Değiştirir.</div>
                     </div>
                   </div>
                 </div>
