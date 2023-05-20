@@ -36,7 +36,6 @@ function Manage() {
           <div>
             <button onClick={()=>{dispatch({ type: "RESIZE_PROGRAM", payload: "AddStudent" })}} className={theme == 0 ? "manage-box": "manage-box-dark"}>
               <img className="manage-img" src={ogrenciEkle} />
-              
               <div className = { theme == 0 ? "manage-text" : "manage-text-dark"}>Öğrenci Ekle</div>
             </button>
             <button onClick={()=>{dispatch({ type: "RESIZE_PROGRAM", payload: "AddTeacher" })}} className={theme == 0 ? "manage-box": "manage-box-dark"}>

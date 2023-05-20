@@ -45,6 +45,8 @@ function Game() {
         handleMinimize={handleMinimize}
         handleResize={handleResize}
         status={game}
+        containerWidth="100%"
+        containerHeight="calc(100% - 40px)"
       >
         <div className="game-container">
           <button onClick={() => handleOpenGame("Snake")} className={theme == 0 ? "game-button": "game-button-dark"}>
@@ -69,7 +71,7 @@ function Game() {
             </button>
             <button className={theme == 0 ? "game-button": "game-button-dark"}>
               <img onClick={() => handleOpenGame("MagicCup")} className="game-img" src={theme == 0 ? kupaOyunu : kupaOyunu_dark} />
-              <div className = { theme == 0 ? "game-text" : "game-text-dark"}>Sihirli Cupa</div>
+              <div className = { theme == 0 ? "game-text" : "game-text-dark"}>Sihirli Kupa</div>
             </button>
         </div>
       </ProgramContainer>
