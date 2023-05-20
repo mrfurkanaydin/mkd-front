@@ -31,6 +31,18 @@ import notess from "../../../assets/notlar.png"
 import notess_dark from "../../../assets/notlar-dark.png";
 import dictinary from "../../../assets/sozluk.png";
 import dictinary_dark from "../../../assets/sozluk-dark.png";
+import yilanOyunu from "../../../assets/yilan.png";
+import yilanOyunu_dark from "../../../assets/yilan-dark.png";
+import tetrisOyunu from "../../../assets/tetris.png";
+import tetrisOyunu_dark from "../../../assets/tetris-dark.png";
+import yabbozOyunu from "../../../assets/yapboz.png";
+import yabbozOyunu_dark from "../../../assets/yapboz-dark.png";
+import xoxOyunu from "../../../assets/xox.png";
+import xoxOyunu_dark from "../../../assets/xox-dark.png";
+import tangramOyunu from "../../../assets/tangram.png";
+import tangramOyunu_dark from "../../../assets/tangram-dark.png";
+import kupaOyunu from "../../../assets/sihirlikupa.png";
+import kupaOyunu_dark from "../../../assets/sihirlikupa-dark.png";
 import addStudents from "../../../assets/ogrenciEkle.png";
 import addTeachers from "../../../assets/ogretmenEkle.png";
 import listStudents from "../../../assets/ogrenciListele.png";
@@ -106,6 +118,10 @@ function TaskBar() {
   const terminal = useSelector((state) => state.terminal);
   const tetris = useSelector((state) => state.tetris);
   const snake = useSelector((state) => state.snake);
+  const puzzle = useSelector((state) => state.puzzle);
+  const xox = useSelector((state) => state.xox);
+  const tangram = useSelector((state) => state.tangram);
+  const magicCup = useSelector((state) => state.magicCup);
   const addStudent = useSelector((state) => state.addStudent);
   const addTeacher = useSelector((state) => state.addTeacher);
   const listStudent = useSelector((state) => state.listStudent);
@@ -258,8 +274,12 @@ function TaskBar() {
           {terminal !== 0 && (
             <TaskBarItem name={"Terminal"} icon={theme == 0 ? terminals : terminals_dark} status={terminal} />
           )}
-          {tetris !== 0 && <TaskBarItem name={"Tetris"} status={tetris} />}
-          {snake !== 0 && <TaskBarItem name={"Snake"} status={snake} />}
+          {tetris !== 0 && <TaskBarItem name={"Tetris"} icon={theme == 0 ? tetrisOyunu : tetrisOyunu_dark} status={tetris} />}
+          {snake !== 0 && <TaskBarItem name={"Snake"} icon={theme == 0 ? yilanOyunu : yilanOyunu_dark} status={snake} />}
+          {puzzle !== 0 && <TaskBarItem name={"Puzzle"} icon={theme == 0 ? yabbozOyunu : yabbozOyunu_dark} status={puzzle} />}
+          {xox !== 0 && <TaskBarItem name={"XOX"} icon={theme == 0 ? xoxOyunu : xoxOyunu_dark} status={xox} />}
+          {tangram !== 0 && <TaskBarItem name={"Tangram"} icon={theme == 0 ? tangramOyunu : tangramOyunu_dark} status={tangram} />}
+          {magicCup !== 0 && <TaskBarItem name={"MagicCup"} icon={theme == 0 ? kupaOyunu : kupaOyunu_dark} status={magicCup} />}
           {addStudent !== 0 && <TaskBarItem name={"AddStudent"} icon={addStudents} status={addStudent} />}
           {addTeacher !== 0 && <TaskBarItem name={"AddTeacher"} icon={addTeachers} status={addTeacher} />}
           {listStudent !== 0 && <TaskBarItem name={"ListStudent"} icon={listStudents} status={listStudent} />}

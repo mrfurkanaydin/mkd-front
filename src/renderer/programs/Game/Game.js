@@ -3,16 +3,16 @@ import "./Game.css";
 import ProgramContainer from "renderer/components/ProgramContainer/ProgramContainer";
 import { useState } from "react";
 import yilanOyunu from "../../../assets/yilan.png";
-import tetrisOyunu from "../../../assets/tetris.png";
-import yabbozOyunu from "../../../assets/yapboz.png";
-import xoxOyunu from "../../../assets/xox.png";
-import tangramOyunu from "../../../assets/tangram.png";
-import kupaOyunu from "../../../assets/sihirlikupa.png";
 import yilanOyunu_dark from "../../../assets/yilan-dark.png";
+import tetrisOyunu from "../../../assets/tetris.png";
 import tetrisOyunu_dark from "../../../assets/tetris-dark.png";
+import yabbozOyunu from "../../../assets/yapboz.png";
 import yabbozOyunu_dark from "../../../assets/yapboz-dark.png";
+import xoxOyunu from "../../../assets/xox.png";
 import xoxOyunu_dark from "../../../assets/xox-dark.png";
+import tangramOyunu from "../../../assets/tangram.png";
 import tangramOyunu_dark from "../../../assets/tangram-dark.png";
+import kupaOyunu from "../../../assets/sihirlikupa.png";
 import kupaOyunu_dark from "../../../assets/sihirlikupa-dark.png";
 function Game() {
   const [score, setScore] = useState();
@@ -56,19 +56,19 @@ function Game() {
               <div className = { theme == 0 ? "game-text" : "game-text-dark"}>Tetris</div>
             </button>
             <button className={theme == 0 ? "game-button": "game-button-dark"}>
-              <img className="game-img" src={theme == 0 ? yabbozOyunu : yabbozOyunu_dark} />
+              <img onClick={() => handleOpenGame("Puzzle")} className="game-img" src={theme == 0 ? yabbozOyunu : yabbozOyunu_dark} />
               <div className = { theme == 0 ? "game-text" : "game-text-dark"}>Yapboz</div>
             </button>
             <button className={theme == 0 ? "game-button": "game-button-dark"}>
-              <img className="game-img" src={theme == 0 ? xoxOyunu : xoxOyunu_dark} />
+              <img onClick={() => handleOpenGame("XOX")} className="game-img" src={theme == 0 ? xoxOyunu : xoxOyunu_dark} />
               <div className = { theme == 0 ? "game-text" : "game-text-dark"}>XOX</div>
             </button>
             <button className={theme == 0 ? "game-button": "game-button-dark"}>
-              <img className="game-img" src={theme == 0 ? tangramOyunu : tangramOyunu_dark} />
+              <img onClick={() => handleOpenGame("Tangram")} className="game-img" src={theme == 0 ? tangramOyunu : tangramOyunu_dark} />
               <div className = { theme == 0 ? "game-text" : "game-text-dark"}>Tangram</div>
             </button>
             <button className={theme == 0 ? "game-button": "game-button-dark"}>
-              <img className="game-img" src={theme == 0 ? kupaOyunu : kupaOyunu_dark} />
+              <img onClick={() => handleOpenGame("MagicCup")} className="game-img" src={theme == 0 ? kupaOyunu : kupaOyunu_dark} />
               <div className = { theme == 0 ? "game-text" : "game-text-dark"}>Sihirli Cupa</div>
             </button>
         </div>
