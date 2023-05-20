@@ -1,3 +1,20 @@
+.manage-box-dark{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    margin: 15px;
+    height: 200px;
+    width: 200px;
+    background-color: rgb(141, 141, 141);
+    border:0;
+    border-radius: 5px;
+}
+.manage-box-dark:hover {
+    background-color: rgb(81, 80, 80);
+}
 .manage-box{
     display: flex;
     flex-direction: column;
@@ -8,8 +25,12 @@
     margin: 15px;
     height: 200px;
     width: 200px;
-    background-color: transparent;
+    background-color:  rgb(97, 146, 219);
     border:0;
+    border-radius: 5px;
+}
+.manage-box:hover {
+    background-color: rgb(136, 168, 216);
 }
 .manage-img{
     width: 90%;
