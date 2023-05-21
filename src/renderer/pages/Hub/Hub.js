@@ -33,49 +33,82 @@ import AddStudent from "renderer/programs/Manage/AddStudent/AddStudent";
 import AddTeacher from "renderer/programs/Manage/AddTeacher/AddTeacher";
 import ListStudent from "renderer/programs/Manage/ListStudent/ListStudent";
 import ListTeacher from "renderer/programs/Manage/ListTeacher/ListTeacher";
+import DetailStudent from "renderer/programs/Manage/DetailStudent/DetailStudent";
+import Login from "../Login/Login";
 
 function Hub() {
   const animatedIcons = useSelector((state) => state.animatedIcons);
   const mousePointer = useSelector((state) => state.mousePointer);
+  const user = useSelector((state) => state.user);
+  const token = useSelector((state) => state.token);
+  console.log(user);
+  console.log(token);
   return (
-    <div
-      className={`${
-        mousePointer === 0 ? "hub-container" : "hub-container-cursor"
-      }`}
-    >
-      {mousePointer === 1 && <Cursor />}
-      
-      <div className="hub-hubitems">
-        <HubItems icon={animatedIcons === false ? okuma : okumagif} name="Okuma" type="Read" />
-        <HubItems icon={animatedIcons === false ? yazma : yazmagif} name="Yazma" type="Write"/>
-        <HubItems icon={animatedIcons === false ? izleme : izlemegif} name="İzleme" type="Watch" />
-        <HubItems icon={animatedIcons === false ? dinleme : dinlemegif} name="Dinleme" type="Listen" />
-        <HubItems icon={animatedIcons === false ? oyun : oyungif} name="Oyun" type="Game"/>
-        <HubItems icon={animatedIcons === false ? yonetim : yonetimgif} name="Yönetim" type="Manage"/>
-      </div>
-      <>
-        <Read />
-        <Write />
-        <Watch />
-        <Listen />
-        <Game />
-        <Manage />
-        <Options />
-        <TaskManager/>
-        <Calculator />
-        <Draw/>
-        <Notes/>
-        <Terminal/>
-        <Snake/>
-        <Tetris/>
-        <AddStudent/>
-        <AddTeacher/>
-        <ListStudent/>
-        <ListTeacher/>
-      </>
+    <>
+      {user == null ? (
+        <Login />
+      ) : (
+        <div
+          className={`${
+            mousePointer === 0 ? "hub-container" : "hub-container-cursor"
+          }`}
+        >
+          {mousePointer === 1 && <Cursor />}
 
-      <TaskBar />
-    </div>
+          <div className="hub-hubitems">
+            <HubItems
+              icon={animatedIcons === false ? okuma : okumagif}
+              name="Okuma"
+              type="Read"
+            />
+            <HubItems
+              icon={animatedIcons === false ? yazma : yazmagif}
+              name="Yazma"
+              type="Write"
+            />
+            <HubItems
+              icon={animatedIcons === false ? izleme : izlemegif}
+              name="İzleme"
+              type="Watch"
+            />
+            {/* <HubItems icon={animatedIcons === false ? dinleme : dinlemegif} name="Dinleme" type="Listen" /> */}
+            <HubItems
+              icon={animatedIcons === false ? oyun : oyungif}
+              name="Oyun"
+              type="Game"
+            />
+            <HubItems
+              icon={animatedIcons === false ? yonetim : yonetimgif}
+              name="Yönetim"
+              type="Manage"
+            />
+          </div>
+          <>
+            <Read />
+            <Write />
+            <Watch />
+            <Listen />
+            <Game />
+            <Manage />
+            <Options />
+            <TaskManager />
+            <Calculator />
+            <Draw />
+            <Notes />
+            <Terminal />
+            <Snake />
+            <Tetris />
+            <AddStudent />
+            <AddTeacher />
+            <ListStudent />
+            <ListTeacher />
+            <DetailStudent />
+          </>
+
+          <TaskBar />
+        </div>
+      )}
+    </>
   );
 }
 

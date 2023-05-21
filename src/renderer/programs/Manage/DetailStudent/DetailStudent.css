@@ -1,0 +1,20 @@
+.studentDetail-container{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+.studentDetail-name{
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.studentDetail-data{
+    display: flex;
+    flex-direction: column;
+}
+.studentDetail-item{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}

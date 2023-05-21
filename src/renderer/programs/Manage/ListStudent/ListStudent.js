@@ -4,101 +4,8 @@ import ProgramContainer from "renderer/components/ProgramContainer/ProgramContai
 import React, { useMemo } from "react";
 import { BsSearch } from "react-icons/bs";
 import MaterialReactTable from "material-react-table";
-const data = [
-  {
-    firstName: "John",
-    lastName: "Doe",
-    address: "261 Erdman Ford",
-    city: "East Daphne",
-    state: (
-      <button
-        style={{ border: 0, backgroundColor: "transparent" }}
-        onClick={() => {
-          console.log("oziiğ");
-        }}
-      >
-        <BsSearch size={20} />
-      </button>
-    )
-  },
-  {
-    firstName: "Jane",
-    lastName: "Doe",
-    address: "769 Dominic Grove",
-    city: "Columbus",
-    state: <BsSearch size={20} />
-  },
-  {
-    firstName: "Joe",
-    lastName: "Doe",
-    address: "566 Brakus Inlet",
-    city: "South Linda",
-    state: <BsSearch size={20} />
-  },
-  {
-    firstName: "Kevin",
-    lastName: "Vandy",
-    address: "722 Emie Stream",
-    city: "Lincoln",
-    state: <BsSearch size={20} />
-  },
-  {
-    firstName: "Joshua",
-    lastName: "Rolluffs",
-    address: "32188 Larkin Turnpike",
-    city: "Charleston",
-    state: <BsSearch size={20} />
-  },
-  {
-    firstName: "Joshua",
-    lastName: "Rolluffs",
-    address: "32188 Larkin Turnpike",
-    city: "Charleston",
-    state: <BsSearch size={20} />
-  },
-  {
-    firstName: "Joshua",
-    lastName: "Rolluffs",
-    address: "32188 Larkin Turnpike",
-    city: "Charleston",
-    state: <BsSearch size={20} />
-  },
-  {
-    firstName: "Joshua",
-    lastName: "Rolluffs",
-    address: "32188 Larkin Turnpike",
-    city: "Charleston",
-    state: <BsSearch size={20} />
-  },
-  {
-    firstName: "Joshua",
-    lastName: "Rolluffs",
-    address: "32188 Larkin Turnpike",
-    city: "Charleston",
-    state: <BsSearch size={20} />
-  },
-  {
-    firstName: "Joshua",
-    lastName: "Rolluffs",
-    address: "32188 Larkin Turnpike",
-    city: "Charleston",
-    state: <BsSearch size={20} />
-  },
-  {
-    firstName: "Joshua",
-    lastName: "Rolluffs",
-    address: "32188 Larkin Turnpike",
-    city: "Charleston",
-    state: <BsSearch size={20} />
-  },
-  {
-    firstName: "Joshua",
-    lastName: "Rolluffs",
-    address: "32188 Larkin Turnpike",
-    city: "Charleston",
-    state: <BsSearch size={20} />
-  }
-];
+import DetailStudent from "../DetailStudent/DetailStudent";
+
 function ListStudent() {
   const listStudent = useSelector((state) => state.listStudent);
   const dispatch = useDispatch();
@@ -138,6 +45,103 @@ function ListStudent() {
     ],
     []
   );
+  const data = [
+    {
+      firstName: "John",
+      lastName: "Doe",
+      address: "261 Erdman Ford",
+      city: "East Daphne",
+      state: (
+        <button
+          style={{ border: 0, backgroundColor: "transparent" }}
+          onClick={() => {
+            // axios
+            dispatch({type: "SET_STUDENT_DATA" , payload: "324231423"})
+            dispatch({ type: "RESIZE_PROGRAM", payload: "DetailStudent" });
+          }}
+        >
+          <BsSearch size={20} />
+        </button>
+      )
+    },
+    {
+      firstName: "Jane",
+      lastName: "Doe",
+      address: "769 Dominic Grove",
+      city: "Columbus",
+      state: <BsSearch size={20} />
+    },
+    {
+      firstName: "Joe",
+      lastName: "Doe",
+      address: "566 Brakus Inlet",
+      city: "South Linda",
+      state: <BsSearch size={20} />
+    },
+    {
+      firstName: "Kevin",
+      lastName: "Vandy",
+      address: "722 Emie Stream",
+      city: "Lincoln",
+      state: <BsSearch size={20} />
+    },
+    {
+      firstName: "Joshua",
+      lastName: "Rolluffs",
+      address: "32188 Larkin Turnpike",
+      city: "Charleston",
+      state: <BsSearch size={20} />
+    },
+    {
+      firstName: "Joshua",
+      lastName: "Rolluffs",
+      address: "32188 Larkin Turnpike",
+      city: "Charleston",
+      state: <BsSearch size={20} />
+    },
+    {
+      firstName: "Joshua",
+      lastName: "Rolluffs",
+      address: "32188 Larkin Turnpike",
+      city: "Charleston",
+      state: <BsSearch size={20} />
+    },
+    {
+      firstName: "Joshua",
+      lastName: "Rolluffs",
+      address: "32188 Larkin Turnpike",
+      city: "Charleston",
+      state: <BsSearch size={20} />
+    },
+    {
+      firstName: "Joshua",
+      lastName: "Rolluffs",
+      address: "32188 Larkin Turnpike",
+      city: "Charleston",
+      state: <BsSearch size={20} />
+    },
+    {
+      firstName: "Joshua",
+      lastName: "Rolluffs",
+      address: "32188 Larkin Turnpike",
+      city: "Charleston",
+      state: <BsSearch size={20} />
+    },
+    {
+      firstName: "Joshua",
+      lastName: "Rolluffs",
+      address: "32188 Larkin Turnpike",
+      city: "Charleston",
+      state: <BsSearch size={20} />
+    },
+    {
+      firstName: "Joshua",
+      lastName: "Rolluffs",
+      address: "32188 Larkin Turnpike",
+      city: "Charleston",
+      state: <BsSearch size={20} />
+    }
+  ];
   return (
     <>
       <ProgramContainer

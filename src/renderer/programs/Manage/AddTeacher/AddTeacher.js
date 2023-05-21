@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import "./AddTeacher.css";
 import { Field, Formik, Form } from "formik";
 import ProgramContainer from "renderer/components/ProgramContainer/ProgramContainer";
-
+import axios from "axios";
 
 function AddTeacher() {
   const addTeacher = useSelector((state) => state.addTeacher);
@@ -19,6 +19,7 @@ function AddTeacher() {
       ? dispatch({ type: "START_PROGRAM", payload: "AddTeacher" })
       : dispatch({ type: "RESIZE_PROGRAM", payload: "AddTeacher" });
   };
+  const token = useSelector((state) => state.token);
   return (
     <>
       <ProgramContainer
@@ -31,7 +32,7 @@ function AddTeacher() {
         containerHeight="calc(100% - 40px)"
         width={700}
         height={550}
-        disable="true"Öğretmen
+        disable="true"
       >
         <div>
           <Formik
@@ -40,11 +41,28 @@ function AddTeacher() {
               lastName: "",
               gender: "",
               birthDate: "",
-              email: ""
+              email: "",
+              role: "teacher",
+              password: "",
             }}
             onSubmit={async (values) => {
               console.log(values);
-              dispatch({ type: "STOP_PROGRAM", payload: "AddStudent" });
+              let config = {
+                method: 'post',
+                maxBodyLength: Infinity,
+                url: 'http://localhost:3000/v1/users',
+                headers: { 
+                  'Content-Type': 'application/json', 
+                  'Authorization': `Bearer ${token.access.token}`
+                },
+                data : values
+              };
+              axios.request(config).then(function (response) {
+                console.log(response.data);
+                dispatch({ type: "STOP_PROGRAM", payload: "AddTeacher" });
+              }).catch(function (error) {
+                console.error(error);
+              });
             }}
           >
             {({ values }) => (
@@ -100,6 +118,16 @@ function AddTeacher() {
                     id="email"
                     name="email"
                     type="email"
+                  />
+                </div>
+                <div className="addTeacher-container">
+                  <div className={ theme == 0 ? "addTeacher-label" : "addTeacher-label-dark" }>Şifre</div>
+
+                  <Field
+                    className="addTeacher-input"
+                    id="password"
+                    name="password"
+                    type="password"
                   />
                 </div>
                 <div className="addTeacher-container">

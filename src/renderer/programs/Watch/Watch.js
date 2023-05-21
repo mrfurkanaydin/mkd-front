@@ -30,9 +30,8 @@ function Watch() {
       >
         <div className="watch-container">
           <YoutubeEmbed embedId="rokGy0huYEA" />
-          <YoutubeEmbed embedId="rokGy0huYEA" />
-          <YoutubeEmbed embedId="rokGy0huYEA" />
-          <YoutubeEmbed embedId="uc2CYxZnhMs" />
+          <YoutubeEmbed embedId="F8BFSVjpRv8" />
+          <YoutubeEmbed embedId="4Dnut5W9dpw" />
         </div>
       </ProgramContainer>
     </>

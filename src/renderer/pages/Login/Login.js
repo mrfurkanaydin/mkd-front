@@ -1,18 +1,26 @@
 import React, { useState } from "react";
 import { Formik } from "formik";
 import "./Login.css";
+import axios from "axios";
+import { useDispatch } from "react-redux";
 
 function Login() {
   const [state, setState] = useState(false);
   const handleClick = () => {
     setState(true);
   };
+  const dispatch = useDispatch();
   return (
     <div className="Login-container">
       <Formik
         initialValues={{ email: "", password: "" }}
         onSubmit={(values) => {
           console.log(values);
+          axios.post("http://localhost:3000/v1/auth/login", values).then((res) => {
+            dispatch({ type: "SET_TOKEN", payload: res.data.tokens });
+            dispatch({ type: "SET_USER", payload: res.data.user });
+            console.log(res.data);
+          });
         }}
       >
         {({
@@ -22,7 +30,7 @@ function Login() {
         }) => (
           <form onSubmit={handleSubmit}>
             <div className="group">
-              <div className="label">Kullanıcı Adı </div>
+              <div className="label">TC Kimlik Numarası</div>
               <input
                 type="email"
                 name="email"

@@ -135,7 +135,7 @@ function Options() {
                       <IOSSwitch
                         name="theme"
                         value={0}
-                        checked={values.theme === 1}
+                        checked={theme === 0}
                         onChange={(event, checked) => {
                           setFieldValue("theme", checked ? 1 : 0);
                           dispatch({ type: "SET_THEME" });

@@ -20,7 +20,9 @@ const PROGRAMS = {
   AddStudent: "addStudent",
   AddTeacher: "addTeacher",
   ListStudent: "listStudent",
-  ListTeacher: "listTeacher"
+  ListTeacher: "listTeacher",
+  DetailStudent: "detailStudent",
+  StudentData: "studentData"
 };
 
 const INITIAL_STATE = {
@@ -33,7 +35,9 @@ const INITIAL_STATE = {
   animatedIcons: window.electron.store.get("animated-icons"),
   mousePointer: 0,
   fullscreen: 1,
-  theme: 0
+  theme: 0,
+  user: null,
+  token: null
 };
 
 const updateProgramState = (state, payload, value) => ({
@@ -81,6 +85,10 @@ const setFullScreen = (state) => {
 
 export default (state = INITIAL_STATE, { type, payload }) => {
   switch (type) {
+    case "SET_USER":
+      return { ...state, user: payload };
+    case "SET_TOKEN":
+      return { ...state, token: payload };
     case "START_PROGRAM":
       return startProgram(state, payload);
     case "STOP_PROGRAM":
@@ -97,6 +105,8 @@ export default (state = INITIAL_STATE, { type, payload }) => {
       return setFullScreen(state);
     case "SET_THEME":
       return setTheme(state);
+    case "SET_STUDENT_DATA":
+      return { ...state, studentData: payload };
     default:
       return state;
   }

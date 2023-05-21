@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 // import "./Manage.css";
 import ProgramContainer from "renderer/components/ProgramContainer/ProgramContainer";
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { BsSearch } from "react-icons/bs";
 import MaterialReactTable from "material-react-table";
 const data = [
@@ -103,6 +103,11 @@ const data = [
 function ListTeacher() {
   const listTeacher = useSelector((state) => state.listTeacher);
   const dispatch = useDispatch();
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    
+    
+  }, []);
   const handleStop = () => {
     dispatch({ type: "STOP_PROGRAM", payload: "ListTeacher" });
   };
