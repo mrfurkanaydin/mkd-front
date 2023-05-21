@@ -1,14 +1,30 @@
 import { useDispatch, useSelector } from "react-redux";
 import "./ListStudent.css";
 import ProgramContainer from "renderer/components/ProgramContainer/ProgramContainer";
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { BsSearch } from "react-icons/bs";
 import MaterialReactTable from "material-react-table";
 import DetailStudent from "../DetailStudent/DetailStudent";
-
+import axios from "axios";
 function ListStudent() {
   const listStudent = useSelector((state) => state.listStudent);
   const dispatch = useDispatch();
+  const [data, setData] = useState([]);
+  const token = useSelector((state) => state.token);
+  useEffect(() => {
+    let config = {
+      method: "get",
+      maxBodyLength: Infinity,
+      url: "http://localhost:3000/v1/users?role=student",
+      headers: {
+        Authorization: `Bearer ${token.access.token}`
+      }
+    };
+    axios.request(config).then((res) => {
+      console.log(res.data);
+      setData(res.data.results);
+    });
+  }, [listStudent == 3]);
   const handleStop = () => {
     dispatch({ type: "STOP_PROGRAM", payload: "ListStudent" });
   };
@@ -31,117 +47,21 @@ function ListStudent() {
         header: "Soyadı"
       },
       {
-        accessorKey: "address", //normal accessorKey
+        accessorKey: "gender", //normal accessorKey
         header: "Cinsiyet"
       },
       {
-        accessorKey: "city",
+        accessorKey: "birthDate",
         header: "Doğum Tarihi"
       },
       {
-        accessorKey: "state",
-        header: "Detaylar"
+        accessorKey: "tcNo",
+        header: "TC Kimlik No"
       }
     ],
     []
   );
-  const data = [
-    {
-      firstName: "John",
-      lastName: "Doe",
-      address: "261 Erdman Ford",
-      city: "East Daphne",
-      state: (
-        <button
-          style={{ border: 0, backgroundColor: "transparent" }}
-          onClick={() => {
-            // axios
-            dispatch({type: "SET_STUDENT_DATA" , payload: "324231423"})
-            dispatch({ type: "RESIZE_PROGRAM", payload: "DetailStudent" });
-          }}
-        >
-          <BsSearch size={20} />
-        </button>
-      )
-    },
-    {
-      firstName: "Jane",
-      lastName: "Doe",
-      address: "769 Dominic Grove",
-      city: "Columbus",
-      state: <BsSearch size={20} />
-    },
-    {
-      firstName: "Joe",
-      lastName: "Doe",
-      address: "566 Brakus Inlet",
-      city: "South Linda",
-      state: <BsSearch size={20} />
-    },
-    {
-      firstName: "Kevin",
-      lastName: "Vandy",
-      address: "722 Emie Stream",
-      city: "Lincoln",
-      state: <BsSearch size={20} />
-    },
-    {
-      firstName: "Joshua",
-      lastName: "Rolluffs",
-      address: "32188 Larkin Turnpike",
-      city: "Charleston",
-      state: <BsSearch size={20} />
-    },
-    {
-      firstName: "Joshua",
-      lastName: "Rolluffs",
-      address: "32188 Larkin Turnpike",
-      city: "Charleston",
-      state: <BsSearch size={20} />
-    },
-    {
-      firstName: "Joshua",
-      lastName: "Rolluffs",
-      address: "32188 Larkin Turnpike",
-      city: "Charleston",
-      state: <BsSearch size={20} />
-    },
-    {
-      firstName: "Joshua",
-      lastName: "Rolluffs",
-      address: "32188 Larkin Turnpike",
-      city: "Charleston",
-      state: <BsSearch size={20} />
-    },
-    {
-      firstName: "Joshua",
-      lastName: "Rolluffs",
-      address: "32188 Larkin Turnpike",
-      city: "Charleston",
-      state: <BsSearch size={20} />
-    },
-    {
-      firstName: "Joshua",
-      lastName: "Rolluffs",
-      address: "32188 Larkin Turnpike",
-      city: "Charleston",
-      state: <BsSearch size={20} />
-    },
-    {
-      firstName: "Joshua",
-      lastName: "Rolluffs",
-      address: "32188 Larkin Turnpike",
-      city: "Charleston",
-      state: <BsSearch size={20} />
-    },
-    {
-      firstName: "Joshua",
-      lastName: "Rolluffs",
-      address: "32188 Larkin Turnpike",
-      city: "Charleston",
-      state: <BsSearch size={20} />
-    }
-  ];
+
   return (
     <>
       <ProgramContainer
@@ -164,6 +84,33 @@ function ListStudent() {
             enableBottomToolbar={false}
             enableTopToolbar={false}
             muiTableBodyRowProps={{ hover: false }}
+            enableRowActions
+            positionActionsColumn="last"
+            displayColumnDefOptions={{
+              'mrt-row-actions': {
+                header: 'Detay', //change header text
+              },
+            }}
+            renderRowActions={({ row }) => (
+              <button
+                onClick={() => {
+                  dispatch({
+                    type: "SET_STUDENT_DATA",
+                    payload: row.original.tcNo
+                  });
+                  dispatch({
+                    type: "RESIZE_PROGRAM",
+                    payload: "DetailStudent"
+                  });
+                }}
+                style={{
+                  backgroundColor: "transparent",
+                  border: "none"
+                }}
+              >
+                <BsSearch />
+              </button>
+            )}
           />
         </div>
       </ProgramContainer>

@@ -28,9 +28,10 @@ function Manage() {
         containerWidth="100%"
         containerHeight="calc(100% - 40px)"
         width={500}
+        disable="true"
       >
         <div className="studentDetail-container">
-          <div className="studentDetail-name">{"Furkan Aydın Adlı Öğrencinin Detayları"}</div>
+          <div className="studentDetail-name">{data}{"  Furkan Aydın Adlı Öğrencinin Detayları"}</div>
           <div className="studentDetail-data">
             <div className="studentDetail-item">
               <div className="studentDetail-title">
@@ -94,7 +95,7 @@ function Manage() {
                 </div>
                 <div className="studentDetail-desc">2400</div>
             </div>
-            {/* {data} */}
+            
           </div>
         </div>
       </ProgramContainer>

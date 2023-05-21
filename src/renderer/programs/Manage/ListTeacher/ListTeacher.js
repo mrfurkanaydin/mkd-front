@@ -2,112 +2,29 @@ import { useDispatch, useSelector } from "react-redux";
 // import "./Manage.css";
 import ProgramContainer from "renderer/components/ProgramContainer/ProgramContainer";
 import React, { useEffect, useMemo, useState } from "react";
-import { BsSearch } from "react-icons/bs";
 import MaterialReactTable from "material-react-table";
-const data = [
-  {
-    firstName: "John",
-    lastName: "Doe",
-    address: "261 Erdman Ford",
-    city: "East Daphne",
-    state: (
-      <button
-        style={{ border: 0, backgroundColor: "transparent" }}
-        onClick={() => {
-          console.log("oziiğ");
-        }}
-      >
-        <BsSearch size={20} />
-      </button>
-    )
-  },
-  {
-    firstName: "Jane",
-    lastName: "Doe",
-    address: "769 Dominic Grove",
-    city: "Columbus",
-    state: <BsSearch size={20} />
-  },
-  {
-    firstName: "Joe",
-    lastName: "Doe",
-    address: "566 Brakus Inlet",
-    city: "South Linda",
-    state: <BsSearch size={20} />
-  },
-  {
-    firstName: "Kevin",
-    lastName: "Vandy",
-    address: "722 Emie Stream",
-    city: "Lincoln",
-    state: <BsSearch size={20} />
-  },
-  {
-    firstName: "Joshua",
-    lastName: "Rolluffs",
-    address: "32188 Larkin Turnpike",
-    city: "Charleston",
-    state: <BsSearch size={20} />
-  },
-  {
-    firstName: "Joshua",
-    lastName: "Rolluffs",
-    address: "32188 Larkin Turnpike",
-    city: "Charleston",
-    state: <BsSearch size={20} />
-  },
-  {
-    firstName: "Joshua",
-    lastName: "Rolluffs",
-    address: "32188 Larkin Turnpike",
-    city: "Charleston",
-    state: <BsSearch size={20} />
-  },
-  {
-    firstName: "Joshua",
-    lastName: "Rolluffs",
-    address: "32188 Larkin Turnpike",
-    city: "Charleston",
-    state: <BsSearch size={20} />
-  },
-  {
-    firstName: "Joshua",
-    lastName: "Rolluffs",
-    address: "32188 Larkin Turnpike",
-    city: "Charleston",
-    state: <BsSearch size={20} />
-  },
-  {
-    firstName: "Joshua",
-    lastName: "Rolluffs",
-    address: "32188 Larkin Turnpike",
-    city: "Charleston",
-    state: <BsSearch size={20} />
-  },
-  {
-    firstName: "Joshua",
-    lastName: "Rolluffs",
-    address: "32188 Larkin Turnpike",
-    city: "Charleston",
-    state: <BsSearch size={20} />
-  },
-  {
-    firstName: "Joshua",
-    lastName: "Rolluffs",
-    address: "32188 Larkin Turnpike",
-    city: "Charleston",
-    state: "<BsSearch size={20} />"
-  }
-];
+import axios from "axios";
 
 function ListTeacher() {
   const listTeacher = useSelector((state) => state.listTeacher);
   const dispatch = useDispatch();
   const [data, setData] = useState([]);
+  const token = useSelector((state) => state.token);
   useEffect(() => {
-    
-    
-  }, []);
+    let config = {
+      method: 'get',
+      maxBodyLength: Infinity,
+      url: 'http://localhost:3000/v1/users?role=teacher',
+      headers: { 
+        'Authorization': `Bearer ${token.access.token}`
+      }
+    };
+    axios.request(config).then((res) => {
+      console.log(res.data);
+      setData(res.data.results);
+    }
+    );
+  }, [listTeacher == 3]);
   const handleStop = () => {
     dispatch({ type: "STOP_PROGRAM", payload: "ListTeacher" });
   };
@@ -130,15 +47,15 @@ function ListTeacher() {
         header: "Soyadı"
       },
       {
-        accessorKey: "address", //normal accessorKey
+        accessorKey: "gender", //normal accessorKey
         header: "Cinsiyet"
       },
       {
-        accessorKey: "city",
+        accessorKey: "birthDate",
         header: "Doğum Tarihi"
       },
       {
-        accessorKey: "state",
+        accessorKey: "email",
         header: "Email"
       }
     ],

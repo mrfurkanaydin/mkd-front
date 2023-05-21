@@ -2,6 +2,8 @@ import { useDispatch, useSelector } from "react-redux";
 import "./AddStudent.css";
 import ProgramContainer from "renderer/components/ProgramContainer/ProgramContainer";
 import { Field, Formik, Form } from "formik";
+import axios from "axios";
+import { v4 } from 'uuid';
 
 function AddStudent() {
   const addStudent = useSelector((state) => state.addStudent);
@@ -18,6 +20,7 @@ function AddStudent() {
       ? dispatch({ type: "START_PROGRAM", payload: "AddStudent" })
       : dispatch({ type: "RESIZE_PROGRAM", payload: "AddStudent" });
   };
+  const token = useSelector((state) => state.token);
   return (
     <>
       <ProgramContainer
@@ -29,7 +32,7 @@ function AddStudent() {
         containerWidth="100%"
         containerHeight="calc(100% - 40px)"
         width={700}
-        height={500}
+        height={600}
         disable="true"
       >
         <div>
@@ -38,11 +41,29 @@ function AddStudent() {
               firstName: "",
               lastName: "",
               gender: "",
-              birthDate: ""
+              birthDate: "",
+              role:"student",
+              password:"",
+              email: v4()
             }}
             onSubmit={async (values) => {
               console.log(values);
-              dispatch({ type: "STOP_PROGRAM", payload: "AddStudent" });
+              let config = {
+                method: 'post',
+                maxBodyLength: Infinity,
+                url: 'http://localhost:3000/v1/users',
+                headers: { 
+                  'Content-Type': 'application/json', 
+                  'Authorization': `Bearer ${token.access.token}`
+                },
+                data : values
+              };
+              axios.request(config).then(function (response) {
+                console.log(response.data);
+                dispatch({ type: "STOP_PROGRAM", payload: "AddStudent" });
+              }).catch(function (error) {
+                console.error(error);
+              });
             }}
           >
             {({ values }) => (
@@ -88,6 +109,26 @@ function AddStudent() {
                     className="addStudent-input"
                     id="birthDate"
                     name="birthDate"
+                  />
+                </div>
+                <div className="addStudent-container">
+                  <div className= { theme == 0 ? "addStudent-label" : "addStudent-label-dark" }>TC No</div>
+                  
+                  <Field
+                    className="addStudent-input"
+                    id="tcNo"
+                    name="tcNo"
+                    maxLength="11"
+                  />
+                </div>
+                <div className="addStudent-container">
+                  <div className= { theme == 0 ? "addStudent-label" : "addStudent-label-dark" }>Şifre</div>
+                  
+                  <Field
+                    className="addStudent-input"
+                    id="password"
+                    name="password"
+                    type="password"
                   />
                 </div>
                 <div className="addStudent-container">

@@ -105,7 +105,8 @@
     "react-snake-lib": "^1.0.9",
     "react-tetris": "^0.3.0",
     "redux": "^4.2.1",
-    "use-tetris": "^0.4.0"
+    "use-tetris": "^0.4.0",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@electron/notarize": "^1.2.3",
