@@ -10,6 +10,7 @@ function ListStudent() {
   const listStudent = useSelector((state) => state.listStudent);
   const dispatch = useDispatch();
   const [data, setData] = useState([]);
+  const user = useSelector((state) => state.user);
   const token = useSelector((state) => state.token);
   useEffect(() => {
     let config = {
@@ -20,10 +21,12 @@ function ListStudent() {
         Authorization: `Bearer ${token.access.token}`
       }
     };
-    axios.request(config).then((res) => {
-      console.log(res.data);
-      setData(res.data.results);
-    });
+    if (user.role == "teacher" || user.role == "admin") {
+      axios.request(config).then((res) => {
+        console.log(res.data);
+        setData(res.data.results);
+      });
+    }
   }, [listStudent == 3]);
   const handleStop = () => {
     dispatch({ type: "STOP_PROGRAM", payload: "ListStudent" });
@@ -87,9 +90,9 @@ function ListStudent() {
             enableRowActions
             positionActionsColumn="last"
             displayColumnDefOptions={{
-              'mrt-row-actions': {
-                header: 'Detay', //change header text
-              },
+              "mrt-row-actions": {
+                header: "Detay" //change header text
+              }
             }}
             renderRowActions={({ row }) => (
               <button

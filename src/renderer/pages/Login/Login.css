@@ -12,6 +12,23 @@
       );
 
 }
+.login-supervisor{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 30px;
+    background-color: transparent;
+    border: 0;
+}
+.login-supervisor>img{
+    width: 200px;
+    height: 200px;
+}
+.login-supervisor>div{
+    margin-top: 10px;
+    font-size: 30px;
+    color: white;
+}
 .group{
     display: flex;
     align-items: center;
@@ -26,16 +43,25 @@
 .input{
     border:0;
     padding: 5px;
-    border-radius: 10px;
+    border-radius: 30px;
+    width: 400px;
+    height: 60px;
+    font-size: 26px;
 }
 .login-button{
     background-color: white;
     border: 0;
     border-radius: 10px;
     padding: 5px;
-    margin: 5px;
+    font-size: 26px;
+    width: 100%;
+    height: 60px;
+    margin-top: 10px;
+    border-radius: 30px;
 }
 .button-div{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    margin: 10px;
 }

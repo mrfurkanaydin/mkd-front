@@ -41,8 +41,6 @@ function Hub() {
   const mousePointer = useSelector((state) => state.mousePointer);
   const user = useSelector((state) => state.user);
   const token = useSelector((state) => state.token);
-  console.log(user);
-  console.log(token);
   return (
     <>
       {user == null ? (
@@ -71,17 +69,23 @@ function Hub() {
               name="İzleme"
               type="Watch"
             />
-            {/* <HubItems icon={animatedIcons === false ? dinleme : dinlemegif} name="Dinleme" type="Listen" /> */}
+            <HubItems
+              icon={animatedIcons === false ? dinleme : dinlemegif}
+              name="Dinleme"
+              type="Listen"
+            />
             <HubItems
               icon={animatedIcons === false ? oyun : oyungif}
               name="Oyun"
               type="Game"
             />
-            <HubItems
-              icon={animatedIcons === false ? yonetim : yonetimgif}
-              name="Yönetim"
-              type="Manage"
-            />
+            {(user.role === "admin" || user.role == "teacher") && (
+              <HubItems
+                icon={animatedIcons === false ? yonetim : yonetimgif}
+                name="Yönetim"
+                type="Manage"
+              />
+            )}
           </div>
           <>
             <Read />

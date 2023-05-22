@@ -9,22 +9,24 @@ function ListTeacher() {
   const listTeacher = useSelector((state) => state.listTeacher);
   const dispatch = useDispatch();
   const [data, setData] = useState([]);
+  const user = useSelector((state) => state.user);
   const token = useSelector((state) => state.token);
   useEffect(() => {
     let config = {
-      method: 'get',
+      method: "get",
       maxBodyLength: Infinity,
-      url: 'http://localhost:3000/v1/users?role=teacher',
-      headers: { 
-        'Authorization': `Bearer ${token.access.token}`
+      url: "http://localhost:3000/v1/users?role=teacher",
+      headers: {
+        Authorization: `Bearer ${token.access.token}`
       }
     };
-    axios.request(config).then((res) => {
-      console.log(res.data);
-      setData(res.data.results);
+    if (!user.role == "student" || !user.role == "teacher") {
+      axios.request(config).then((res) => {
+        console.log(res.data);
+        setData(res.data.results);
+      });
     }
-    );
-  }, [listTeacher == 3]);
+  }, [listTeacher == 3 && user.role == "admin"]);
   const handleStop = () => {
     dispatch({ type: "STOP_PROGRAM", payload: "ListTeacher" });
   };

@@ -189,7 +189,10 @@ function TaskBar() {
               <button onClick={handleQuit} className={theme == 0 ? "taskbar-open-item" : "taskbar-open-item-dark"}>
                 Kapat
               </button>
-              <button className={theme == 0 ? "taskbar-open-item" : "taskbar-open-item-dark"}>Kullanıcı Değiştir</button>
+              <button onClick={()=>{
+                dispatch({type:"SET_USER",payload:null})
+                dispatch({type:"SET_TOKEN",payload:null})
+              }} className={theme == 0 ? "taskbar-open-item" : "taskbar-open-item-dark"}>Oturumu Kapat</button>
               <button className={theme == 0 ? "taskbar-open-item" : "taskbar-open-item-dark"}>Şifre Değiştir</button>
             </div>
           )}

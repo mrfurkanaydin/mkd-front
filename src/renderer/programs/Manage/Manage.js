@@ -21,6 +21,7 @@ function Manage() {
       ? dispatch({ type: "START_PROGRAM", payload: "Manage" })
       : dispatch({ type: "RESIZE_PROGRAM", payload: "Manage" });
   };
+  const user = useSelector((state) => state.user);
   return (
     <>
       <ProgramContainer
@@ -31,27 +32,65 @@ function Manage() {
         status={manage}
         containerWidth="100%"
         containerHeight="calc(100% - 40px)"
+        height={"500px"}
+        width={"500px"}
       >
         <div className="manage-container">
           <div>
-            <button onClick={()=>{dispatch({ type: "RESIZE_PROGRAM", payload: "AddStudent" })}} className={theme == 0 ? "manage-box": "manage-box-dark"}>
+            <button
+              onClick={() => {
+                dispatch({ type: "RESIZE_PROGRAM", payload: "AddStudent" });
+              }}
+              className={theme == 0 ? "manage-box" : "manage-box-dark"}
+            >
               <img className="manage-img" src={ogrenciEkle} />
-              <div className = { theme == 0 ? "manage-text" : "manage-text-dark"}>Öğrenci Ekle</div>
+              <div className={theme == 0 ? "manage-text" : "manage-text-dark"}>
+                Öğrenci Ekle
+              </div>
             </button>
-            <button onClick={()=>{dispatch({ type: "RESIZE_PROGRAM", payload: "AddTeacher" })}} className={theme == 0 ? "manage-box": "manage-box-dark"}>
-              <img className="manage-img" src={ogretmenEkle} />
-              <div className = { theme == 0 ? "manage-text" : "manage-text-dark"}>Öğretmen Ekle</div>
-            </button>
+            {user.role == "admin" && (
+              <button
+                onClick={() => {
+                  dispatch({ type: "RESIZE_PROGRAM", payload: "AddTeacher" });
+                }}
+                className={theme == 0 ? "manage-box" : "manage-box-dark"}
+              >
+                <img className="manage-img" src={ogretmenEkle} />
+                <div
+                  className={theme == 0 ? "manage-text" : "manage-text-dark"}
+                >
+                  Öğretmen Ekle
+                </div>
+              </button>
+            )}
           </div>
           <div>
-            <button onClick={()=>{dispatch({ type: "RESIZE_PROGRAM", payload: "ListStudent" })}} className={theme == 0 ? "manage-box": "manage-box-dark"}>
+            <button
+              onClick={() => {
+                dispatch({ type: "RESIZE_PROGRAM", payload: "ListStudent" });
+              }}
+              className={theme == 0 ? "manage-box" : "manage-box-dark"}
+            >
               <img className="manage-img" src={ogrenciListele} />
-              <div className = { theme == 0 ? "manage-text" : "manage-text-dark"}>Öğrenci Listele</div>
+              <div className={theme == 0 ? "manage-text" : "manage-text-dark"}>
+                Öğrenci Listele
+              </div>
             </button>
-            <button onClick={()=>{dispatch({ type: "RESIZE_PROGRAM", payload: "ListTeacher" })}} className={theme == 0 ? "manage-box": "manage-box-dark"}>
-              <img className="manage-img" src={ogretmenListele} />
-              <div className = { theme == 0 ? "manage-text" : "manage-text-dark"}>Öğretmen Listele</div>
-            </button>
+            {user.role == "admin" && (
+              <button
+                onClick={() => {
+                  dispatch({ type: "RESIZE_PROGRAM", payload: "ListTeacher" });
+                }}
+                className={theme == 0 ? "manage-box" : "manage-box-dark"}
+              >
+                <img className="manage-img" src={ogretmenListele} />
+                <div
+                  className={theme == 0 ? "manage-text" : "manage-text-dark"}
+                >
+                  Öğretmen Listele
+                </div>
+              </button>
+            )}
           </div>
         </div>
       </ProgramContainer>
