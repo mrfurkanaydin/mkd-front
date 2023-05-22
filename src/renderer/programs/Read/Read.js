@@ -2,9 +2,10 @@ import { useDispatch, useSelector } from "react-redux";
 import "./Read.css";
 import ProgramContainer from "renderer/components/ProgramContainer/ProgramContainer";
 import { Document, Page } from "react-pdf/dist/esm/entry.webpack";
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
+import axios from "axios";
 function Read() {
+  const [data, setData] = useState();
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1); //setting 1 to show fisrt page
 
@@ -39,7 +40,25 @@ function Read() {
       ? dispatch({ type: "START_PROGRAM", payload: "Read" })
       : dispatch({ type: "RESIZE_PROGRAM", payload: "Read" });
   };
-
+  useEffect(() => {
+    let config = {
+      method: "get",
+      maxBodyLength: Infinity,
+      url: "http://localhost:3000/Rapor%20Final.pdf",
+      header: {
+        "Content-Type": "application/pdf",
+        "Access-Control-Allow-Origin": "*"
+      }
+    };
+    axios
+      .request(config)
+      .then((response) => {
+        console.log(JSON.stringify(response.data));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
   return (
     <>
       <ProgramContainer
@@ -54,26 +73,25 @@ function Read() {
       >
         <div className={theme == 0 ? "read-container" : "read-container-dark"}>
           <Document
-            file={{
-              url: "https://www.btk.gov.tr/uploads/pages/slug/bulut-bilisim.pdf"
-            }}
+            // file={{
+            //   url: "http://localhost:3000/Rapor%20Final.pdf"
+            // }}
+            // file={require("../Read/2023.pdf")}
             onLoadSuccess={onDocumentLoadSuccess}
           >
-
             {read == 3 ? (
               <Page
-              pageNumber={pageNumber}
-              scale="1.0"
-              // className="read-document"
-            />
+                pageNumber={pageNumber}
+                scale="1.0"
+                // className="read-document"
+              />
             ) : (
               <Page
-              pageNumber={pageNumber}
-              scale="1.1"
-              // className="read-document"
-            />
+                pageNumber={pageNumber}
+                scale="1.1"
+                // className="read-document"
+              />
             )}
-            
           </Document>
 
           <button
