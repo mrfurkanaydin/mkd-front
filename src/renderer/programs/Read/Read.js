@@ -57,6 +57,31 @@ function Read() {
         console.log(err);
       });
   }, [read == 3]);
+  const handleFileUpload = (event) => {
+    // get the selected file from the input
+    const file = event.target.files[0];
+    console.log(file);
+    // create a new FormData object and append the file to it
+    const formData = new FormData();
+    formData.append("pdf", file);
+    // make a POST request to the File Upload API with the FormData object and Rapid API headers
+    axios
+      .post("http://localhost:3000/v1/datas", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data; charset=utf-8",
+          'Accept': 'multipart/form-data; charset=utf-8'
+          
+        },
+      })
+      .then((response) => {
+		// handle the response
+        console.log(response);
+      })
+      .catch((error) => {
+        // handle errors
+        console.log(error);
+      });
+  };
   return (
     <>
       <ProgramContainer
@@ -72,7 +97,8 @@ function Read() {
         <>
           {user.role == "admin" || user.role == "teacher" ? (
             <div>
-              <div>
+              <input type="file" onChange={handleFileUpload} />
+              {/* <div>
                 <Formik
                   initialValues={{ file: "" }}
                   onSubmit={(values, actions) => {
@@ -81,12 +107,16 @@ function Read() {
                     //   actions.setSubmitting(false);
                     //   console.log(values);
                     // }, 1000);
-                    console.log(values);
-
-
-
+                    console.log(values.file);
+                    let formData = new FormData();
+                    formData.append("pdf", values.file);
+                    console.log(formData);
                     axios
-                      .post("http://localhost:3000/v1/datas", values)
+                      .post("http://localhost:3000/v1/datas", formData, {
+                        headers: {
+                          "Content-Type": "multipart/form-data"
+                        }
+                      })
                       .then((res) => {
                         console.log(res);
                       })
@@ -111,7 +141,7 @@ function Read() {
                     </form>
                   )}
                 </Formik>
-              </div>
+              </div> */}
             </div>
           ) : file ? (
             <div
