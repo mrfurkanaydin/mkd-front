@@ -4,14 +4,17 @@ import ProgramContainer from "renderer/components/ProgramContainer/ProgramContai
 import { Document, Page } from "react-pdf/dist/esm/entry.webpack";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { MdArrowBack } from "react-icons/md";
+import { Formik } from "formik";
+
 function Read() {
   const [data, setData] = useState();
+  const [file, setFile] = useState();
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1); //setting 1 to show fisrt page
 
   function onDocumentLoadSuccess({ numPages }) {
     setNumPages(numPages);
-    // setPageNumber(1);
   }
 
   function changePage(offset) {
@@ -29,8 +32,11 @@ function Read() {
   const read = useSelector((state) => state.read);
   const dispatch = useDispatch();
   const theme = useSelector((state) => state.theme);
+  const user = useSelector((state) => state.user);
   const handleStop = () => {
     dispatch({ type: "STOP_PROGRAM", payload: "Read" });
+    setFile();
+    setPageNumber(1);
   };
   const handleMinimize = () => {
     dispatch({ type: "MINIMIZE_PROGRAM", payload: "Read" });
@@ -41,24 +47,16 @@ function Read() {
       : dispatch({ type: "RESIZE_PROGRAM", payload: "Read" });
   };
   useEffect(() => {
-    let config = {
-      method: "get",
-      maxBodyLength: Infinity,
-      url: "http://localhost:3000/Rapor%20Final.pdf",
-      header: {
-        "Content-Type": "application/pdf",
-        "Access-Control-Allow-Origin": "*"
-      }
-    };
     axios
-      .request(config)
-      .then((response) => {
-        console.log(JSON.stringify(response.data));
+      .get("http://localhost:3000/v1/datas")
+      .then((res) => {
+        console.log(res.data);
+        setData(res.data);
       })
-      .catch((error) => {
-        console.log(error);
+      .catch((err) => {
+        console.log(err);
       });
-  }, []);
+  }, [read == 3]);
   return (
     <>
       <ProgramContainer
@@ -71,46 +69,120 @@ function Read() {
         containerWidth="100%"
         containerHeight="calc(100% - 40px)"
       >
-        <div className={theme == 0 ? "read-container" : "read-container-dark"}>
-          <Document
-            // file={{
-            //   url: "http://localhost:3000/Rapor%20Final.pdf"
-            // }}
-            // file={require("../Read/2023.pdf")}
-            onLoadSuccess={onDocumentLoadSuccess}
-          >
-            {read == 3 ? (
-              <Page
-                pageNumber={pageNumber}
-                scale="1.0"
-                // className="read-document"
-              />
-            ) : (
-              <Page
-                pageNumber={pageNumber}
-                scale="1.1"
-                // className="read-document"
-              />
-            )}
-          </Document>
+        <>
+          {user.role == "admin" || user.role == "teacher" ? (
+            <div>
+              <div>
+                <Formik
+                  initialValues={{ file: "" }}
+                  onSubmit={(values, actions) => {
+                    // setTimeout(() => {
+                    //   alert(JSON.stringify(values, null, 2));
+                    //   actions.setSubmitting(false);
+                    //   console.log(values);
+                    // }, 1000);
+                    console.log(values);
 
-          <button
-            type="button"
-            disabled={pageNumber <= 1}
-            onClick={previousPage}
-            className={theme == 0 ? "prev-button" : "prev-button-dark"}
-          >
-            {"<"}
-          </button>
-          <button
-            type="button"
-            disabled={pageNumber >= numPages}
-            onClick={nextPage}
-            className={theme == 0 ? "next-button" : "next-button-dark"}
-          >
-            {">"}
-          </button>
-        </div>
+
+
+                    axios
+                      .post("http://localhost:3000/v1/datas", values)
+                      .then((res) => {
+                        console.log(res);
+                      })
+                      .catch((err) => {
+                        console.log(err);
+                      });
+                  }}
+                >
+                  {(props) => (
+                    <form onSubmit={props.handleSubmit}>
+                      <input
+                        type="file"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.file}
+                        name="file"
+                      />
+                      {props.errors.name && (
+                        <div id="feedback">{props.errors.name}</div>
+                      )}
+                      <button type="submit">Submit</button>
+                    </form>
+                  )}
+                </Formik>
+              </div>
+            </div>
+          ) : file ? (
+            <div
+              className={theme == 0 ? "read-container" : "read-container-dark"}
+            >
+              <button
+                className="read-backbutton"
+                onClick={() => {
+                  setFile();
+                  setPageNumber(1);
+                }}
+              >
+                <MdArrowBack size={30} />
+              </button>
+              <Document
+                file={{
+                  url: file
+                }}
+                onLoadSuccess={onDocumentLoadSuccess}
+              >
+                {read == 3 ? (
+                  <Page
+                    pageNumber={pageNumber}
+                    scale="0.9"
+                    // className="read-document"
+                  />
+                ) : (
+                  <Page
+                    pageNumber={pageNumber}
+                    scale="1.1"
+                    // className="read-document"
+                  />
+                )}
+              </Document>
+
+              <button
+                type="button"
+                disabled={pageNumber <= 1}
+                onClick={previousPage}
+                className={theme == 0 ? "prev-button" : "prev-button-dark"}
+              >
+                {"<"}
+              </button>
+              <button
+                type="button"
+                disabled={pageNumber >= numPages}
+                onClick={nextPage}
+                className={theme == 0 ? "next-button" : "next-button-dark"}
+              >
+                {">"}
+              </button>
+            </div>
+          ) : (
+            <>
+              {data && (
+                <div>
+                  {data.map((item) => (
+                    <button
+                      onClick={() => {
+                        setFile(item.files);
+                      }}
+                      className="pdfname-container"
+                    >
+                      <h1>{item.name.split(".")[0]}</h1>
+                    </button>
+                  ))}
+                </div>
+              )}
+            </>
+          )}
+        </>
       </ProgramContainer>
     </>
   );

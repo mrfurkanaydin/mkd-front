@@ -44,7 +44,7 @@
   width: 5%;
   height: 5%;
   position: absolute;
-  left: 25%;
+  left: 20%;
   top: 50%;
   border-radius: 15px;
   background-color: rgb(97, 146, 219);
@@ -57,7 +57,7 @@
   position: absolute;
   align-items: center;
   justify-content: center;
-  right: 25%;
+  right: 20%;
   top: 50%;
   border-radius: 15px;
   background-color: rgb(97, 146, 219);
@@ -86,8 +86,23 @@
   align-items: center;
   height: 100% !important;
 }
-.react-pdf__Page__canvas{
+.react-pdf__Page__canvas {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.pdfname-container {
+  border: 0;
+  background-color: rgb(97, 146, 219);
+  color: white;
+  margin: 5px;
+  padding: 5px;
+  border-radius: 5px;
+}
+.read-backbutton {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: 60px;
+  margin-left: 20px;
 }
