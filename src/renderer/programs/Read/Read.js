@@ -5,7 +5,7 @@ import { Document, Page } from "react-pdf/dist/esm/entry.webpack";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { MdArrowBack } from "react-icons/md";
-import { Formik } from "formik";
+import slugify from "react-slugify";
 
 function Read() {
   const [data, setData] = useState();
@@ -57,28 +57,31 @@ function Read() {
         console.log(err);
       });
   }, [read == 3]);
+
   const handleFileUpload = (event) => {
     // get the selected file from the input
     const file = event.target.files[0];
     console.log(file);
-    // create a new FormData object and append the file to it
     const formData = new FormData();
-    formData.append("pdf", file);
-    // make a POST request to the File Upload API with the FormData object and Rapid API headers
+    const fileName = slugify(file.name);
+    console.log(fileName);
+    formData.append("pdf", file, fileName+".pdf");
+    let config = {
+      method: "post",
+      maxBodyLength: Infinity,
+      url: "http://localhost:3000/v1/datas",
+      headers: {
+        "Content-Type": "multipart/form-data; charset=utf-8"
+      },
+      data: formData
+    };
+
     axios
-      .post("http://localhost:3000/v1/datas", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data; charset=utf-8",
-          'Accept': 'multipart/form-data; charset=utf-8'
-          
-        },
-      })
+      .request(config)
       .then((response) => {
-		// handle the response
-        console.log(response);
+        console.log(JSON.stringify(response.data));
       })
       .catch((error) => {
-        // handle errors
         console.log(error);
       });
   };
