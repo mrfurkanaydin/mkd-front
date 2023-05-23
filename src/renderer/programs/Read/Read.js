@@ -6,13 +6,15 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { MdArrowBack } from "react-icons/md";
 import slugify from "react-slugify";
+import { differenceInMinutes } from "date-fns";
+import timerUtil from "renderer/utils/timer";
 
 function Read() {
   const [data, setData] = useState();
   const [file, setFile] = useState();
-  const [timer, setTimer] = useState(0);
+  const [firstDate, setFirstDate] = useState();
   const [numPages, setNumPages] = useState(null);
-  const [pageNumber, setPageNumber] = useState(1); //setting 1 to show fisrt page
+  const [pageNumber, setPageNumber] = useState(1);
 
   function onDocumentLoadSuccess({ numPages }) {
     setNumPages(numPages);
@@ -38,26 +40,15 @@ function Read() {
     dispatch({ type: "STOP_PROGRAM", payload: "Read" });
     setFile();
     setPageNumber(1);
-    let config = {
-      method: "post",
-      maxBodyLength: Infinity,
-      url: "http://localhost:3000/v1/timers",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      data: {
-        timer: timer,
-        userId: user.id,
-        application: "Okuma"
-      }
-    };
-    axios.request(config).then((response) => {
-      console.log(response.data);
-    });
-    setTimer(0);
+    const date = new Date();
+    const timer = differenceInMinutes(date, firstDate);
+    timerUtil(timer, user.id, "Okuma");
   };
   const handleMinimize = () => {
     dispatch({ type: "MINIMIZE_PROGRAM", payload: "Read" });
+    const date = new Date();
+    const timer = differenceInMinutes(date, firstDate);
+    timerUtil(timer, user.id, "Okuma");
   };
   const handleResize = () => {
     read == 3
@@ -74,6 +65,10 @@ function Read() {
       .catch((err) => {
         console.log(err);
       });
+    if (user.role == "student" && (read == 1 || read == 3)) {
+      const date = new Date();
+      setFirstDate(date);
+    }
   }, [read == 3 || read == 1]);
 
   const handleFileUpload = (event) => {
@@ -101,12 +96,7 @@ function Read() {
         console.log(error);
       });
   };
-  if (user.role == "student" && (read == 1 || read == 3)) {
-    setInterval(() => {
-      setTimer(timer + 1);
-    }, 1000);
-  }
-  console.log(timer);
+
   return (
     <>
       <ProgramContainer
@@ -121,10 +111,15 @@ function Read() {
         <>
           {user.role == "admin" || user.role == "teacher" ? (
             <div>
-              <div className={theme == 0 ? "input-button":"input-button-dark"}>
-              <input style={{fontSize:20,marginLeft:5}}
-              
-              type="file" onChange={handleFileUpload} /></div>
+              <div
+                className={theme == 0 ? "input-button" : "input-button-dark"}
+              >
+                <input
+                  style={{ fontSize: 20, marginLeft: 5 }}
+                  type="file"
+                  onChange={handleFileUpload}
+                />
+              </div>
               {/* <div>
                 <Formik
                   initialValues={{ file: "" }}
@@ -175,7 +170,9 @@ function Read() {
               className={theme == 0 ? "read-container" : "read-container-dark"}
             >
               <button
-                className={theme == 0 ? "read-backbutton" : "read-backbutton-dark"}
+                className={
+                  theme == 0 ? "read-backbutton" : "read-backbutton-dark"
+                }
                 onClick={() => {
                   setFile();
                   setPageNumber(1);
@@ -230,9 +227,13 @@ function Read() {
                       onClick={() => {
                         setFile(item.files);
                       }}
-                      className={theme == 0 ? "pdfname-container" : "pdfname-container-dark"}
+                      className={
+                        theme == 0
+                          ? "pdfname-container"
+                          : "pdfname-container-dark"
+                      }
                     >
-                      <h1>{item.name.split("-pdf")[0].replace("-"," ")}</h1>
+                      <h1>{item.name.split("-pdf")[0].replace("-", " ")}</h1>
                     </button>
                   ))}
                 </div>

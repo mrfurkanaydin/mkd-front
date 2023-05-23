@@ -105,6 +105,7 @@
     "react-slugify": "^3.0.2",
     "react-snake-lib": "^1.0.9",
     "react-tetris": "^0.3.0",
+    "react-timer-hook": "^3.0.6",
     "redux": "^4.2.1",
     "slugify": "^1.6.6",
     "transliteration": "^2.3.5",

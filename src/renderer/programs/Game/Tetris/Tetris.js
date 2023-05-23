@@ -1,17 +1,34 @@
 import { useDispatch, useSelector } from "react-redux";
 import ProgramContainer from "renderer/components/ProgramContainer/ProgramContainer";
 import Tetris from "react-tetris";
-import { useState } from "react";
+import { differenceInMinutes } from "date-fns";
+import { useEffect, useState } from "react";
+import timerUtil from "renderer/utils/timer";
 import "./Tetris.css";
+
 function TetrisGame() {
   const [score, setScore] = useState();
   const tetris = useSelector((state) => state.tetris);
   const dispatch = useDispatch();
+  const [firstDate, setFirstDate] = useState();
+  const user = useSelector((state) => state.user);
+  useEffect(() => {
+    if (user.role == "student" && (tetris == 1 || tetris == 3)) {
+      const date = new Date();
+      setFirstDate(date);
+    }
+  }, [tetris == 1 || tetris == 3]);
   const handleStop = () => {
     dispatch({ type: "STOP_PROGRAM", payload: "Tetris" });
+    const date = new Date();
+    const timer = differenceInMinutes(date, firstDate);
+    timerUtil(timer, user.id, "Tetris Oyunu");
   };
   const handleMinimize = () => {
     dispatch({ type: "MINIMIZE_PROGRAM", payload: "Tetris" });
+    const date = new Date();
+    const timer = differenceInMinutes(date, firstDate);
+    timerUtil(timer, user.id, "Tetris Oyunu");
   };
   const handleResize = () => {
     tetris == 3
@@ -46,13 +63,7 @@ function TetrisGame() {
               shift: "HOLD"
             }}
           >
-            {({
-              Gameboard,
-              PieceQueue,
-              points,
-              state,
-              controller
-            }) => (
+            {({ Gameboard, PieceQueue, points, state, controller }) => (
               <div className="tetris-vertical-center">
                 <div>
                   <p className="tetris-texts">Puan: {points}</p>
@@ -62,13 +73,17 @@ function TetrisGame() {
                 {state === "LOST" && (
                   <div>
                     <h2 className="tetris-texts">Kaybettin</h2>
-                    <button className="tetris-button" onClick={controller.restart}>Yeni Oyun</button>
+                    <button
+                      className="tetris-button"
+                      onClick={controller.restart}
+                    >
+                      Yeni Oyun
+                    </button>
                   </div>
                 )}
               </div>
             )}
           </Tetris>
-          
         </div>
       </ProgramContainer>
     </>

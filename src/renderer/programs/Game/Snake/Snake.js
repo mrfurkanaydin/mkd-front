@@ -2,18 +2,34 @@ import { useDispatch, useSelector } from "react-redux";
 import "./Snake.css";
 import ProgramContainer from "renderer/components/ProgramContainer/ProgramContainer";
 import { Snake } from "react-snake-lib";
-import { useState } from "react";
+import { differenceInMinutes } from "date-fns";
+import { useEffect, useState } from "react";
+import timerUtil from "renderer/utils/timer";
 
 function SnakeGame() {
   const [score, setScore] = useState();
   const [gameOver, setGameOver] = useState(false);
   const snake = useSelector((state) => state.snake);
   const dispatch = useDispatch();
+  const [firstDate, setFirstDate] = useState();
+  const user = useSelector((state) => state.user);
+  useEffect(() => {
+    if (user.role == "student" && (snake == 1 || snake == 3)) {
+      const date = new Date();
+      setFirstDate(date);
+    }
+  }, [snake == 1 || snake == 3]);
   const handleStop = () => {
     dispatch({ type: "STOP_PROGRAM", payload: "Snake" });
+    const date = new Date();
+    const timer = differenceInMinutes(date, firstDate);
+    timerUtil(timer, user.id, "Yılan Oyunu");
   };
   const handleMinimize = () => {
     dispatch({ type: "MINIMIZE_PROGRAM", payload: "Snake" });
+    const date = new Date();
+    const timer = differenceInMinutes(date, firstDate);
+    timerUtil(timer, user.id, "Yılan Oyunu");
   };
   const handleResize = () => {
     snake == 3

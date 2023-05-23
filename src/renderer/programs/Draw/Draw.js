@@ -1,10 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
 import ProgramContainer from "renderer/components/ProgramContainer/ProgramContainer";
-import { useRef, useState } from "react";
+import { useRef, useEffect, useState } from "react";
 import "./Draw.css";
 import Colorful from "@uiw/react-color-colorful";
 import { Modal } from "@mui/material";
 import { ReactSketchCanvas } from "react-sketch-canvas";
+import { differenceInMinutes } from "date-fns";
+import timerUtil from "renderer/utils/timer";
 const styles = {
   border: "0.0625rem solid #9c9c9c",
   borderRadius: "0.25rem"
@@ -15,12 +17,25 @@ function Draw() {
   const [color, setColor] = useState("#000000");
   const [open, setOpen] = useState(false);
   const saveableCanvasRef = useRef(null);
-
+  const [firstDate, setFirstDate] = useState();
+  const user = useSelector((state) => state.user);
+  useEffect(() => {
+    if (user.role == "student" && (draw == 1 || draw == 3)) {
+      const date = new Date();
+      setFirstDate(date);
+    }
+  }, [draw == 1 || draw == 3]);
   const handleStop = () => {
     dispatch({ type: "STOP_PROGRAM", payload: "Draw" });
+    const date = new Date();
+    const timer = differenceInMinutes(date, firstDate);
+    timerUtil(timer, user.id, "Çizim");
   };
   const handleMinimize = () => {
     dispatch({ type: "MINIMIZE_PROGRAM", payload: "Draw" });
+    const date = new Date();
+    const timer = differenceInMinutes(date, firstDate);
+    timerUtil(timer, user.id, "Çizim");
   };
   const handleResize = () => {
     draw == 3
