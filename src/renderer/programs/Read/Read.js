@@ -10,6 +10,7 @@ import slugify from "react-slugify";
 function Read() {
   const [data, setData] = useState();
   const [file, setFile] = useState();
+  const [timer, setTimer] = useState(0);
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1); //setting 1 to show fisrt page
 
@@ -37,6 +38,23 @@ function Read() {
     dispatch({ type: "STOP_PROGRAM", payload: "Read" });
     setFile();
     setPageNumber(1);
+    let config = {
+      method: "post",
+      maxBodyLength: Infinity,
+      url: "http://localhost:3000/v1/timers",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      data: {
+        timer: timer,
+        userId: user.id,
+        application: "Okuma"
+      }
+    };
+    axios.request(config).then((response) => {
+      console.log(response.data);
+    });
+    setTimer(0);
   };
   const handleMinimize = () => {
     dispatch({ type: "MINIMIZE_PROGRAM", payload: "Read" });
@@ -56,16 +74,14 @@ function Read() {
       .catch((err) => {
         console.log(err);
       });
-  }, [read == 3]);
+  }, [read == 3 || read == 1]);
 
   const handleFileUpload = (event) => {
     // get the selected file from the input
     const file = event.target.files[0];
-    console.log(file);
     const formData = new FormData();
     const fileName = slugify(file.name);
-    console.log(fileName);
-    formData.append("pdf", file, fileName+".pdf");
+    formData.append("pdf", file, fileName + ".pdf");
     let config = {
       method: "post",
       maxBodyLength: Infinity,
@@ -85,6 +101,12 @@ function Read() {
         console.log(error);
       });
   };
+  if (user.role == "student" && (read == 1 || read == 3)) {
+    setInterval(() => {
+      setTimer(timer + 1);
+    }, 1000);
+  }
+  console.log(timer);
   return (
     <>
       <ProgramContainer
