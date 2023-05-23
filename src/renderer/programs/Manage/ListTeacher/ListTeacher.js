@@ -20,13 +20,13 @@ function ListTeacher() {
         Authorization: `Bearer ${token.access.token}`
       }
     };
-    if (!user.role == "student" || !user.role == "teacher") {
+    if (user.role == "admin" || listTeacher == 3 || listTeacher == 1) {
       axios.request(config).then((res) => {
         console.log(res.data);
         setData(res.data.results);
       });
     }
-  }, [listTeacher == 3 && user.role == "admin"]);
+  }, [listTeacher == 3 || listTeacher == 1 || user.role == "admin"]);
   const handleStop = () => {
     dispatch({ type: "STOP_PROGRAM", payload: "ListTeacher" });
   };
