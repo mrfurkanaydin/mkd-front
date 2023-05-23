@@ -121,7 +121,10 @@ function Read() {
         <>
           {user.role == "admin" || user.role == "teacher" ? (
             <div>
-              <input type="file" onChange={handleFileUpload} />
+              <div className={theme == 0 ? "input-button":"input-button-dark"}>
+              <input style={{fontSize:20,marginLeft:5}}
+              
+              type="file" onChange={handleFileUpload} /></div>
               {/* <div>
                 <Formik
                   initialValues={{ file: "" }}
@@ -229,7 +232,7 @@ function Read() {
                       }}
                       className={theme == 0 ? "pdfname-container" : "pdfname-container-dark"}
                     >
-                      <h1>{item.name.split(".")[0]}</h1>
+                      <h1>{item.name.split("-pdf")[0].replace("-"," ")}</h1>
                     </button>
                   ))}
                 </div>

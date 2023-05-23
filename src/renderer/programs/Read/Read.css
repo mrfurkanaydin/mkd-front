@@ -151,3 +151,34 @@
 .read-backbutton-dark:hover{
   background-color: rgb(81, 80, 80);
 }
+
+.input-button {
+  background-color: rgb(97, 146, 219);
+  margin : 10px;
+  height: 37px;
+  color:white;
+  font-size: 40px;
+  width: 275px;
+  border-radius: 10px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+.input-button:hover {
+  background-color: rgb(136, 168, 216);
+}
+.input-button-dark {
+  background-color: rgb(141, 141, 141);
+  margin : 10px;
+  height: 37px;
+  color:black;
+  font-size: 40px;
+  width: 275px;
+  border-radius: 10px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+.input-button-dark:hover {
+  background-color: rgb(81, 80, 80);
+}
