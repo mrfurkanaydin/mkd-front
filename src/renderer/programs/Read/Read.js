@@ -2,17 +2,21 @@ import { useDispatch, useSelector } from "react-redux";
 import "./Read.css";
 import ProgramContainer from "renderer/components/ProgramContainer/ProgramContainer";
 import { Document, Page } from "react-pdf/dist/esm/entry.webpack";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import axios from "axios";
 import { MdArrowBack } from "react-icons/md";
 import slugify from "react-slugify";
 import { differenceInMinutes } from "date-fns";
 import timerUtil from "renderer/utils/timer";
+import MaterialReactTable from "material-react-table";
+import { RiDeleteBin6Line } from "react-icons/ri";
 
 function Read() {
   const [data, setData] = useState();
+  const [teacherData, setTeacherData] = useState();
   const [file, setFile] = useState();
   const [firstDate, setFirstDate] = useState();
+
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
 
@@ -56,6 +60,13 @@ function Read() {
       : dispatch({ type: "RESIZE_PROGRAM", payload: "Read" });
   };
   useEffect(() => {
+    setTeacherData([
+      {
+        files: "http://localhost:3000/hirmancici-pdf.pdf",
+        name: "hirmancici-pdf.pdf",
+        id: "646c874be982f47d248da360"
+      }
+    ]);
     axios
       .get("http://localhost:3000/v1/datas")
       .then((res) => {
@@ -90,13 +101,31 @@ function Read() {
     axios
       .request(config)
       .then((response) => {
-        console.log(JSON.stringify(response.data));
+        setData(response.data);
       })
       .catch((error) => {
         console.log(error);
       });
   };
-
+  const columns = useMemo(
+    () => [
+      {
+        accessorKey: "name", //access nested data with dot notation
+        header: "Pdf Adı"
+      }
+    ],
+    []
+  );
+  const deleteFile = (id) => {
+    axios
+      .delete("http://localhost:3000/v1/datas/" + id)
+      .then((res) => {
+        setData(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <>
       <ProgramContainer
@@ -120,50 +149,39 @@ function Read() {
                   onChange={handleFileUpload}
                 />
               </div>
-              {/* <div>
-                <Formik
-                  initialValues={{ file: "" }}
-                  onSubmit={(values, actions) => {
-                    // setTimeout(() => {
-                    //   alert(JSON.stringify(values, null, 2));
-                    //   actions.setSubmitting(false);
-                    //   console.log(values);
-                    // }, 1000);
-                    console.log(values.file);
-                    let formData = new FormData();
-                    formData.append("pdf", values.file);
-                    console.log(formData);
-                    axios
-                      .post("http://localhost:3000/v1/datas", formData, {
-                        headers: {
-                          "Content-Type": "multipart/form-data"
-                        }
-                      })
-                      .then((res) => {
-                        console.log(res);
-                      })
-                      .catch((err) => {
-                        console.log(err);
-                      });
+              <div>
+                <MaterialReactTable
+                  columns={columns}
+                  data={data}
+                  enableColumnActions={false}
+                  enableColumnFilters={false}
+                  enablePagination={false}
+                  enableSorting={false}
+                  enableBottomToolbar={false}
+                  enableTopToolbar={false}
+                  muiTableBodyRowProps={{ hover: false }}
+                  enableRowActions
+                  positionActionsColumn="last"
+                  displayColumnDefOptions={{
+                    "mrt-row-actions": {
+                      header: "Detay" //change header text
+                    }
                   }}
-                >
-                  {(props) => (
-                    <form onSubmit={props.handleSubmit}>
-                      <input
-                        type="file"
-                        onChange={props.handleChange}
-                        onBlur={props.handleBlur}
-                        value={props.values.file}
-                        name="file"
-                      />
-                      {props.errors.name && (
-                        <div id="feedback">{props.errors.name}</div>
-                      )}
-                      <button type="submit">Submit</button>
-                    </form>
+                  renderRowActions={({ row }) => (
+                    <button
+                      onClick={() => {
+                        deleteFile(row.original.id);
+                      }}
+                      style={{
+                        backgroundColor: "transparent",
+                        border: "none"
+                      }}
+                    >
+                      <RiDeleteBin6Line size={30} />
+                    </button>
                   )}
-                </Formik>
-              </div> */}
+                />
+              </div>
             </div>
           ) : file ? (
             <div
@@ -233,7 +251,7 @@ function Read() {
                           : "pdfname-container-dark"
                       }
                     >
-                      <h1>{item.name.split("-pdf")[0].replace("-", " ")}</h1>
+                      <h1>{item.name.split("-pdf")[0].replaceAll("-", " ")}</h1>
                     </button>
                   ))}
                 </div>
