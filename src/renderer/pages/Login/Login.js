@@ -5,10 +5,14 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import giris from "../../../assets/kullanicigiris.png";
 import "../../../assets/kullanicigiris-dark.png";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 function Login() {
   const [state, setState] = useState(false);
   const [state2, setState2] = useState(false);
   const [supervisor, setSupervisor] = useState(false);
+  const notify = (text) => toast(text);
   const handleClick = () => {
     setState(true);
   };
@@ -36,6 +40,7 @@ function Login() {
       {supervisor ? (
         <>
           <div className="Login-container">
+            <ToastContainer />
             <Formik
               initialValues={{ email: "", password: "" }}
               onSubmit={(values) => {
@@ -45,7 +50,9 @@ function Login() {
                   .then((res) => {
                     dispatch({ type: "SET_TOKEN", payload: res.data.tokens });
                     dispatch({ type: "SET_USER", payload: res.data.user });
-                    console.log(res.data);
+                  })
+                  .catch((err) => {
+                    notify("Giriş Başarısız");
                   });
               }}
             >
@@ -103,6 +110,7 @@ function Login() {
         </>
       ) : (
         <div className="Login-container">
+          <ToastContainer />
           <Formik
             initialValues={{ tcNo: "", password: "" }}
             onSubmit={(values) => {
@@ -113,6 +121,10 @@ function Login() {
                   dispatch({ type: "SET_TOKEN", payload: res.data.tokens });
                   dispatch({ type: "SET_USER", payload: res.data.user });
                   console.log(res.data);
+                })
+                .catch((err) => {
+                  notify("Giriş Başarısız");
+                  values = { tcNo: "", password: "" };
                 });
             }}
           >

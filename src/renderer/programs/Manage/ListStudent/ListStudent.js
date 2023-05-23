@@ -99,7 +99,7 @@ function ListStudent() {
                 onClick={() => {
                   dispatch({
                     type: "SET_STUDENT_DATA",
-                    payload: row.original.tcNo
+                    payload: row.original.id
                   });
                   dispatch({
                     type: "RESIZE_PROGRAM",

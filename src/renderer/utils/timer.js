@@ -1,5 +1,10 @@
 import axios from "axios";
 const timerUtil = (timer, userId, App) => {
+  const data = JSON.stringify({
+    timer: timer,
+    userId: userId,
+    application: App
+  });
   let config = {
     method: "post",
     maxBodyLength: Infinity,
@@ -7,11 +12,7 @@ const timerUtil = (timer, userId, App) => {
     headers: {
       "Content-Type": "application/json"
     },
-    data: {
-      timer: timer,
-      userId: userId,
-      application: App
-    }
+    data: data
   };
   axios.request(config).then((response) => {
     console.log(response.data);

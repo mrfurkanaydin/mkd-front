@@ -35,6 +35,8 @@ import ListStudent from "renderer/programs/Manage/ListStudent/ListStudent";
 import ListTeacher from "renderer/programs/Manage/ListTeacher/ListTeacher";
 import DetailStudent from "renderer/programs/Manage/DetailStudent/DetailStudent";
 import Login from "../Login/Login";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Hub() {
   const animatedIcons = useSelector((state) => state.animatedIcons);
@@ -52,7 +54,6 @@ function Hub() {
           }`}
         >
           {mousePointer === 1 && <Cursor />}
-
           <div className="hub-hubitems">
             <HubItems
               icon={animatedIcons === false ? okuma : okumagif}
