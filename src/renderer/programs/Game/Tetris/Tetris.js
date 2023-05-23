@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import ProgramContainer from "renderer/components/ProgramContainer/ProgramContainer";
 import Tetris from "react-tetris";
-import { differenceInMinutes } from "date-fns";
+import { differenceInSeconds } from "date-fns";
 import { useEffect, useState } from "react";
 import timerUtil from "renderer/utils/timer";
 import "./Tetris.css";
@@ -21,13 +21,13 @@ function TetrisGame() {
   const handleStop = () => {
     dispatch({ type: "STOP_PROGRAM", payload: "Tetris" });
     const date = new Date();
-    const timer = differenceInMinutes(date, firstDate);
+    const timer = differenceInSeconds(date, firstDate);
     timerUtil(timer, user.id, "Tetris Oyunu");
   };
   const handleMinimize = () => {
     dispatch({ type: "MINIMIZE_PROGRAM", payload: "Tetris" });
     const date = new Date();
-    const timer = differenceInMinutes(date, firstDate);
+    const timer = differenceInSeconds(date, firstDate);
     timerUtil(timer, user.id, "Tetris Oyunu");
   };
   const handleResize = () => {

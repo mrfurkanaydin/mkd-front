@@ -5,7 +5,7 @@ import "./Draw.css";
 import Colorful from "@uiw/react-color-colorful";
 import { Modal } from "@mui/material";
 import { ReactSketchCanvas } from "react-sketch-canvas";
-import { differenceInMinutes } from "date-fns";
+import { differenceInSeconds } from "date-fns";
 import timerUtil from "renderer/utils/timer";
 const styles = {
   border: "0.0625rem solid #9c9c9c",
@@ -28,13 +28,13 @@ function Draw() {
   const handleStop = () => {
     dispatch({ type: "STOP_PROGRAM", payload: "Draw" });
     const date = new Date();
-    const timer = differenceInMinutes(date, firstDate);
+    const timer = differenceInSeconds(date, firstDate);
     timerUtil(timer, user.id, "Çizim");
   };
   const handleMinimize = () => {
     dispatch({ type: "MINIMIZE_PROGRAM", payload: "Draw" });
     const date = new Date();
-    const timer = differenceInMinutes(date, firstDate);
+    const timer = differenceInSeconds(date, firstDate);
     timerUtil(timer, user.id, "Çizim");
   };
   const handleResize = () => {

@@ -3,7 +3,7 @@ import ProgramContainer from "renderer/components/ProgramContainer/ProgramContai
 import "./Write.css";
 import { Editor } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-import { differenceInMinutes } from "date-fns";
+import { differenceInSeconds } from "date-fns";
 import { useEffect, useState } from "react";
 import timerUtil from "renderer/utils/timer";
 
@@ -15,13 +15,13 @@ function Write() {
   const handleStop = () => {
     dispatch({ type: "STOP_PROGRAM", payload: "Write" });
     const date = new Date();
-    const timer = differenceInMinutes(date, firstDate);
+    const timer = differenceInSeconds(date, firstDate);
     timerUtil(timer, user.id, "Yazma");
   };
   const handleMinimize = () => {
     dispatch({ type: "MINIMIZE_PROGRAM", payload: "Write" });
     const date = new Date();
-    const timer = differenceInMinutes(date, firstDate);
+    const timer = differenceInSeconds(date, firstDate);
     timerUtil(timer, user.id, "Yazma");
   };
   const handleResize = () => {

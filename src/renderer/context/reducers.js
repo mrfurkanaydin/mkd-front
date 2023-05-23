@@ -15,7 +15,7 @@ const PROGRAMS = {
   Tetris: "tetris",
   Puzzle: "puzzle",
   XOX: "xox",
-  Tangram: "tangram",
+  Card: "card",
   AddStudent: "addStudent",
   AddTeacher: "addTeacher",
   ListStudent: "listStudent",

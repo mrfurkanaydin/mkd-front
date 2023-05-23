@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ProgramContainer from "renderer/components/ProgramContainer/ProgramContainer";
 import "./DetailStudent.css";
+import { secondsToMinutes } from 'date-fns'
+
 function Manage() {
   const detailStudent = useSelector((state) => state.detailStudent);
   const theme = useSelector((state) => state.theme);
@@ -77,7 +79,7 @@ function Manage() {
                   <div className="studentDetail-title">
                     {item.application} Uygulamasında Geçirdiği Süre:
                   </div>
-                  <div className="studentDetail-desc">{item.timer} dk</div>
+                  <div className="studentDetail-desc">{secondsToMinutes(item.timer)} dk</div>
                 </div>
               );
             })}

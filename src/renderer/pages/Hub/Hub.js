@@ -29,14 +29,16 @@ import Notes from "renderer/programs/Notes/Notes";
 import Terminal from "renderer/programs/Terminal/Terminal";
 import Snake from "renderer/programs/Game/Snake/Snake";
 import Tetris from "renderer/programs/Game/Tetris/Tetris";
+import Tictaktoe from "renderer/programs/Game/TicTakToe/Tictaktoe";
 import AddStudent from "renderer/programs/Manage/AddStudent/AddStudent";
 import AddTeacher from "renderer/programs/Manage/AddTeacher/AddTeacher";
 import ListStudent from "renderer/programs/Manage/ListStudent/ListStudent";
 import ListTeacher from "renderer/programs/Manage/ListTeacher/ListTeacher";
 import DetailStudent from "renderer/programs/Manage/DetailStudent/DetailStudent";
 import Login from "../Login/Login";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import Puzzle from "renderer/programs/Game/Puzzle/Puzzle";
+import Card from "renderer/programs/Game/Card/Card";
+
 
 function Hub() {
   const animatedIcons = useSelector((state) => state.animatedIcons);
@@ -103,6 +105,9 @@ function Hub() {
             <Terminal />
             <Snake />
             <Tetris />
+            <Tictaktoe/>
+            <Puzzle/>
+            <Card/>
             <AddStudent />
             <AddTeacher />
             <ListStudent />

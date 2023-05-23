@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import "./Snake.css";
 import ProgramContainer from "renderer/components/ProgramContainer/ProgramContainer";
 import { Snake } from "react-snake-lib";
-import { differenceInMinutes } from "date-fns";
+import { differenceInSeconds } from "date-fns";
 import { useEffect, useState } from "react";
 import timerUtil from "renderer/utils/timer";
 
@@ -22,13 +22,13 @@ function SnakeGame() {
   const handleStop = () => {
     dispatch({ type: "STOP_PROGRAM", payload: "Snake" });
     const date = new Date();
-    const timer = differenceInMinutes(date, firstDate);
+    const timer = differenceInSeconds(date, firstDate);
     timerUtil(timer, user.id, "Yılan Oyunu");
   };
   const handleMinimize = () => {
     dispatch({ type: "MINIMIZE_PROGRAM", payload: "Snake" });
     const date = new Date();
-    const timer = differenceInMinutes(date, firstDate);
+    const timer = differenceInSeconds(date, firstDate);
     timerUtil(timer, user.id, "Yılan Oyunu");
   };
   const handleResize = () => {

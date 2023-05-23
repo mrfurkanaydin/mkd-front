@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import "./Watch.css";
 import ProgramContainer from "renderer/components/ProgramContainer/ProgramContainer";
 import YoutubeEmbed from "renderer/components/YoutubeEmbed/YoutubeEmbed";
-import { differenceInMinutes } from "date-fns";
+import { differenceInSeconds } from "date-fns";
 import { useEffect, useMemo, useState } from "react";
 import timerUtil from "renderer/utils/timer";
 import { Formik } from "formik";
@@ -42,13 +42,13 @@ function Watch() {
   const handleStop = () => {
     dispatch({ type: "STOP_PROGRAM", payload: "Watch" });
     const date = new Date();
-    const timer = differenceInMinutes(date, firstDate);
+    const timer = differenceInSeconds(date, firstDate);
     timerUtil(timer, user.id, "İzleme");
   };
   const handleMinimize = () => {
     dispatch({ type: "MINIMIZE_PROGRAM", payload: "Watch" });
     const date = new Date();
-    const timer = differenceInMinutes(date, firstDate);
+    const timer = differenceInSeconds(date, firstDate);
     timerUtil(timer, user.id, "İzleme");
   };
   const handleResize = () => {
@@ -164,7 +164,11 @@ function Watch() {
               <>
                 {data &&
                   data.map((item) => {
-                    return <YoutubeEmbed embedId={item.link.split("v=")[1]} />;
+                    return (
+                      <YoutubeEmbed
+                        embedId={item.link.split("v=")[1].split("&")[0]}
+                      />
+                    );
                   })}
               </>
             )}

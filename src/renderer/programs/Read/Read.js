@@ -6,7 +6,7 @@ import { useEffect, useMemo, useState } from "react";
 import axios from "axios";
 import { MdArrowBack } from "react-icons/md";
 import slugify from "react-slugify";
-import { differenceInMinutes } from "date-fns";
+import { differenceInSeconds } from "date-fns";
 import timerUtil from "renderer/utils/timer";
 import MaterialReactTable from "material-react-table";
 import { RiDeleteBin6Line } from "react-icons/ri";
@@ -45,13 +45,13 @@ function Read() {
     setFile();
     setPageNumber(1);
     const date = new Date();
-    const timer = differenceInMinutes(date, firstDate);
+    const timer = differenceInSeconds(date, firstDate);
     timerUtil(timer, user.id, "Okuma");
   };
   const handleMinimize = () => {
     dispatch({ type: "MINIMIZE_PROGRAM", payload: "Read" });
     const date = new Date();
-    const timer = differenceInMinutes(date, firstDate);
+    const timer = differenceInSeconds(date, firstDate);
     timerUtil(timer, user.id, "Okuma");
   };
   const handleResize = () => {

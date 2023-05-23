@@ -118,7 +118,7 @@ function TaskBar() {
   const snake = useSelector((state) => state.snake);
   const puzzle = useSelector((state) => state.puzzle);
   const xox = useSelector((state) => state.xox);
-  const tangram = useSelector((state) => state.tangram);
+  const card = useSelector((state) => state.card);
   const addStudent = useSelector((state) => state.addStudent);
   const addTeacher = useSelector((state) => state.addTeacher);
   const listStudent = useSelector((state) => state.listStudent);
@@ -278,7 +278,7 @@ function TaskBar() {
           {snake !== 0 && <TaskBarItem name={"Snake"} icon={theme == 0 ? yilanOyunu : yilanOyunu_dark} status={snake} />}
           {puzzle !== 0 && <TaskBarItem name={"Puzzle"} icon={theme == 0 ? yabbozOyunu : yabbozOyunu_dark} status={puzzle} />}
           {xox !== 0 && <TaskBarItem name={"XOX"} icon={theme == 0 ? xoxOyunu : xoxOyunu_dark} status={xox} />}
-          {tangram !== 0 && <TaskBarItem name={"Tangram"} icon={theme == 0 ? tangramOyunu : tangramOyunu_dark} status={tangram} />}
+          {card !== 0 && <TaskBarItem name={"Card"} icon={theme == 0 ? tangramOyunu : tangramOyunu_dark} status={card} />}
           {addStudent !== 0 && <TaskBarItem name={"AddStudent"} icon={addStudents} status={addStudent} />}
           {addTeacher !== 0 && <TaskBarItem name={"AddTeacher"} icon={addTeachers} status={addTeacher} />}
           {listStudent !== 0 && <TaskBarItem name={"ListStudent"} icon={listStudents} status={listStudent} />}

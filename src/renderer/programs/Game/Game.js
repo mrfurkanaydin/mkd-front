@@ -64,7 +64,7 @@ function Game() {
               <div className = { theme == 0 ? "game-text" : "game-text-dark"}>XOX</div>
             </button>
             <button className={theme == 0 ? "game-button": "game-button-dark"}>
-              <img onClick={() => handleOpenGame("Tangram")} className="game-img" src={theme == 0 ? tangramOyunu : tangramOyunu_dark} />
+              <img onClick={() => handleOpenGame("Card")} className="game-img" src={theme == 0 ? tangramOyunu : tangramOyunu_dark} />
               <div className = { theme == 0 ? "game-text" : "game-text-dark"}>Kartlar</div>
             </button>
         </div>
