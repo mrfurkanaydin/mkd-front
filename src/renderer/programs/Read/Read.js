@@ -115,7 +115,6 @@ function Read() {
         handleMinimize={handleMinimize}
         handleResize={handleResize}
         status={read}
-        bgColor="#fff"
         containerWidth="100%"
         containerHeight="calc(100% - 40px)"
       >
@@ -173,7 +172,7 @@ function Read() {
               className={theme == 0 ? "read-container" : "read-container-dark"}
             >
               <button
-                className="read-backbutton"
+                className={theme == 0 ? "read-backbutton" : "read-backbutton-dark"}
                 onClick={() => {
                   setFile();
                   setPageNumber(1);
@@ -228,7 +227,7 @@ function Read() {
                       onClick={() => {
                         setFile(item.files);
                       }}
-                      className="pdfname-container"
+                      className={theme == 0 ? "pdfname-container" : "pdfname-container-dark"}
                     >
                       <h1>{item.name.split(".")[0]}</h1>
                     </button>
