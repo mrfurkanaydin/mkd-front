@@ -16,7 +16,6 @@ const PROGRAMS = {
   Puzzle: "puzzle",
   XOX: "xox",
   Tangram: "tangram",
-  MagicCup: "magicCup",
   AddStudent: "addStudent",
   AddTeacher: "addTeacher",
   ListStudent: "listStudent",

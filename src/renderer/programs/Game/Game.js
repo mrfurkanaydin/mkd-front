@@ -12,8 +12,6 @@ import xoxOyunu from "../../../assets/xox.png";
 import xoxOyunu_dark from "../../../assets/xox-dark.png";
 import tangramOyunu from "../../../assets/tangram.png";
 import tangramOyunu_dark from "../../../assets/tangram-dark.png";
-import kupaOyunu from "../../../assets/sihirlikupa.png";
-import kupaOyunu_dark from "../../../assets/sihirlikupa-dark.png";
 function Game() {
   const [score, setScore] = useState();
   const game = useSelector((state) => state.game);
@@ -67,11 +65,7 @@ function Game() {
             </button>
             <button className={theme == 0 ? "game-button": "game-button-dark"}>
               <img onClick={() => handleOpenGame("Tangram")} className="game-img" src={theme == 0 ? tangramOyunu : tangramOyunu_dark} />
-              <div className = { theme == 0 ? "game-text" : "game-text-dark"}>Tangram</div>
-            </button>
-            <button className={theme == 0 ? "game-button": "game-button-dark"}>
-              <img onClick={() => handleOpenGame("MagicCup")} className="game-img" src={theme == 0 ? kupaOyunu : kupaOyunu_dark} />
-              <div className = { theme == 0 ? "game-text" : "game-text-dark"}>Sihirli Kupa</div>
+              <div className = { theme == 0 ? "game-text" : "game-text-dark"}>Kartlar</div>
             </button>
         </div>
       </ProgramContainer>

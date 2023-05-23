@@ -41,8 +41,6 @@ import xoxOyunu from "../../../assets/xox.png";
 import xoxOyunu_dark from "../../../assets/xox-dark.png";
 import tangramOyunu from "../../../assets/tangram.png";
 import tangramOyunu_dark from "../../../assets/tangram-dark.png";
-import kupaOyunu from "../../../assets/sihirlikupa.png";
-import kupaOyunu_dark from "../../../assets/sihirlikupa-dark.png";
 import addStudents from "../../../assets/ogrenciEkle.png";
 import addTeachers from "../../../assets/ogretmenEkle.png";
 import listStudents from "../../../assets/ogrenciListele.png";
@@ -121,7 +119,6 @@ function TaskBar() {
   const puzzle = useSelector((state) => state.puzzle);
   const xox = useSelector((state) => state.xox);
   const tangram = useSelector((state) => state.tangram);
-  const magicCup = useSelector((state) => state.magicCup);
   const addStudent = useSelector((state) => state.addStudent);
   const addTeacher = useSelector((state) => state.addTeacher);
   const listStudent = useSelector((state) => state.listStudent);
@@ -282,7 +279,6 @@ function TaskBar() {
           {puzzle !== 0 && <TaskBarItem name={"Puzzle"} icon={theme == 0 ? yabbozOyunu : yabbozOyunu_dark} status={puzzle} />}
           {xox !== 0 && <TaskBarItem name={"XOX"} icon={theme == 0 ? xoxOyunu : xoxOyunu_dark} status={xox} />}
           {tangram !== 0 && <TaskBarItem name={"Tangram"} icon={theme == 0 ? tangramOyunu : tangramOyunu_dark} status={tangram} />}
-          {magicCup !== 0 && <TaskBarItem name={"MagicCup"} icon={theme == 0 ? kupaOyunu : kupaOyunu_dark} status={magicCup} />}
           {addStudent !== 0 && <TaskBarItem name={"AddStudent"} icon={addStudents} status={addStudent} />}
           {addTeacher !== 0 && <TaskBarItem name={"AddTeacher"} icon={addTeachers} status={addTeacher} />}
           {listStudent !== 0 && <TaskBarItem name={"ListStudent"} icon={listStudents} status={listStudent} />}
