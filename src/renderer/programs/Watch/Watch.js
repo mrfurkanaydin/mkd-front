@@ -3,14 +3,36 @@ import "./Watch.css";
 import ProgramContainer from "renderer/components/ProgramContainer/ProgramContainer";
 import YoutubeEmbed from "renderer/components/YoutubeEmbed/YoutubeEmbed";
 import { differenceInMinutes } from "date-fns";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import timerUtil from "renderer/utils/timer";
+import { Formik } from "formik";
+import MaterialReactTable from "material-react-table";
+import { RiDeleteBin6Line } from "react-icons/ri";
+import axios from "axios";
 
+const data = [
+  {
+    link: "https://www.youtube.com/watch?v=7C2z4GqqS5E"
+  },
+  {
+    link: "https://www.youtube.com/watch?v=7C2z4GqqS5E"
+  }
+];
 function Watch() {
   const [firstDate, setFirstDate] = useState();
   const watch = useSelector((state) => state.watch);
   const user = useSelector((state) => state.user);
+  const [data, setData] = useState();
   useEffect(() => {
+    axios
+      .get("http://localhost:3000/v1/link")
+      .then((res) => {
+        console.log(res.data);
+        setData(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     if (user.role == "student" && (watch == 1 || watch == 3)) {
       const date = new Date();
       setFirstDate(date);
@@ -34,6 +56,26 @@ function Watch() {
       ? dispatch({ type: "START_PROGRAM", payload: "Watch" })
       : dispatch({ type: "RESIZE_PROGRAM", payload: "Watch" });
   };
+  const columns = useMemo(
+    () => [
+      {
+        accessorKey: "link",
+        header: "Link"
+      }
+    ],
+    []
+  );
+  const deleteLink = (id) => {
+    axios
+      .delete(`http://localhost:3000/v1/link/${id}`)
+      .then((res) => {
+        console.log(res.data);
+        setData(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <>
       <ProgramContainer
@@ -46,9 +88,87 @@ function Watch() {
         containerHeight="calc(100% - 40px)"
       >
         <div className="watch-container">
-          <YoutubeEmbed embedId="rokGy0huYEA" />
-          <YoutubeEmbed embedId="F8BFSVjpRv8" />
-          <YoutubeEmbed embedId="4Dnut5W9dpw" />
+          <>
+            {user.role == "admin" || user.role == "teacher" ? (
+              <>
+                <Formik
+                  initialValues={{
+                    link: ""
+                  }}
+                  onSubmit={(values) => {
+                    let config = {
+                      method: "post",
+                      maxBodyLength: Infinity,
+                      url: "http://localhost:3000/v1/link",
+                      headers: {
+                        "Content-Type": "application/json"
+                      },
+                      data: values
+                    };
+                    axios
+                      .request(config)
+                      .then((response) => {
+                        setData(response.data);
+                      })
+                      .catch((error) => {
+                        console.log(error);
+                      });
+                  }}
+                >
+                  {({ values, handleChange, handleSubmit }) => (
+                    <form onSubmit={handleSubmit}>
+                      <input
+                        type="text"
+                        name="link"
+                        onChange={handleChange}
+                        value={values.link}
+                        placeholder="Youtube linki giriniz"
+                      />
+                      <button type="submit">Ekle</button>
+                    </form>
+                  )}
+                </Formik>
+                <MaterialReactTable
+                  columns={columns}
+                  data={data}
+                  enableColumnActions={false}
+                  enableColumnFilters={false}
+                  enablePagination={false}
+                  enableSorting={false}
+                  enableBottomToolbar={false}
+                  enableTopToolbar={false}
+                  muiTableBodyRowProps={{ hover: false }}
+                  enableRowActions
+                  positionActionsColumn="last"
+                  displayColumnDefOptions={{
+                    "mrt-row-actions": {
+                      header: "Detay" //change header text
+                    }
+                  }}
+                  renderRowActions={({ row }) => (
+                    <button
+                      onClick={() => {
+                        deleteLink(row.original.id);
+                      }}
+                      style={{
+                        backgroundColor: "transparent",
+                        border: "none"
+                      }}
+                    >
+                      <RiDeleteBin6Line size={30} />
+                    </button>
+                  )}
+                />
+              </>
+            ) : (
+              <>
+                {data &&
+                  data.map((item) => {
+                    return <YoutubeEmbed embedId={item.link.split("v=")[1]} />;
+                  })}
+              </>
+            )}
+          </>
         </div>
       </ProgramContainer>
     </>

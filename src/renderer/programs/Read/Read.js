@@ -60,13 +60,6 @@ function Read() {
       : dispatch({ type: "RESIZE_PROGRAM", payload: "Read" });
   };
   useEffect(() => {
-    setTeacherData([
-      {
-        files: "http://localhost:3000/hirmancici-pdf.pdf",
-        name: "hirmancici-pdf.pdf",
-        id: "646c874be982f47d248da360"
-      }
-    ]);
     axios
       .get("http://localhost:3000/v1/datas")
       .then((res) => {
