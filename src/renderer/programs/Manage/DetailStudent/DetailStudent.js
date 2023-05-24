@@ -33,7 +33,7 @@ function Manage() {
     let config = {
       method: "get",
       maxBodyLength: Infinity,
-      url: `http://localhost:3000/v1/users/${id}`,
+      url: `http://16.16.166.122:3000/v1/users/${id}`,
       headers: {
         Authorization: `Bearer ${token.access.token}`
       }
@@ -46,11 +46,10 @@ function Manage() {
     let config2 = {
       method: "get",
       maxBodyLength: Infinity,
-      url: `http://localhost:3000/v1/timers/${student?.id}`
+      url: `http://16.16.166.122:3000/v1/timers/${student?.id}`
     };
     if (detailStudent == 1 || detailStudent == 3) {
       sendRequest(config2).then((res) => {
-        console.log(res);
         setData(res);
       });
     }

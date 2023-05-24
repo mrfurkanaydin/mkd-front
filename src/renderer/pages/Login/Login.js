@@ -44,9 +44,8 @@ function Login() {
             <Formik
               initialValues={{ email: "", password: "" }}
               onSubmit={(values) => {
-                console.log(values);
                 axios
-                  .post("http://localhost:3000/v1/auth/login", values)
+                  .post("http://16.16.166.122:3000/v1/auth/login", values)
                   .then((res) => {
                     dispatch({ type: "SET_TOKEN", payload: res.data.tokens });
                     dispatch({ type: "SET_USER", payload: res.data.user });
@@ -114,17 +113,14 @@ function Login() {
           <Formik
             initialValues={{ tcNo: "", password: "" }}
             onSubmit={(values) => {
-              console.log(values);
               axios
-                .post("http://localhost:3000/v1/auth/login", values)
+                .post("http://16.16.166.122:3000/v1/auth/login", values)
                 .then((res) => {
                   dispatch({ type: "SET_TOKEN", payload: res.data.tokens });
                   dispatch({ type: "SET_USER", payload: res.data.user });
-                  console.log(res.data);
                 })
                 .catch((err) => {
                   notify("Giriş Başarısız");
-                  values = { tcNo: "", password: "" };
                 });
             }}
           >

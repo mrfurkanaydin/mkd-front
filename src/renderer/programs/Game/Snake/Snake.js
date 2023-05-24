@@ -73,7 +73,6 @@ function SnakeGame() {
               height="100%"
               onScoreChange={onScoreChange}
               onGameOver={onGameOver}
-              // onGameStart={onGameStart}
               bgColor="silver"
               innerBorderColor="#b1b0b0"
               snakeSpeed={150}

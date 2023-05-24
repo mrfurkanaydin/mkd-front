@@ -51,7 +51,6 @@ function Card() {
           <>
             <MemoryGame
               gridNumber={4}
-              // gameFinished={()=> console.log("")}
               holeCardsColor={"#000"}
               foundCardsColor={"#412213"}
             />

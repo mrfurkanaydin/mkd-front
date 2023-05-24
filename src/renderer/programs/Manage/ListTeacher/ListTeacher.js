@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from "react-redux";
-// import "./Manage.css";
 import ProgramContainer from "renderer/components/ProgramContainer/ProgramContainer";
 import React, { useEffect, useMemo, useState } from "react";
 import MaterialReactTable from "material-react-table";
@@ -15,14 +14,13 @@ function ListTeacher() {
     let config = {
       method: "get",
       maxBodyLength: Infinity,
-      url: "http://localhost:3000/v1/users?role=teacher",
+      url: "http://16.16.166.122:3000/v1/users?role=teacher",
       headers: {
         Authorization: `Bearer ${token.access.token}`
       }
     };
     if (user.role == "admin" || listTeacher == 3 || listTeacher == 1) {
       axios.request(config).then((res) => {
-        console.log(res.data);
         setData(res.data.results);
       });
     }
@@ -41,7 +39,7 @@ function ListTeacher() {
   const columns = useMemo(
     () => [
       {
-        accessorKey: "firstName", //access nested data with dot notation
+        accessorKey: "firstName",
         header: "Adı"
       },
       {
@@ -49,7 +47,7 @@ function ListTeacher() {
         header: "Soyadı"
       },
       {
-        accessorKey: "gender", //normal accessorKey
+        accessorKey: "gender",
         header: "Cinsiyet"
       },
       {

@@ -29,7 +29,6 @@ const store = new Store();
 
 ipcMain.on("ipc-example", async (event, arg) => {
   const msgTemplate = (pingPong: string) => `IPC test: ${pingPong}`;
-  console.log(msgTemplate(arg));
   event.reply("ipc-example", msgTemplate("pong"));
 });
 
@@ -152,8 +151,6 @@ app
   .catch(console.log);
 
 ipcMain.on("send-fullScreen", (event, arg) => {
-  // const msgTemplate = (fullScreen: string) => `fullscreen: ${typeof fullScreen}`;
-  // console.log(msgTemplate(arg));
   console.log(arg);
 
   if (arg === true) {

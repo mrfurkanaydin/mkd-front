@@ -10,14 +10,6 @@ import MaterialReactTable from "material-react-table";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import axios from "axios";
 
-const data = [
-  {
-    link: "https://www.youtube.com/watch?v=7C2z4GqqS5E"
-  },
-  {
-    link: "https://www.youtube.com/watch?v=7C2z4GqqS5E"
-  }
-];
 function Watch() {
   const [firstDate, setFirstDate] = useState();
   const watch = useSelector((state) => state.watch);
@@ -25,9 +17,8 @@ function Watch() {
   const [data, setData] = useState();
   useEffect(() => {
     axios
-      .get("http://localhost:3000/v1/link")
+      .get("http://16.16.166.122:3000/v1/link")
       .then((res) => {
-        console.log(res.data);
         setData(res.data);
       })
       .catch((err) => {
@@ -67,9 +58,8 @@ function Watch() {
   );
   const deleteLink = (id) => {
     axios
-      .delete(`http://localhost:3000/v1/link/${id}`)
+      .delete(`http://16.16.166.122:3000/v1/link/${id}`)
       .then((res) => {
-        console.log(res.data);
         setData(res.data);
       })
       .catch((err) => {
@@ -99,7 +89,7 @@ function Watch() {
                     let config = {
                       method: "post",
                       maxBodyLength: Infinity,
-                      url: "http://localhost:3000/v1/link",
+                      url: "http://16.16.166.122:3000/v1/link",
                       headers: {
                         "Content-Type": "application/json"
                       },
@@ -142,7 +132,7 @@ function Watch() {
                   positionActionsColumn="last"
                   displayColumnDefOptions={{
                     "mrt-row-actions": {
-                      header: "Detay" //change header text
+                      header: "Detay" 
                     }
                   }}
                   renderRowActions={({ row }) => (

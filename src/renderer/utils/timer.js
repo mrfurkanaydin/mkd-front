@@ -8,15 +8,13 @@ const timerUtil = (timer, userId, App) => {
   let config = {
     method: "post",
     maxBodyLength: Infinity,
-    url: "http://localhost:3000/v1/timers",
+    url: "http://16.16.166.122:3000/v1/timers",
     headers: {
       "Content-Type": "application/json"
     },
     data: data
   };
-  axios.request(config).then((response) => {
-    console.log(response.data);
-  });
+  axios.request(config)
 };
 
 export default timerUtil;

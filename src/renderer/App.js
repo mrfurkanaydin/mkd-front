@@ -5,7 +5,6 @@ import Login from "./pages/Login/Login";
 import "./App.css";
 
 export default function App() {
-  console.log(window.electron.store.get("fullscreen"));
   return (
     <Provider>
       <Router>

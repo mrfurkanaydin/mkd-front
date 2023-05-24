@@ -47,11 +47,9 @@ function Write() {
       >
         <>
           <Editor
-            // editorState={editorState}
             toolbarClassName="toolbarClassName"
             wrapperClassName="wrapperClassName"
             editorClassName="editorClassName"
-            // onEditorStateChange={this.onEditorStateChange}
           />
         </>
       </ProgramContainer>

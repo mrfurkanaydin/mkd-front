@@ -153,7 +153,6 @@ function Tictaktoe() {
                 <h3>{statusPlayer}</h3>
                 <div className="board">
                   {squares.map((square, index) => {
-                    console.log(square);
                     return (
                       <Square
                         value={square}

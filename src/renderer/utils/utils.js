@@ -89,7 +89,6 @@ const gir = (action) => {
   action == "çizim" && (dizin = "çizim");
   action == "notlar" && (dizin = "notlar");
   
-  console.log(dizin);
   return { text: dizin, command: "gir", dizin: dizin };
 };
 
@@ -106,7 +105,7 @@ const cik = (action) => {
   action == "çizim" && (dizin = "çizim");
   action == "notlar" && (dizin = "notlar");
   action == "terminal" && (dizin = "terminal");
-  console.log(dizin);
+
   return { text: dizin, command: "çık", dizin: dizin };
 };
 

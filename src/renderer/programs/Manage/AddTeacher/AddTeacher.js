@@ -46,11 +46,10 @@ function AddTeacher() {
               password: "",
             }}
             onSubmit={async (values) => {
-              console.log(values);
               let config = {
                 method: 'post',
                 maxBodyLength: Infinity,
-                url: 'http://localhost:3000/v1/users',
+                url: 'http://16.16.166.122:3000/v1/users',
                 headers: { 
                   'Content-Type': 'application/json', 
                   'Authorization': `Bearer ${token.access.token}`
@@ -58,7 +57,6 @@ function AddTeacher() {
                 data : values
               };
               axios.request(config).then(function (response) {
-                console.log(response.data);
                 dispatch({ type: "STOP_PROGRAM", payload: "AddTeacher" });
               }).catch(function (error) {
                 console.error(error);

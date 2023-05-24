@@ -61,13 +61,11 @@ function Read() {
   };
   useEffect(() => {
     axios
-      .get("http://localhost:3000/v1/datas")
+      .get("http://16.16.166.122:3000/v1/datas")
       .then((res) => {
-        console.log(res.data);
         setData(res.data);
       })
       .catch((err) => {
-        console.log(err);
       });
     if (user.role == "student" && (read == 1 || read == 3)) {
       const date = new Date();
@@ -76,7 +74,6 @@ function Read() {
   }, [read == 3 || read == 1]);
 
   const handleFileUpload = (event) => {
-    // get the selected file from the input
     const file = event.target.files[0];
     const formData = new FormData();
     const fileName = slugify(file.name);
@@ -84,7 +81,7 @@ function Read() {
     let config = {
       method: "post",
       maxBodyLength: Infinity,
-      url: "http://localhost:3000/v1/datas",
+      url: "http://16.16.166.122:3000/v1/datas",
       headers: {
         "Content-Type": "multipart/form-data; charset=utf-8"
       },
@@ -103,7 +100,7 @@ function Read() {
   const columns = useMemo(
     () => [
       {
-        accessorKey: "name", //access nested data with dot notation
+        accessorKey: "name", 
         header: "Pdf Adı"
       }
     ],
@@ -111,7 +108,7 @@ function Read() {
   );
   const deleteFile = (id) => {
     axios
-      .delete("http://localhost:3000/v1/datas/" + id)
+      .delete("http://16.16.166.122:3000/v1/datas/" + id)
       .then((res) => {
         setData(res.data);
       })
@@ -157,7 +154,7 @@ function Read() {
                   positionActionsColumn="last"
                   displayColumnDefOptions={{
                     "mrt-row-actions": {
-                      header: "Detay" //change header text
+                      header: "Detay" 
                     }
                   }}
                   renderRowActions={({ row }) => (
@@ -201,13 +198,11 @@ function Read() {
                   <Page
                     pageNumber={pageNumber}
                     scale="0.9"
-                    // className="read-document"
                   />
                 ) : (
                   <Page
                     pageNumber={pageNumber}
                     scale="1.1"
-                    // className="read-document"
                   />
                 )}
               </Document>

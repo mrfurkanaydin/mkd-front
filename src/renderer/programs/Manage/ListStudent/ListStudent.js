@@ -16,14 +16,13 @@ function ListStudent() {
     let config = {
       method: "get",
       maxBodyLength: Infinity,
-      url: "http://localhost:3000/v1/users?role=student",
+      url: "http://16.16.166.122:3000/v1/users?role=student",
       headers: {
         Authorization: `Bearer ${token.access.token}`
       }
     };
     if (user.role == "teacher" || user.role == "admin") {
       axios.request(config).then((res) => {
-        console.log(res.data);
         setData(res.data.results);
       });
     }
@@ -42,7 +41,7 @@ function ListStudent() {
   const columns = useMemo(
     () => [
       {
-        accessorKey: "firstName", //access nested data with dot notation
+        accessorKey: "firstName",
         header: "Adı"
       },
       {
@@ -50,7 +49,7 @@ function ListStudent() {
         header: "Soyadı"
       },
       {
-        accessorKey: "gender", //normal accessorKey
+        accessorKey: "gender",
         header: "Cinsiyet"
       },
       {
@@ -91,7 +90,7 @@ function ListStudent() {
             positionActionsColumn="last"
             displayColumnDefOptions={{
               "mrt-row-actions": {
-                header: "Detay" //change header text
+                header: "Detay"
               }
             }}
             renderRowActions={({ row }) => (

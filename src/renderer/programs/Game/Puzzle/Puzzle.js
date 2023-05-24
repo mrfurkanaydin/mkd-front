@@ -38,7 +38,6 @@ function Puzzle() {
       ? dispatch({ type: "START_PROGRAM", payload: "Puzzle" })
       : dispatch({ type: "RESIZE_PROGRAM", payload: "Puzzle" });
   };
-  console.log(random * 10);
   return (
     <>
       <ProgramContainer
