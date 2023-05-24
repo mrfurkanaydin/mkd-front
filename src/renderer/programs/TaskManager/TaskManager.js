@@ -15,6 +15,11 @@ function TaskManager() {
   const draw = useSelector((state) => state.draw);
   const notes = useSelector((state) => state.notes);
   const terminal = useSelector((state) => state.terminal);
+  const snake = useSelector((state) => state.snake);
+  const tetris = useSelector((state) => state.tetris);
+  const puzzle = useSelector((state) => state.puzzle);
+  const xox = useSelector((state) => state.xox);
+  const card = useSelector((state) => state.card);
   const dispatch = useDispatch();
   const handleStop = () => {
     dispatch({ type: "STOP_PROGRAM", payload: "TaskManager" });
@@ -58,6 +63,21 @@ function TaskManager() {
           {notes !== 0 && <TaskManagerItem name="Notlar" type="Notes" />}
           {terminal !== 0 && (
             <TaskManagerItem name="Terminal" type="Terminal" />
+          )}
+          {snake !== 0 && (
+            <TaskManagerItem name="Yılan Oyunu" type="Snake" />
+          )}
+          {tetris !== 0 && (
+            <TaskManagerItem name="Tetris Oyunu" type="Tetris" />
+          )}
+          {puzzle !== 0 && (
+            <TaskManagerItem name="Yapboz Oyunu" type="Puzzle" />
+          )}
+          {xox !== 0 && (
+            <TaskManagerItem name="Tic Tac Toe Oyunu" type="XOX" />
+          )}
+          {card !== 0 && (
+            <TaskManagerItem name="Kart Oyunu" type="Card" />
           )}
         </>
       </ProgramContainer>

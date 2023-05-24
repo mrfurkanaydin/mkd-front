@@ -13,6 +13,7 @@ import axios from "axios";
 function Watch() {
   const [firstDate, setFirstDate] = useState();
   const watch = useSelector((state) => state.watch);
+  const theme = useSelector((state) => state.theme);
   const user = useSelector((state) => state.user);
   const [data, setData] = useState();
   useEffect(() => {
@@ -107,14 +108,17 @@ function Watch() {
                 >
                   {({ values, handleChange, handleSubmit }) => (
                     <form onSubmit={handleSubmit}>
+                      <div className={theme == 0 ? "watch-url-container" : "watch-url-container-dark" }>
+                      <button className={theme == 0 ? "watch-button" : "watch-button-dark" } type="submit">Ekle</button>
                       <input
+                        className={theme == 0 ? "watch-input" : "watch-input-dark" }
                         type="text"
                         name="link"
                         onChange={handleChange}
                         value={values.link}
                         placeholder="Youtube linki giriniz"
                       />
-                      <button type="submit">Ekle</button>
+                      </div>
                     </form>
                   )}
                 </Formik>

@@ -62,14 +62,14 @@ function Manage() {
         width={500}
         disable="true"
       >
-        <div className="studentDetail-container">
-          <div className="studentDetail-name">
+        <div className={theme == 0 ? "studentDetail-container":"studentDetail-container-dark"}>
+          <div className={theme == 0 ? "studentDetail-name":"studentDetail-name-dark"}>
             {`${student?.firstName} Adlı Öğrencinin Detayları`}
           </div>
-          <div className="studentDetail-data">
+          <div className={theme == 0 ? "studentDetail-data":"studentDetail-data-dark"}>
             {data?.map((item) => {
               return (
-                <div key={item.id + 1} className="studentDetail-item">
+                <div key={item.id + 1} className={theme == 0 ? "studentDetail-item":"studentDetail-item-dark"}>
                   <div className="studentDetail-title">
                     {item.application} Uygulamasında Geçirdiği Süre:
                   </div>
