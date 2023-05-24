@@ -8,8 +8,6 @@ import yazma from "../../../assets/yazma.png";
 import yazmagif from "../../../assets/yazma.gif";
 import izleme from "../../../assets/izleme.png";
 import izlemegif from "../../../assets/izleme.gif";
-import dinleme from "../../../assets/dinleme.png";
-import dinlemegif from "../../../assets/dinleme.gif";
 import oyun from "../../../assets/oyun.png";
 import oyungif from "../../../assets/oyun.gif";
 import yonetim from "../../../assets/yonetim.png";
@@ -18,7 +16,6 @@ import Read from "renderer/programs/Read/Read";
 import Options from "renderer/programs/Options/Options";
 import Write from "renderer/programs/Write/Write";
 import Watch from "renderer/programs/Watch/Watch";
-import Listen from "renderer/programs/Listen/Listen";
 import Game from "renderer/programs/Game/Game";
 import Manage from "renderer/programs/Manage/Manage";
 import Cursor from "renderer/components/Cursor/Cursor";
@@ -73,11 +70,6 @@ function Hub() {
               type="Watch"
             />
             <HubItems
-              icon={animatedIcons === false ? dinleme : dinlemegif}
-              name="Dinleme"
-              type="Listen"
-            />
-            <HubItems
               icon={animatedIcons === false ? oyun : oyungif}
               name="Oyun"
               type="Game"
@@ -94,7 +86,6 @@ function Hub() {
             <Read />
             <Write />
             <Watch />
-            <Listen />
             <Game />
             <Manage />
             <Options />

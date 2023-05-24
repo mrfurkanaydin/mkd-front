@@ -7,7 +7,6 @@ import timerUtil from "renderer/utils/timer";
 import "./Tetris.css";
 
 function TetrisGame() {
-  const [score, setScore] = useState();
   const tetris = useSelector((state) => state.tetris);
   const dispatch = useDispatch();
   const [firstDate, setFirstDate] = useState();

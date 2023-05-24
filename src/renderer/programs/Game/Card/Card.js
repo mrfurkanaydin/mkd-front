@@ -3,8 +3,6 @@ import ProgramContainer from "renderer/components/ProgramContainer/ProgramContai
 import { differenceInSeconds } from "date-fns";
 import { useEffect, useState } from "react";
 import timerUtil from "renderer/utils/timer";
-import { JigsawPuzzle } from "react-jigsaw-puzzle/lib";
-import "react-jigsaw-puzzle/lib/jigsaw-puzzle.css";
 import MemoryGame from "react-card-memory-game";
 
 function Card() {

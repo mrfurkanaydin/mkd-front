@@ -31,7 +31,7 @@ function AddTeacher() {
         containerWidth="100%"
         containerHeight="calc(100% - 40px)"
         width={700}
-        height={550}
+        height={600}
         disable="true"
       >
         <div>

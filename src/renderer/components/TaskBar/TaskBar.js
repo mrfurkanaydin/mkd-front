@@ -7,8 +7,6 @@ import yazma from "../../../assets/yazma.png";
 import yazmagif from "../../../assets/yazma.gif";
 import izleme from "../../../assets/izleme.png";
 import izlemegif from "../../../assets/izleme.gif";
-import dinleme from "../../../assets/dinleme.png";
-import dinlemegif from "../../../assets/dinleme.gif";
 import oyun from "../../../assets/oyun.png";
 import oyungif from "../../../assets/oyun.gif";
 import yonetim from "../../../assets/yonetim.png";
@@ -27,10 +25,8 @@ import calculators from "../../../assets/hesapmakinesi.png";
 import calculators_dark from "../../../assets/hesapmakinesi-dark.png";
 import draws from "../../../assets/cizim.png";
 import draws_dark from "../../../assets/cizim-dark.png";
-import notess from "../../../assets/notlar.png"
+import notess from "../../../assets/notlar.png";
 import notess_dark from "../../../assets/notlar-dark.png";
-import dictinary from "../../../assets/sozluk.png";
-import dictinary_dark from "../../../assets/sozluk-dark.png";
 import yilanOyunu from "../../../assets/yilan.png";
 import yilanOyunu_dark from "../../../assets/yilan-dark.png";
 import tetrisOyunu from "../../../assets/tetris.png";
@@ -45,7 +41,7 @@ import addStudents from "../../../assets/ogrenciEkle.png";
 import addTeachers from "../../../assets/ogretmenEkle.png";
 import listStudents from "../../../assets/ogrenciListele.png";
 import listTeachers from "../../../assets/ogretmenListele.png";
-import React, { useState } from "react";
+import { useState } from "react";
 import "./TaskBar.css";
 import { useDispatch, useSelector } from "react-redux";
 import { format } from "date-fns";
@@ -130,67 +126,152 @@ function TaskBar() {
       {showMenu && (
         <>
           <div className={theme == 0 ? "taskbar-open" : "taskbar-open-dark"}>
-            <button onClick={startOption} className={theme == 0 ? "taskbar-open-item" : "taskbar-open-item-dark"}>
-            <img className="taskbar-open-img" src={theme == 0 ? option : option_dark} />
+            <button
+              onClick={startOption}
+              className={
+                theme == 0 ? "taskbar-open-item" : "taskbar-open-item-dark"
+              }
+            >
+              <img
+                className="taskbar-open-img"
+                src={theme == 0 ? option : option_dark}
+              />
               Seçenekler
             </button>
             <button
               onClick={handleEquip}
               className={
-                equip ? theme == 0 ? "taskbar-open-item-active" : "taskbar-open-item-active-dark" : theme == 0 ? "taskbar-open-item" : "taskbar-open-item-dark"
+                equip
+                  ? theme == 0
+                    ? "taskbar-open-item-active"
+                    : "taskbar-open-item-active-dark"
+                  : theme == 0
+                  ? "taskbar-open-item"
+                  : "taskbar-open-item-dark"
               }
             >
-              <img className="taskbar-open-img" src={theme == 0 ? equipment : equipment_dark} />
+              <img
+                className="taskbar-open-img"
+                src={theme == 0 ? equipment : equipment_dark}
+              />
               Donatılar
             </button>
             <button
               onClick={handleControls}
               className={
-                controls ? theme == 0 ? "taskbar-open-item-active" : "taskbar-open-item-active-dark" : theme == 0 ? "taskbar-open-item" : "taskbar-open-item-dark"
+                controls
+                  ? theme == 0
+                    ? "taskbar-open-item-active"
+                    : "taskbar-open-item-active-dark"
+                  : theme == 0
+                  ? "taskbar-open-item"
+                  : "taskbar-open-item-dark"
               }
             >
-              <img className="taskbar-open-img" src={theme == 0 ? control : control_dark} />
+              <img
+                className="taskbar-open-img"
+                src={theme == 0 ? control : control_dark}
+              />
               Kontrol
             </button>
           </div>
           {equip && (
-            <div className={theme == 0 ? "taskbar-open-equipment" : "taskbar-open-equipment-dark"}>
-              <button className={theme == 0 ? "taskbar-open-item" : "taskbar-open-item-dark"} onClick={startTaskManager}>
-              <img className="taskbar-open-img" src={theme == 0 ? taskmanager : taskmanager_dark} />
+            <div
+              className={
+                theme == 0
+                  ? "taskbar-open-equipment"
+                  : "taskbar-open-equipment-dark"
+              }
+            >
+              <button
+                className={
+                  theme == 0 ? "taskbar-open-item" : "taskbar-open-item-dark"
+                }
+                onClick={startTaskManager}
+              >
+                <img
+                  className="taskbar-open-img"
+                  src={theme == 0 ? taskmanager : taskmanager_dark}
+                />
                 Görev Yöneticisi
               </button>
-              <button className={theme == 0 ? "taskbar-open-item" : "taskbar-open-item-dark"} onClick={startTerminal}>
-              <img className="taskbar-open-img" src={theme == 0 ? terminals : terminals_dark} />
+              <button
+                className={
+                  theme == 0 ? "taskbar-open-item" : "taskbar-open-item-dark"
+                }
+                onClick={startTerminal}
+              >
+                <img
+                  className="taskbar-open-img"
+                  src={theme == 0 ? terminals : terminals_dark}
+                />
                 Terminal
               </button>
-              <button className={theme == 0 ? "taskbar-open-item" : "taskbar-open-item-dark"} onClick={startCalculator}>
-              <img className="taskbar-open-img" src={theme == 0 ? calculators : calculators_dark} />
+              <button
+                className={
+                  theme == 0 ? "taskbar-open-item" : "taskbar-open-item-dark"
+                }
+                onClick={startCalculator}
+              >
+                <img
+                  className="taskbar-open-img"
+                  src={theme == 0 ? calculators : calculators_dark}
+                />
                 Hesap Makinesi
               </button>
-              <button className={theme == 0 ? "taskbar-open-item" : "taskbar-open-item-dark"} onClick={startDraw}>
-              <img className="taskbar-open-img" src={theme == 0 ? draws : draws_dark} />
+              <button
+                className={
+                  theme == 0 ? "taskbar-open-item" : "taskbar-open-item-dark"
+                }
+                onClick={startDraw}
+              >
+                <img
+                  className="taskbar-open-img"
+                  src={theme == 0 ? draws : draws_dark}
+                />
                 Çizim
               </button>
-              <button className={theme == 0 ? "taskbar-open-item" : "taskbar-open-item-dark"} onClick={startNotes}>
-                <img className="taskbar-open-img" src={theme == 0 ? notess : notess_dark} />
+              <button
+                className={
+                  theme == 0 ? "taskbar-open-item" : "taskbar-open-item-dark"
+                }
+                onClick={startNotes}
+              >
+                <img
+                  className="taskbar-open-img"
+                  src={theme == 0 ? notess : notess_dark}
+                />
                 Notlarım
               </button>
-              {/* <button className={theme == 0 ? "taskbar-open-item": "taskbar-open-item-dark"}>
-                <img className="taskbar-open-img" src={theme == 0 ? sozluk : sozluk_dark} />
-                Sözlük
-          </button> */}
             </div>
           )}
           {controls && (
-            <div className={theme == 0 ? "taskbar-open-controls" : "taskbar-open-controls-dark"}>
-              <button onClick={handleQuit} className={theme == 0 ? "taskbar-open-item" : "taskbar-open-item-dark"}>
+            <div
+              className={
+                theme == 0
+                  ? "taskbar-open-controls"
+                  : "taskbar-open-controls-dark"
+              }
+            >
+              <button
+                onClick={handleQuit}
+                className={
+                  theme == 0 ? "taskbar-open-item" : "taskbar-open-item-dark"
+                }
+              >
                 Kapat
               </button>
-              <button onClick={()=>{
-                dispatch({type:"SET_USER",payload:null})
-                dispatch({type:"SET_TOKEN",payload:null})
-              }} className={theme == 0 ? "taskbar-open-item" : "taskbar-open-item-dark"}>Oturumu Kapat</button>
-              <button className={theme == 0 ? "taskbar-open-item" : "taskbar-open-item-dark"}>Şifre Değiştir</button>
+              <button
+                onClick={() => {
+                  dispatch({ type: "SET_USER", payload: null });
+                  dispatch({ type: "SET_TOKEN", payload: null });
+                }}
+                className={
+                  theme == 0 ? "taskbar-open-item" : "taskbar-open-item-dark"
+                }
+              >
+                Oturumu Kapat
+              </button>
             </div>
           )}
         </>
@@ -200,11 +281,18 @@ function TaskBar() {
         <div className="taskbar-items">
           <button
             className={
-              showMenu ? theme == 0 ? "taskbar-item-button-active" : "taskbar-item-button-active-dark" : "taskbar-item-button"
+              showMenu
+                ? theme == 0
+                  ? "taskbar-item-button-active"
+                  : "taskbar-item-button-active-dark"
+                : "taskbar-item-button"
             }
             onClick={handleToggle}
           >
-            <img className="mastermenu-style" src={theme == 0 ? masterMenu : masterMenu_dark} />
+            <img
+              className="mastermenu-style"
+              src={theme == 0 ? masterMenu : masterMenu_dark}
+            />
           </button>
           {read !== 0 && (
             <TaskBarItem
@@ -227,13 +315,6 @@ function TaskBar() {
               status={watch}
             />
           )}
-          {listen !== 0 && (
-            <TaskBarItem
-              name={"Listen"}
-              icon={animatedIcons == 0 ? dinleme : dinlemegif}
-              status={listen}
-            />
-          )}
           {game !== 0 && (
             <TaskBarItem
               name={"Game"}
@@ -249,7 +330,11 @@ function TaskBar() {
             />
           )}
           {options !== 0 && (
-            <TaskBarItem name={"Options"} icon={theme == 0 ? option : option_dark} status={options} />
+            <TaskBarItem
+              name={"Options"}
+              icon={theme == 0 ? option : option_dark}
+              status={options}
+            />
           )}
           {taskManager !== 0 && (
             <TaskBarItem
@@ -266,23 +351,89 @@ function TaskBar() {
             />
           )}
           {draw !== 0 && (
-            <TaskBarItem name={"Draw"} icon={theme == 0 ? draws : draws_dark} status={draw} />
+            <TaskBarItem
+              name={"Draw"}
+              icon={theme == 0 ? draws : draws_dark}
+              status={draw}
+            />
           )}
           {notes !== 0 && (
-            <TaskBarItem name={"Notes"} icon={theme == 0 ? notess : notess_dark} status={notes} />
+            <TaskBarItem
+              name={"Notes"}
+              icon={theme == 0 ? notess : notess_dark}
+              status={notes}
+            />
           )}
           {terminal !== 0 && (
-            <TaskBarItem name={"Terminal"} icon={theme == 0 ? terminals : terminals_dark} status={terminal} />
+            <TaskBarItem
+              name={"Terminal"}
+              icon={theme == 0 ? terminals : terminals_dark}
+              status={terminal}
+            />
           )}
-          {tetris !== 0 && <TaskBarItem name={"Tetris"} icon={theme == 0 ? tetrisOyunu : tetrisOyunu_dark} status={tetris} />}
-          {snake !== 0 && <TaskBarItem name={"Snake"} icon={theme == 0 ? yilanOyunu : yilanOyunu_dark} status={snake} />}
-          {puzzle !== 0 && <TaskBarItem name={"Puzzle"} icon={theme == 0 ? yabbozOyunu : yabbozOyunu_dark} status={puzzle} />}
-          {xox !== 0 && <TaskBarItem name={"XOX"} icon={theme == 0 ? xoxOyunu : xoxOyunu_dark} status={xox} />}
-          {card !== 0 && <TaskBarItem name={"Card"} icon={theme == 0 ? tangramOyunu : tangramOyunu_dark} status={card} />}
-          {addStudent !== 0 && <TaskBarItem name={"AddStudent"} icon={addStudents} status={addStudent} />}
-          {addTeacher !== 0 && <TaskBarItem name={"AddTeacher"} icon={addTeachers} status={addTeacher} />}
-          {listStudent !== 0 && <TaskBarItem name={"ListStudent"} icon={listStudents} status={listStudent} />}
-          {listTeacher !== 0 && <TaskBarItem name={"ListTeacher"} icon={listTeachers} status={listTeacher} />}
+          {tetris !== 0 && (
+            <TaskBarItem
+              name={"Tetris"}
+              icon={theme == 0 ? tetrisOyunu : tetrisOyunu_dark}
+              status={tetris}
+            />
+          )}
+          {snake !== 0 && (
+            <TaskBarItem
+              name={"Snake"}
+              icon={theme == 0 ? yilanOyunu : yilanOyunu_dark}
+              status={snake}
+            />
+          )}
+          {puzzle !== 0 && (
+            <TaskBarItem
+              name={"Puzzle"}
+              icon={theme == 0 ? yabbozOyunu : yabbozOyunu_dark}
+              status={puzzle}
+            />
+          )}
+          {xox !== 0 && (
+            <TaskBarItem
+              name={"XOX"}
+              icon={theme == 0 ? xoxOyunu : xoxOyunu_dark}
+              status={xox}
+            />
+          )}
+          {card !== 0 && (
+            <TaskBarItem
+              name={"Card"}
+              icon={theme == 0 ? tangramOyunu : tangramOyunu_dark}
+              status={card}
+            />
+          )}
+          {addStudent !== 0 && (
+            <TaskBarItem
+              name={"AddStudent"}
+              icon={addStudents}
+              status={addStudent}
+            />
+          )}
+          {addTeacher !== 0 && (
+            <TaskBarItem
+              name={"AddTeacher"}
+              icon={addTeachers}
+              status={addTeacher}
+            />
+          )}
+          {listStudent !== 0 && (
+            <TaskBarItem
+              name={"ListStudent"}
+              icon={listStudents}
+              status={listStudent}
+            />
+          )}
+          {listTeacher !== 0 && (
+            <TaskBarItem
+              name={"ListTeacher"}
+              icon={listTeachers}
+              status={listTeacher}
+            />
+          )}
           <div className={theme == 0 ? "date" : "date-dark"}>
             <div>{format(new Date(), "HH:mm")}</div>
             <div>{format(new Date(), "P", { locale: tr })}</div>

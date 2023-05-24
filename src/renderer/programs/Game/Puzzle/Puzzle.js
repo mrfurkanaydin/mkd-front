@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import timerUtil from "renderer/utils/timer";
 import { JigsawPuzzle } from "react-jigsaw-puzzle/lib";
 import "react-jigsaw-puzzle/lib/jigsaw-puzzle.css";
-import MemoryGame from "react-card-memory-game";
 
 function Puzzle() {
   const puzzle = useSelector((state) => state.puzzle);

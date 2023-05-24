@@ -1,4 +1,3 @@
-import React from "react";
 import Draggable from "react-draggable";
 import { FaRegWindowMinimize } from "react-icons/fa";
 import { IoIosQrScanner } from "react-icons/io";
@@ -26,11 +25,13 @@ function ProgramContainer({
       {status != 0 && (
         <div handle=".program-header">
           <Draggable
-            handle={theme == 0 ? ".program-header-resize" : ".program-header-resize-dark"}
-
+            handle={
+              theme == 0
+                ? ".program-header-resize"
+                : ".program-header-resize-dark"
+            }
             position={status == 1 && { x: 0, y: 0 }}
           >
-            {/* <div className="program-container" style={{backgroundColor:bgColor}}> */}
             <div
               className={
                 status == 2

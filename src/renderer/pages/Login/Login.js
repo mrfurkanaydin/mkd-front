@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Formik } from "formik";
 import "./Login.css";
 import axios from "axios";
@@ -58,7 +58,6 @@ function Login() {
               {({ values, handleChange, handleSubmit }) => (
                 <form onSubmit={handleSubmit}>
                   <div className="group">
-                    {/* <div className="label">TC Kimlik Numarası</div> */}
                     <input
                       type="email"
                       name="email"
@@ -70,7 +69,6 @@ function Login() {
                   </div>
                   {state2 && (
                     <div className="group">
-                      {/* <div className="label">Şifre </div> */}
                       <input
                         type="password"
                         name="password"
@@ -95,9 +93,6 @@ function Login() {
                       <>
                         <button type="submit" className="login-button">
                           Giriş Yap
-                        </button>
-                        <button className="login-button">
-                          Şifremi Unuttum
                         </button>
                       </>
                     )}
@@ -127,7 +122,6 @@ function Login() {
             {({ values, handleChange, handleSubmit }) => (
               <form onSubmit={handleSubmit}>
                 <div className="group">
-                  {/* <div className="label">TC Kimlik Numarası</div> */}
                   <input
                     type="tcNo"
                     name="tcNo"
@@ -139,7 +133,6 @@ function Login() {
                 </div>
                 {state && (
                   <div className="group">
-                    {/* <div className="label">Şifre </div> */}
                     <input
                       type="password"
                       name="password"
@@ -162,7 +155,6 @@ function Login() {
                       <button type="submit" className="login-button">
                         Giriş Yap
                       </button>
-                      <button className="login-button">Şifremi Unuttum</button>
                     </>
                   )}
                 </div>

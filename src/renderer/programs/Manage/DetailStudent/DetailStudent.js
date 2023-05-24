@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ProgramContainer from "renderer/components/ProgramContainer/ProgramContainer";
 import "./DetailStudent.css";
-import { secondsToMinutes } from 'date-fns'
+import { secondsToMinutes } from "date-fns";
 
 function Manage() {
   const detailStudent = useSelector((state) => state.detailStudent);
@@ -27,7 +27,14 @@ function Manage() {
   const id = useSelector((state) => state.studentData);
   const sendRequest = async (config) => {
     const response = await axios.request(config);
-    return response.data;
+    setStudent(response.data);
+    let config2 = {
+      method: "get",
+      maxBodyLength: Infinity,
+      url: `http://16.16.166.122:3000/v1/timers/${id}`
+    };
+    const response2 = await axios.request(config2);
+    setData(response2.data);
   };
   useEffect(() => {
     let config = {
@@ -39,19 +46,7 @@ function Manage() {
       }
     };
     if (detailStudent == 1 || detailStudent == 3) {
-      sendRequest(config).then((res) => {
-        setStudent(res);
-      });
-    }
-    let config2 = {
-      method: "get",
-      maxBodyLength: Infinity,
-      url: `http://16.16.166.122:3000/v1/timers/${student?.id}`
-    };
-    if (detailStudent == 1 || detailStudent == 3) {
-      sendRequest(config2).then((res) => {
-        setData(res);
-      });
+      sendRequest(config);
     }
   }, [detailStudent == 3 || detailStudent == 1]);
   return (
@@ -78,7 +73,9 @@ function Manage() {
                   <div className="studentDetail-title">
                     {item.application} Uygulamasında Geçirdiği Süre:
                   </div>
-                  <div className="studentDetail-desc">{secondsToMinutes(item.timer)} dk</div>
+                  <div className="studentDetail-desc">
+                    {secondsToMinutes(item.timer)} dk
+                  </div>
                 </div>
               );
             })}
