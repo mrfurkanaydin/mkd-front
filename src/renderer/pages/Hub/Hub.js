@@ -40,6 +40,7 @@ import Card from "renderer/programs/Game/Card/Card";
 function Hub() {
   const animatedIcons = useSelector((state) => state.animatedIcons);
   const mousePointer = useSelector((state) => state.mousePointer);
+  const theme = useSelector((state) => state.theme);
   const user = useSelector((state) => state.user);
   const token = useSelector((state) => state.token);
   return (
@@ -49,7 +50,7 @@ function Hub() {
       ) : (
         <div
           className={`${
-            mousePointer === 0 ? "hub-container" : "hub-container-cursor"
+            mousePointer === 0 ? "hub-container" : theme == 0 ? "hub-container-cursor" : "hub-container-cursor-dark"
           }`}
         >
           {mousePointer === 1 && <Cursor />}

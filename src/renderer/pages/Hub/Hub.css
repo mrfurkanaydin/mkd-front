@@ -31,9 +31,43 @@
   .cursor-dot {
     width: 8px;
     height: 8px;
-    background-color: rgb(37, 36, 36);
+    background-color: rgb(113, 145, 194);;
   }
   
+  .cursor-dot-outline {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(147, 170, 204, 0.571);;
+  }
+}
+.hub-container-cursor-dark {
+  height: 100vh;
+  /* background-image: url("../../../assets/bg.jpg"); */
+  background: linear-gradient(to bottom, #365cb3, #0f192e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
+  cursor: none;
+  * {
+    cursor: none;
+  }
+  
+  .cursor-dot,
+  .cursor-dot-outline {
+    pointer-events: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    z-index: 9999;
+  }
+  
+  .cursor-dot {
+    width: 8px;
+    height: 8px;
+    background-color: rgb(37, 36, 36);
+  }
   .cursor-dot-outline {
     width: 40px;
     height: 40px;
