@@ -5,7 +5,7 @@ import ProgramContainer from "renderer/components/ProgramContainer/ProgramContai
 import "./DetailStudent.css";
 import { secondsToMinutes } from "date-fns";
 
-function Manage() {
+function DetailStudent() {
   const detailStudent = useSelector((state) => state.detailStudent);
   const theme = useSelector((state) => state.theme);
   const dispatch = useDispatch();
@@ -86,4 +86,4 @@ function Manage() {
   );
 }
 
-export default Manage;
+export default DetailStudent;

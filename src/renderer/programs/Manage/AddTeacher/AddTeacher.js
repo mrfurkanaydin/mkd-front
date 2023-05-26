@@ -3,6 +3,7 @@ import "./AddTeacher.css";
 import { Field, Formik, Form } from "formik";
 import ProgramContainer from "renderer/components/ProgramContainer/ProgramContainer";
 import axios from "axios";
+import { v4 } from 'uuid';
 
 function AddTeacher() {
   const addTeacher = useSelector((state) => state.addTeacher);
@@ -44,6 +45,7 @@ function AddTeacher() {
               email: "",
               role: "teacher",
               password: "",
+              tcNo:v4()
             }}
             onSubmit={async (values) => {
               let config = {
