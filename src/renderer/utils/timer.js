@@ -8,7 +8,7 @@ const timerUtil = (timer, userId, App) => {
   let config = {
     method: "post",
     maxBodyLength: Infinity,
-    url: "http://16.16.166.122:3000/v1/timers",
+    url: "http://localhost:3000/v1/timers",
     headers: {
       "Content-Type": "application/json"
     },

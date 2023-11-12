@@ -18,7 +18,7 @@ function Watch() {
   const [data, setData] = useState();
   useEffect(() => {
     axios
-      .get("http://16.16.166.122:3000/v1/link")
+      .get("http://localhost:3000/v1/link")
       .then((res) => {
         setData(res.data);
       })

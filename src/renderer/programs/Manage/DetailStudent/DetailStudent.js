@@ -31,7 +31,7 @@ function DetailStudent() {
     let config2 = {
       method: "get",
       maxBodyLength: Infinity,
-      url: `http://16.16.166.122:3000/v1/timers/${id}`
+      url: `http://localhost:3000/v1/timers/${id}`
     };
     const response2 = await axios.request(config2);
     setData(response2.data);
@@ -40,7 +40,7 @@ function DetailStudent() {
     let config = {
       method: "get",
       maxBodyLength: Infinity,
-      url: `http://16.16.166.122:3000/v1/users/${id}`,
+      url: `http://localhost:3000/v1/users/${id}`,
       headers: {
         Authorization: `Bearer ${token.access.token}`
       }

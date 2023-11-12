@@ -61,7 +61,7 @@ function Read() {
   };
   useEffect(() => {
     axios
-      .get("http://16.16.166.122:3000/v1/datas")
+      .get("http://localhost:3000/v1/datas")
       .then((res) => {
         setData(res.data);
       })
@@ -81,7 +81,7 @@ function Read() {
     let config = {
       method: "post",
       maxBodyLength: Infinity,
-      url: "http://16.16.166.122:3000/v1/datas",
+      url: "http://localhost:3000/v1/datas",
       headers: {
         "Content-Type": "multipart/form-data; charset=utf-8"
       },

@@ -50,7 +50,7 @@ function AddStudent() {
               let config = {
                 method: 'post',
                 maxBodyLength: Infinity,
-                url: 'http://16.16.166.122:3000/v1/users',
+                url: 'http://localhost:3000/v1/users',
                 headers: { 
                   'Content-Type': 'application/json', 
                   'Authorization': `Bearer ${token.access.token}`

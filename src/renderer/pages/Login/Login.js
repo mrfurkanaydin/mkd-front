@@ -45,7 +45,7 @@ function Login() {
               initialValues={{ email: "", password: "" }}
               onSubmit={(values) => {
                 axios
-                  .post("http://16.16.166.122:3000/v1/auth/login", values)
+                  .post("http://localhost:3000/v1/auth/login", values)
                   .then((res) => {
                     dispatch({ type: "SET_TOKEN", payload: res.data.tokens });
                     dispatch({ type: "SET_USER", payload: res.data.user });
@@ -109,7 +109,7 @@ function Login() {
             initialValues={{ tcNo: "", password: "" }}
             onSubmit={(values) => {
               axios
-                .post("http://16.16.166.122:3000/v1/auth/login", values)
+                .post("http://localhost:3000/v1/auth/login", values)
                 .then((res) => {
                   dispatch({ type: "SET_TOKEN", payload: res.data.tokens });
                   dispatch({ type: "SET_USER", payload: res.data.user });

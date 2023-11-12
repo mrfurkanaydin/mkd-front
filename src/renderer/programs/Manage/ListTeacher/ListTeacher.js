@@ -14,7 +14,7 @@ function ListTeacher() {
     let config = {
       method: "get",
       maxBodyLength: Infinity,
-      url: "http://16.16.166.122:3000/v1/users?role=teacher",
+      url: "http://localhost:3000/v1/users?role=teacher",
       headers: {
         Authorization: `Bearer ${token.access.token}`
       }
